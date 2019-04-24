@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--指定极速模式-->
+    <meta name=renderer  content=webkit>
+   <!--指定IE和Chrome使用最新版本渲染当前页面-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!--告诉搜索引擎，当前页面的搜索关键字-->
+    <meta name="keywords" content="黄牛，大麦">
+    <!--告诉搜索引擎，当前页面的主要内容-->
+    <meta name="description" content="黄牛卖票">
+    <!--使用缓存-->
+    <meta http-equiv="cache-control" content="no-cache">
+    <!--boostrap指定视口，兼容手机端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css样式-->
+    <link rel="stylesheet" href="../java/com/LoginAndRegister/LoginAndRegister/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../java/com/LoginAndRegister/LoginAndRegister/css/drag.css">
+    <link rel="stylesheet" href="../java/com/LoginAndRegister/LoginAndRegister/css/login.css" />
+</head>
+
+<body style="background-color: white">
+<!-- 会员登录  -->
+<!--<div id='Login_start' style="position: absolute;" >-->
+<div id='_start'>
+    <br />
+    <div id="loginContainer">
+        <div id="lab1">
+            <span id="lab_login">会员登录</span>
+            <span id="lab_toRegist">
+						&emsp;还没有账号&nbsp;
+						<span id='toRegist' style="color: #EB9316;cursor: pointer;">立即注册</span>
+					</span>
+        </div>
+        <div style="width:330px;">
+            <span id="lab_type1"><a href="MarchantLogin.html">商家登录</a></span>
+        </div>
+        <div id="form_container1">
+            <br/>
+            <form id="loginform">
+                <input type="text" class="form-control" placeholder="用户名" id="login_number" name="login_number" required="required"/>
+                <input type="password" class="form-control" placeholder="密码" id="login_password" name="login_password" required="required" />
+                <!--拖动条容器-->
+                <div id="dragContainer">
+                    <!--拖动过程的颜色-->
+                    <div id="dragBg"></div>
+                    <!--验证文本-->
+                    <div id="dragText"></div>
+                    <!--滑块-->
+                    <div id="dragHandler"class="dragHandlerBg"></div>
+                </div>
+
+                <input type="submit" value="登录" class="btn btn-success" style="background-color: silver" disabled="false" id="login_btn" />
+                <span id="rememberOrfindPwd">
+						<span>
+							<input id="remember" type="checkbox" value="true" style="margin-bottom: -1.5px;"/>
+						</span>
+					<span style="color:#000000">
+							记住密码&emsp;&emsp;&emsp;&emsp;
+						</span>
+					<span style="color:#000000">
+                        <a href="updatepassword.html">忘记密码</a>
+						</span>
+					</span>
+            </form>
+        </div>
+        <div style="display:block;width:330px;height：40px;">
+            <span id="lab_type2">使用第三方直接登陆</span>
+        </div>
+        <div style="width:330px;height:100px;border-bottom: 1px solid #FFFFFF;">
+            <br />
+            <button id="login_QQ" type="button" class="btn btn-info">
+                <img src="images/qq32.png" style="width:20px;margin-top:-4px;" />&emsp;QQ登录
+            </button>
+            <button id="login_WB" type="button" class="btn btn-danger">
+                <img src="images/sina32.png" style="width:20px;margin-top:-4px;" />&emsp;微博登录
+            </button>
+        </div>
+    </div>
+        <!-- 会员注册 -->
+    <div id='regist_container' style="display: none;">
+        <div id="lab1">
+            <span id="lab_login">会员注册</span>
+            <span id="lab_toLogin">
+                <a href="Register_merchant.html">商家注册</a>
+						&emsp;已有账号&nbsp;
+						<span id='toLogin' style="color: #EB9316;cursor: pointer;">立即登录</span>
+					</span>
+        </div>
+        <div id="form_container2" style="padding-top: 25px;">
+           <form id="registerform">
+            <input type="text" class="form-control"  placeholder="用户名" id="regist_account" name="regist_account"/>
+               <input type="password" class="form-control" placeholder="密码" id="regist_password1" name="regist_password1" />
+            <input type="password" class="form-control" placeholder="确认密码" id="regist_password2" name="regist_password2" />
+            <input type="text" class="form-control" placeholder="手机号" id="regist_phone" name="regist_phone" />
+              <!--滑块拼图-->
+               <div id="captcha" style="position: relative;margin-top: 10px;width: 300px;display: none"></div>
+
+               <input type="text" class="form-control" placeholder="验证码" id="regist_vcode" name="regist_vcode" />
+            <!--<button id="getVCode" type="button" class="btn btn-success" >获取验证码</button>-->
+            <input id="getVCode" type="button" class="btn btn-success" value="点击发送验证码" disabled="false" onclick="sendCode(this)" />
+               <input type="submit" value="注册" class="btn btn-success" id="regist_btn"/>
+           </form>
+        </div>
+    </div>
+</div>
+</body>
+<!--错误高亮-->
+<style>
+    .myError {
+        color: red;
+    }
+</style>
+<!--滑块验证-->
+<script src="js/jquery-3.1.1.js"></script>
+<script src="../java/com/LoginAndRegister/LoginAndRegister/bootstrap/js/bootstrap.min.js"></script>
+<!--表单校验插件-->
+<script src="js/jquery.validate.js"></script>
+<!--滑块移动插件-->
+<script src="js/Checkslide.js"></script>
+<!--引入滑块拼图css和JS-->
+<script src="js/jigsaw.js"></script>
+<link rel="stylesheet" href="../java/com/LoginAndRegister/LoginAndRegister/css/jigsaw.css"></link>
+
+<!--操作cookie插件-->
+<script src="js/operation_cookie.js"></script>
+<!--表单校验规则-->
+<script type="text/javascript">
+    //表单校验
+   function loginvalite() {
+       //添加登录验证信息
+       $("#loginform").validate({
+           //错误的样式
+           errorClass: "myError",
+           //验证规则
+           rules:{
+               //这里的名字一定要和input的一样
+               login_number:{
+                   //最小长度8，最大长度10
+                   minlength: 8,
+                   maxlength: 11
+               },
+               login_password:{
+                   minlength: 6,
+                   maxlength: 16
+               }
+           },
+           //这里只能使用submit
+           submitHandler: function(form) { //验证成功时调用
+               //ajax请求后台登录
+               var login_number=$("#login_number").val();
+               var login_password=$("#login_password").val();
+                ajaxbylogin(login_number,login_password);
+           },
+           invalidHandler: function(form, validator) {//不通过回调
+               alert('验证不通过');
+               //表单重置
+               // $("from")[0].reset()
+               return false;
+           }
+
+       });
+       //添加注册验证信息
+       $("#registerform").validate({
+           //错误的样式
+           errorClass: "myError",
+           //验证规则
+           rules:{
+               regist_account:{
+                   //最小长度8，最大长度10
+                   minlength: 8,
+                   maxlength: 11,
+                   required:true
+               },
+               regist_password1:{
+                   minlength: 6,
+                   maxlength: 16,
+                   required:true
+               },
+               regist_password2:{
+                   required:true,
+                   ischeckpassword:true
+               },
+               regist_phone:{
+                   required: true,
+                   maxlength:11,
+                   maxlength:11,
+                   //自定义正则验证
+                   isphoneNum:true
+               },
+               regist_vcode:{
+                   minlength: 6,
+                   maxlength: 6,
+                   required:true
+               }
+           },
+           //这里只能使用submit
+           submitHandler: function(form) { //验证成功时调用
+               //ajax请求后台注册
+               ajaxregister();
+           },
+           invalidHandler: function(form, validator) {//不通过回调
+               alert('验证不通过');
+               //表单重置
+               // $("from")[0].reset()
+               return false;
+           },
+
+       });
+       //中文提示
+       $.extend($.validator.messages, {
+           required: "这是必填字段",
+           remote: "请修正此字段",
+           email: "请输入有效的电子邮件地址",
+           url: "请输入有效的网址",
+           date: "请输入有效的日期",
+           dateISO: "请输入有效的日期 (YYYY-MM-DD)",
+           number: "请输入有效的数字",
+           digits: "只能输入数字",
+           creditcard: "请输入有效的信用卡号码",
+           equalTo: "你的输入不相同",
+           extension: "请输入有效的后缀",
+           maxlength: $.validator.format("最多可以输入 {0} 个字符"),
+           minlength: $.validator.format("最少要输入 {0} 个字符"),
+           rangelength: $.validator.format("请输入长度在 {0} 到 {1} 之间的字符串"),
+           range: $.validator.format("请输入范围在 {0} 到 {1} 之间的数值"),
+           max: $.validator.format("请输入不大于 {0} 的数值"),
+           min: $.validator.format("请输入不小于 {0} 的数值")
+       });
+
+       //自定义手机号验证
+       jQuery.validator.addMethod("isphoneNum", function(value, element) {
+           var length = value.length;
+           var mobile = /^1[3|5|8]{1}[0-9]{9}$/;
+           return this.optional(element) || (length == 11 && mobile.test(value));
+       }, "请正确填写您的手机号码");
+
+       //自定义密码验证，如果不匹配，则提示。
+       jQuery.validator.addMethod("ischeckpassword", function(value, element) {
+           var registpwd1=$("#regist_password1").val().trim();
+           var registpwd2=$("#regist_password2").val().trim();
+           return this.optional(element) || (registpwd1==registpwd2);
+       }, "两次密码不匹配");
+   }
+   //ajax请求后台登录
+    function ajaxbylogin(login_number,login_password){
+       //勾选记住我
+        if($('#remember').is(':checked')) {
+           var val=$("#remember").val();
+        }
+        $.ajax({
+            type: 'POST',
+            url: 'loginCheck',
+            //@responBody默认格式
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "login_number":login_number,
+                "login_password": login_password,
+                "rember":val
+            }),
+            success: function (message){
+                if(message=="success"){
+                    alert("登录成功")
+                    setCookie('islogin','true',1800); // 半个小时
+                    location.href="index.html";
+                }else{
+                    alert("登录失败")
+                    location.reload();
+                }
+            },
+            error: function (message) {
+                console.log(message);
+            },
+            dataType:'text'
+        });
+    }
+    //ajax请求注册
+    function ajaxregister() {
+        $.ajax({
+            type: 'POST',
+            url: 'register',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "regist_account": $("#regist_account").val(),
+                "regist_password2": $("#regist_password2").val(),
+                "regist_phone": $("#regist_phone").val(),
+                "regist_vcode": $("#regist_vcode").val()
+            }),
+            success: function (responseText){
+                if(responseText=="success"){
+                    alert("注册成功")
+                    location.reload();
+                }else if(responseText=="notregister"){
+                    alert("手机号已经被注册")
+                    location.reload();
+                }else {
+                    alert("注册失败")
+                    location.reload();
+                }
+
+            },
+            error: function(message) {
+                location.reload();
+                console.log(message);
+            },
+            dataType: 'text'
+        });
+    }
+    //ajax请求获取短信验证码
+    function ajaxcode(phone) {
+        $.ajax({
+            type: 'GET',
+            url: 'getcode',
+            data:{
+              "regist_phone":phone
+            },
+            success: function (responseText){
+                console.log(responseText);
+            },
+            error: function (message) {
+                console.log(message);
+            },
+        });
+    }
+    //ajax请求用户名是否重复
+    function ajaxcheckusername(regist_account) {
+       if(regist_account==null||regist_account.trim()=='')return;
+        $.ajax({
+            type: 'POST',
+            url: 'checkUsername',
+            data:{
+                "regist_account":regist_account
+            },
+            success: function (responseText){
+                //用户名存在，不允许注册
+               if(responseText==false){
+                   alert("用户名已经存在")
+                   $("#regist_btn").attr("disabled", "false")
+               }else{
+                   $("#regist_btn").removeAttr("disabled");
+               }
+            },
+            error: function (message) {
+                console.log(message);
+            },
+        });
+    }
+    $(function () {
+        //对用户名做离焦判断
+       $("#regist_account").blur(function () {
+           var username = $("#regist_account").val();
+            ajaxcheckusername(username);
+       });
+    });
+    //拼图滑块
+    function sliderIn(){
+        jigsaw.init(document.getElementById('captcha'), function () {
+              $("#getVCode").removeAttr("disabled");
+        });
+    }
+    //控制滑块拼图
+    function myslider() {
+       //手机号码聚焦出现
+        $("#regist_phone").focus(function () {
+            $("#captcha").show(300)
+        })
+        //
+        $("#regist_password2").focus(function () {
+            $("#captcha").hide(300);
+        })
+    }
+    //自动登录（cookie）
+    function aotulogin() {
+      var login_number = getCookie("login_number");
+      var login_password=getCookie("login_password");
+      if(login_number!=null&&login_number.trim()!=''){
+          if(login_password!=null&&login_password.trim()!=''){
+              //ajax请求后台登录
+              ajaxbylogin(login_number,login_password);
+          }
+      }
+    }
+</script>
+<!--注册发送验证信息-->
+<script type="text/javascript">
+    var clock = '';
+    var nums = 60;
+    var btn;
+    function sendCode(thisBtn) {
+        var Isphone = $("#regist_phone");
+        //如果手机号码为空或者不正确的
+        if(Isphone.val().trim()==""||Isphone.length==0||!/^1[3|5|8]{1}[0-9]{9}$/.test(Isphone.val())){
+            alert("请输入正确手机号码");
+            Isphone.val("");
+            return;
+        }
+        //使用ajax请求获取后台验证码
+        ajaxcode(Isphone.val().trim());
+        btn = thisBtn;
+        btn.disabled = true; //将按钮置为不可点击
+        btn.value = '重新获取（'+nums+'）';
+        clock = setInterval(doLoop, 1000); //一秒执行一次
+    }
+    //时间倒计时
+    function doLoop() {
+        nums--;
+        if (nums > 0) {
+            btn.value = '重新获取（'+nums+'）';
+        } else {
+            clearInterval(clock); //清除js定时器
+            btn.disabled = false;
+            btn.value = '点击发送验证码';
+            nums = 10; //重置时间
+        }
+    }
+    //第三方登录
+    $(function () {
+        $("#login_QQ").click(function(){
+            alert("暂停使用！");
+        });
+        $("#login_WB").click(function(){
+            alert("暂停使用！");
+        });
+    })
+</script>
+<!--初始化-->
+<script>
+    $(function (){
+        aotulogin();
+        myslider();
+        //初始化滑块
+        initmydrag();
+        //滑动拼图
+        sliderIn();
+        //登录验证
+        loginvalite();
+        //打开会员登录
+        $("#regist_container").hide();
+        $("#_close").show();
+        $("#_start").animate({
+            left: '350px',
+            height: '520px',
+            width: '400px'
+        }, 500, function() {
+            $("#login_container").show(500);
+            $("#_close").animate({
+                height: '40px',
+                width: '40px'
+            }, 500);
+        });
+        //打开会员注册
+        $("#Regist_start_").click(function() {
+            $("#login_container").hide();
+            $("#_close").show();
+            $("#_start").animate({
+                left: '350px',
+                height: '520px',
+                width: '400px'
+            }, 500, function() {
+                $("#regist_container").show(500);
+                $("#_close").animate({
+                    height: '40px',
+                    width: '40px'
+                }, 500);
+            });
+        });
+        //去注册
+        $("#toRegist").click(function(){
+            $("#loginContainer").hide(500);
+            $("#regist_container").show(500);
+        });
+        //去 登录
+        $("#toLogin").click(function(){
+            $("#regist_container").hide(500);
+            $("#loginContainer").show(500);
+        });
+    });
+</script>
+</html>

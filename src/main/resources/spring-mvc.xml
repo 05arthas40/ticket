@@ -28,4 +28,15 @@
         <!--添加后缀-->
         <property name="suffix" value=".html"></property>
     </bean>
+
+    <!--chenzhengfu input 拦截器-->
+    <!--<mvc:interceptors>-->
+        <!--&lt;!&ndash;配置登录拦截器&ndash;&gt;-->
+        <!--<mvc:interceptor>-->
+            <!--&lt;!&ndash;这里只接收html和controller的请求，而ajax请求的jq不会接收&ndash;&gt;-->
+            <!--<mvc:mapping path="/*.html"/>-->
+            <!--&lt;!&ndash;拦截器位置&ndash;&gt;-->
+            <!--<bean class="com.LoginAndRegister.Interceptor.LoginInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 </beans>

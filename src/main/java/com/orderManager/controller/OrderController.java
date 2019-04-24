@@ -1,11 +1,11 @@
 package com.orderManager.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.alipay.api.AlipayApiException;
-import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
-import com.alipay.api.request.AlipayFundTransOrderQueryRequest;
-import com.alipay.api.response.AlipayFundTransOrderQueryResponse;
+//import com.alipay.api.AlipayApiException;
+//import com.alipay.api.AlipayClient;
+//import com.alipay.api.DefaultAlipayClient;
+//import com.alipay.api.request.AlipayFundTransOrderQueryRequest;
+//import com.alipay.api.response.AlipayFundTransOrderQueryResponse;
 import com.orderManager.dto.OrderAllDto;
 import com.orderManager.dto.UserAdressDto;
 import com.orderManager.service.OrderService;

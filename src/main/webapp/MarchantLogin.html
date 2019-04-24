@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--指定极速模式-->
+    <meta name=renderer  content=webkit>
+    <!--指定IE和Chrome使用最新版本渲染当前页面-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!--告诉搜索引擎，当前页面的搜索关键字-->
+    <meta name="keywords" content="黄牛，大麦">
+    <!--告诉搜索引擎，当前页面的主要内容-->
+    <meta name="description" content="黄牛卖票">
+    <!--使用缓存-->
+    <meta http-equiv="cache-control" content="no-cache">
+    <!--boostrap指定视口，兼容手机端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css样式-->
+    <link rel="stylesheet" href="../java/com/LoginAndRegister/LoginAndRegister/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../java/com/LoginAndRegister/LoginAndRegister/css/drag.css">
+    <link rel="stylesheet" href="../java/com/LoginAndRegister/LoginAndRegister/css/login.css" />
+</head>
+
+<body style="background-color: white">
+<!-- 会员登录  -->
+<!--<div id='Login_start' style="position: absolute;" >-->
+<div id='_start'>
+    <br />
+    <div id="loginContainer">
+        <div id="lab1">
+            <span id="lab_login">商家登录</span>
+            <span id="lab_toRegist">
+						&emsp;还没有账号&nbsp;
+                <span id='toRegist' style="color: #EB9316;cursor: pointer;"><a href="Register_merchant.html">立即注册</a></span>
+					</span>
+        </div>
+        <div style="width:330px;">
+            <span id="lab_type1"><a href="login.html">会员登录</a></span>
+        </div>
+        <div id="form_container1">
+            <br/>
+            <form id="loginform">
+                <input type="text" class="form-control" placeholder="用户名" id="login_number" name="login_number" required="required"/>
+                <input type="password" class="form-control" placeholder="密码" id="login_password" name="login_password" required="required" />
+                <!--拖动条容器-->
+                <div id="dragContainer">
+                    <!--拖动过程的颜色-->
+                    <div id="dragBg"></div>
+                    <!--验证文本-->
+                    <div id="dragText"></div>
+                    <!--滑块-->
+                    <div id="dragHandler"class="dragHandlerBg"></div>
+                </div>
+
+                <input type="submit" value="登录" class="btn btn-success" style="background-color: silver" disabled="false" id="login_btn" />
+                <span id="rememberOrfindPwd">
+						<!--<span>-->
+							<!--<input id="remember" type="checkbox" value="true" style="margin-bottom: -1.5px;"/>-->
+						<!--</span>-->
+					<span style="color:#000000">
+                        <!--<a href="updatepassword.html">忘记密码</a>-->
+						</span>
+					</span>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<!--错误高亮-->
+<style>
+    .myError {
+        color: red;
+    }
+</style>
+<!--滑块验证-->
+<script src="js/jquery-3.1.1.js"></script>
+<script src="../java/com/LoginAndRegister/LoginAndRegister/bootstrap/js/bootstrap.min.js"></script>
+<!--表单校验插件-->
+<script src="js/jquery.validate.js"></script>
+<!--滑块移动插件-->
+<script src="js/Checkslide.js"></script>
+<!--引入滑块拼图css和JS-->
+<script src="js/jigsaw.js"></script>
+<link rel="stylesheet" href="../java/com/LoginAndRegister/LoginAndRegister/css/jigsaw.css"></link>
+
+<!--操作cookie插件-->
+<script src="js/operation_cookie.js"></script>
+<!--表单校验规则-->
+<script type="text/javascript">
+    //表单校验
+    function loginvalite() {
+        //添加登录验证信息
+        $("#loginform").validate({
+            //错误的样式
+            errorClass: "myError",
+            //验证规则
+            rules:{
+                //这里的名字一定要和input的一样
+                login_number:{
+                    //最小长度8，最大长度10
+                    minlength: 8,
+                    maxlength: 11
+                },
+                login_password:{
+                    minlength: 6,
+                    maxlength: 16
+                }
+            },
+            //这里只能使用submit
+            submitHandler: function(form) { //验证成功时调用
+                //ajax请求后台登录
+                var login_number=$("#login_number").val();
+                var login_password=$("#login_password").val();
+                ajaxbylogin(login_number,login_password);
+            },
+            invalidHandler: function(form, validator) {//不通过回调
+                alert('验证不通过');
+                //表单重置
+                // $("from")[0].reset()
+                return false;
+            }
+
+        });
+        //中文提示
+        $.extend($.validator.messages, {
+            required: "这是必填字段",
+            remote: "请修正此字段",
+            email: "请输入有效的电子邮件地址",
+            url: "请输入有效的网址",
+            date: "请输入有效的日期",
+            dateISO: "请输入有效的日期 (YYYY-MM-DD)",
+            number: "请输入有效的数字",
+            digits: "只能输入数字",
+            creditcard: "请输入有效的信用卡号码",
+            equalTo: "你的输入不相同",
+            extension: "请输入有效的后缀",
+            maxlength: $.validator.format("最多可以输入 {0} 个字符"),
+            minlength: $.validator.format("最少要输入 {0} 个字符"),
+            rangelength: $.validator.format("请输入长度在 {0} 到 {1} 之间的字符串"),
+            range: $.validator.format("请输入范围在 {0} 到 {1} 之间的数值"),
+            max: $.validator.format("请输入不大于 {0} 的数值"),
+            min: $.validator.format("请输入不小于 {0} 的数值")
+        });
+
+    }
+    //ajax请求后台登录
+    function ajaxbylogin(login_number,login_password){
+        $.ajax({
+            type: 'POST',
+            url: 'marchantLogin',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "regist_account":login_number,
+                "regist_password1": login_password,
+            }),
+            success: function (message){
+                if(message=="success"){
+                    alert("登录成功")
+                    setCookie('marchantLogin','true',1800); // 半个小时
+                     location.href="index.html";
+                }else{
+                    alert("登录失败")
+                    location.reload();
+                }
+            },
+            error: function (message) {
+                console.log(message);
+            },
+            dataType:'text'
+        });
+    }
+    //拼图滑块
+    function sliderIn(){
+        jigsaw.init(document.getElementById('captcha'), function () {
+            $("#getVCode").removeAttr("disabled");
+        });
+    }
+    //自动登录（cookie）
+    function aotulogin() {
+        var login_number = getCookie("login_number");
+        var login_password=getCookie("login_password");
+        if(login_number!=null&&login_number.trim()!=''){
+            if(login_password!=null&&login_password.trim()!=''){
+                //ajax请求后台登录
+                ajaxbylogin(login_number,login_password);
+            }
+        }
+    }
+</script>
+
+<!--初始化-->
+<script>
+    $(function (){
+        aotulogin();
+        //初始化滑块
+        initmydrag();
+        //登录验证
+        loginvalite();
+        //打开会员登录
+        $("#regist_container").hide();
+        $("#_close").show();
+        $("#_start").animate({
+            left: '350px',
+            height: '520px',
+            width: '400px'
+        }, 500, function() {
+            $("#login_container").show(500);
+            $("#_close").animate({
+                height: '40px',
+                width: '40px'
+            }, 500);
+        });
+    });
+</script>
+</html>

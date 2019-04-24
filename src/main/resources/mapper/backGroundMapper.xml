@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backGroundManager.dao.backGroundDao">
+<!--  显示列表  -->
+    <select id="listUserInfo" parameterType="com.backGroundManager.vo.userVo" resultType="com.backGroundManager.vo.userVo">
+        SELECT userid,username,password,phone,name,email from user
+        WHERE status = 1
+        <if test="userid!=null and userid !=''">
+            and userid = #{userid}
+        </if>
+        <if test="username!=null and username !=''">
+            and username = #{username}
+        </if>
+        <if test="phone!=null and phone !=''">
+            and phone = #{phone}
+        </if>
+        <if test="name!=null and name !=''">
+            and name = #{name}
+        </if>
+        order by userid
+    </select>
+<!-- 用户信息修改 -->
+    <update id="updateUserById" parameterType="com.backGroundManager.pojo.user">
+        UPDATE user
+        <set>
+            <if test="password!=null and password !=''">
+                and password = #{password}
+            </if>
+            <if test="phone!=null and phone !=''">
+                and phone = #{phone}
+            </if>
+            <if test="name!=null and name !=''">
+                and name = #{name}
+            </if>
+            <if test="email!=null and email !=''">
+                and email = #{email}
+            </if>
+        </set>
+        WHERE userid = #{userid}
+    </update>
+
+<!-- 删除用户 -->
+    <update id="deleteUserById" parameterType="int">
+        UPDATE user SET status = 0 where userid = #{userid}
+    </update>
+
+
+
+</mapper>
