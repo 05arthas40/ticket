@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backGroundManager.dao.ManageCompanyDao">
+    
+    <select id="getCheckCompany" parameterType="int" resultType="com.backGroundManager.dto.CompanyInfoDto">
+        select c.cid,c.cname,c.`status`
+        from company as c
+        where c.`status` = #{status}
+    </select>
+    
+    <select id="getCompanyById" parameterType="int" resultType="com.backGroundManager.dto.CompanyDetailsDto">
+        select c.cname,c.caddress,c.cphone,c.cdetails,c.status
+        from company as c
+        where c.cid = #{cid}
+    </select>
+
+    <update id="alterCompanyById" parameterType="com.backGroundManager.vo.CompanyidAndStatusVo">
+        update company set `status` = #{status}
+        where company.cid = #{cid}
+    </update>
+
+    <update id="rejectCompanyById" parameterType="com.backGroundManager.vo.CompanyidAndReasonVo">
+        update company set `status` = 2,reason = #{reason}
+        where company.cid = #{cid}
+    </update>
+
+</mapper>

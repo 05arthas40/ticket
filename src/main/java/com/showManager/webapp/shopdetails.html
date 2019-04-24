@@ -1,0 +1,565 @@
+<!Doctype html>
+<html>
+<head>
+
+    <title>购票页面</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/sheetStyle1.css">
+    <link rel="stylesheet" href="css/sheetStyle2.css">
+
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            //每种价位的价格
+            var everyMoney = -1;
+
+            //通过传入的showid使用ajax来获取演出信息
+            var showid = window.location.href.split("showid=")[1];
+
+            /*
+                选择数量框blur事件
+             */
+            $("#count_id").blur(function () {
+                //获得框内输入的值的整数
+                var count = parseInt($(this).val());
+                //获得库存
+                var stock = $("#everyStock").html().split(":")[1];
+
+                //不为数字则置一
+                if (isNaN(count)) {
+                    $(this).val(1);
+                    setTotalMoney(1);
+                } else {
+                    //是数字，但是超过库存或5张则判断
+                    if (count > stock || count > 5) {
+                        //若库存大于5则置5
+                        if (stock > 5) {
+                            $(this).val(5);
+                            setTotalMoney(5);
+                        } else {
+                            //若库存小于于5则置为库存
+                            $(this).val(stock);
+                            setTotalMoney(stock);
+                        }
+                    } else if (count < 1) {
+                        //负数时的操作
+                        $(this).val(1);
+                        setTotalMoney(1);
+                    } else {
+                        //都满足就直接用输入框里的值
+                        $(this).val(count);
+                        setTotalMoney(count)
+                    }
+                }
+            })
+
+
+            /*
+                通过传入的showid用ajax获取对应演出的具体信息
+             */
+            $.ajax({
+                type: "POST",
+                url: "getOneShowDetails?showid=" + showid,
+                success: function (data) {
+                    //以下为搬运工作
+                    $("#poster").attr("src", "img/" + data[0].ppicture);//海报
+                    $("#headtitle").html(data[0].showtitle);//大字标题
+                    $("#datetime").html("时间：" + data[0].showdate + " | " + data[0].begin);//演出时间
+                    $("#venue").html("场馆：" + data[0].saddress + " | " + data[0].vname);//演出场馆
+                    $("#gdmap").attr('href', "https://www.amap.com/search?query=" + data[0].vname);//高德地图链接
+                    var beginhour = data[0].begin.split(":")[0];//定义开始时间（小时）
+                    var beginminute = data[0].begin.split(":")[1];//定义开始时间（分钟）
+                    var endhour = data[0].end.split(":")[0];//定义结束时间（小时）
+                    var endminute = data[0].end.split(":")[1];//定义结束时间（分钟）
+                    var last = (endhour - beginhour) * 60 + (endminute - beginminute);//通过上面四个计算演出持续时间
+                    $("#lasttime").html(last + "分钟（以现场为准）");//持续时间
+                    $("#chooseshow").html(data[0].saddress + data[0].showdate);//选择演出
+                    $("#performer").html(data[0].pname);//演员是谁
+                    $("#cdecription").html(data[0].cdescription);//演出简介（富文本）
+
+                    var quehuo;//判断是否缺货
+                    var showprice;//记录价位
+                    /*
+                        遍历data
+                     */
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        quehuo = data[i].seatCount > 0 ? "" : "缺货登记";
+                        showprice = data[i].showprice / 100 + "元";
+                        //拼接价位框
+                        $("#chooseVenue").append("<div class=\"select_right_list_item sku_item select2 svid\" id='svid" + data[i].svid + "'>" +
+                            "<span class=\"notticket\">" + quehuo + "</span>\n" +
+                            "<div class=\"skuname\">" + showprice + "</div>\n" +
+                            "</div>");
+
+                        /*
+                            不缺货则添加点击事件：点击变红、单价变更、通过showThisStock（）使用ajax获取当前库存、数量置1
+                         */
+                        if (quehuo == "") {
+                            $("#svid" + data[i].svid).click(function () {
+                                $(".select2").each(function () {
+                                    $(this).removeClass("active");
+                                });
+                                $(this).addClass("active");
+
+                                everyMoney = $(this).children("div").html();
+                                everyMoney = everyMoney.split("元")[0];
+                                $("#totalMoney").html(everyMoney);
+
+                                var vid = $(this).attr("id").split("id")[1];
+                                showThisStock(vid);
+                                $("#count_id").val(1);
+                            })
+
+                        }
+
+                    }
+                },
+                error: function () {
+                    alert("糟糕，传输好像出错了")
+                }
+
+            })
+
+
+        })
+
+        //点击购买时的事件，传入svid以及购买数量（若没选择价位则弹框提示）
+        function toBuy() {
+            var svid = "";
+            var buyNum;
+
+            $(".svid").each(function () {
+                if ($(this).hasClass("active")) {
+                    svid = $(this).attr('id');
+                }
+                buyNum = $("#count_id").val();
+            });
+
+            if (svid == "") {
+                alert("您还没选择演出或价位呢")
+            } else {
+                location.href = "#";
+            }
+        }
+
+        /**
+         * 点击+号时执行的方法
+         */
+        function add() {
+            var counta = parseInt($("#count_id").val());
+            var stocka = parseInt($("#everyStock").html().split(":")[1]);
+            if (counta < stocka && counta < 5) {
+                $("#count_id").val(counta - 0 + 1);
+                setTotalMoney(counta + 1);
+            }
+        }
+
+        /**
+         * 点击-号时执行的方法
+         */
+        function min1() {
+            var countm = parseInt($("#count_id").val());
+            if (countm > 1) {
+                $("#count_id").val(countm - 1);
+                setTotalMoney(countm - 1);
+            }
+        }
+
+        /**
+         * 通过ajax获取对应svid的库存
+         * @param sid：其实是svid
+         */
+        function showThisStock(sid) {
+            $.ajax({
+                type: "POST",
+                url: "getOneStock?svid=" + sid,
+                success: function (data) {
+                    $("#everyStock").html("库存余量:" + data);
+                },
+                error: function () {
+                    alert("获取库存失败")
+                }
+
+            })
+        }
+
+        /**
+         * 通过传入数量框的值来计算总价
+         * @param count
+         */
+        function setTotalMoney(count) {
+            var totalm;
+            $(".svid").each(function () {
+                if ($(this).hasClass("active")) {
+                    totalm = parseInt($(this).children("div").html());
+                    totalm = totalm * count;
+                    $("#totalMoney").html(totalm);
+                }
+            })
+        }
+
+        function toKeyword() {
+            var ksvid;
+            $(".svid").each(function () {
+                ksvid=$(this).attr("id").split("id")[1];
+            })
+
+            var keyword = $("#keyword").val();
+            $.ajax({
+                type:"POST",
+                url:"getCityIdBysvid?svid="+ksvid,
+                success:function (data) {
+
+                    window.location.href="http://10.3.135.45:8080/TicketProject/sort.html?keyword="+keyword+"&cityId="+data+"&pType=&date=";
+                },
+                error:function () {
+                    alert("获取信息错误")
+                }
+            })
+
+        }
+
+
+    </script>
+
+    <style type="text/css" rel="stylesheet">
+        .add, .min1 {
+            display: inline-block;
+            margin-bottom: 0;
+            padding: 0.5em 1em;
+            vertical-align: middle;
+            font-size: 1.6rem;
+            font-weight: normal;
+            line-height: 1.2;
+            text-align: center;
+            white-space: nowrap;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 0;
+            cursor: pointer;
+            outline: none;
+            -webkit-appearance: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-transition: background-color 300ms ease-out, border-color 300ms ease-out;
+            transition: background-color 300ms ease-out, border-color 300ms ease-out;
+        }
+    </style>
+
+
+</head>
+<body data-spm="project">
+
+
+<div class="dm-header-wrap">
+    <div class="dm-header-box" data-spm="top">
+        <a href="#"><img class="i-logo" src="img/pinle.jpg"></a>
+
+        <div class="recommend-header">
+            <a href="#" class="type-recommend" data-spm="dhome" onclick="toKeyword()">首页</a>
+            <a href="#" class="type-recommend" data-spm="dcategory" onclick="toKeyword()">分类</a>
+
+        </div>
+
+        <div class="right-header" data-spm="nick">
+            <div class="box-header user-header">
+
+                <div class="login-user show">
+                    <span class="span-box-header span-user">登录</span>
+                </div>
+                <div class="list-wrap">
+                    <div class="list-login">
+                        <a href="#">修改个人信息</a>
+                        <a href="#">修改密码</a>
+                        <a href="#">注销</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="search-header" data-spm="searchtxt">
+            <img class="i-search" src="//img.alicdn.com/tfs/TB1qv3jxGmWBuNjy1XaXXXCbXXa-34-36.png" alt="搜索">
+            <input class="input-search" placeholder="搜一搜，我这里有好康的" data-spm="dsearchbtn" id="keyword">
+            <div class="btn-search" data-spm="dsearchbtn2" onclick="toKeyword()">搜索</div>
+            <div class="list-search-wrap">
+                <div class="list-search">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div data-spm="projectinfo" class="perform">
+    <div class="w1200 box">
+        <div class="hd">
+            <div class="cont">
+                <div class="cover"><img src="#" id="poster"
+                                        data-src="//gw.alicdn.com/tfs/TB1e2I2DL1TBuNjy0FjXXajyXXa-270-364.png" alt=""
+                                        class="poster">
+                </div>
+                <div class="order" data-spm-anchor-id="a2oeg.project.projectinfo.i0.711a553b8Sx99r">
+                    <div class="title" id="headtitle"></div>
+                    <div data-spm="projectinfo" class="address">
+                        <div class="time" id="datetime"></div>
+                        <div class="place">
+                            <div class="addr" id="venue"></div>
+                            <!--点这里展示高德地图接口的结果-->
+                            <a data-spm="daddress" href="#" target="_blank" class="mapicon" id="gdmap"></a>
+                        </div>
+                    </div>
+
+                    <div class="perform__order__box">
+
+                        <div class="perform__order__select">
+                            <div class="select_left">选择场次</div>
+                            <div class="select_right">
+                                <div class="select_right_list">
+                                    <!--active指选中该框-->
+                                    <div class="select_right_list_item active select1"><span id="chooseshow"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="perform__desc__info"><p></p>
+                            <div class="perform__order__select">
+                                <div class="select_left">选择票价</div>
+                                <div class="select_right">
+                                    <div class="select_right_list" id="chooseVenue">
+                                        <!----></div>
+                                </div>
+                            </div>
+                            <div class="perform__order__price">
+                                <div class="number_left">选择数量</div>
+                                <div class="number_right">
+                                    <!--<div class="number_right_info">-->
+                                    <!--&lt;!&ndash;<div class="cafe-c-input-number">&lt;!&ndash;&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<input type="button" class="cafe-c-input-number-handler cafe-c-input-number-handler-down cafe-c-input-number-handler-disabled" value="-"></input>&ndash;&gt;-->
+
+                                    <!--&lt;!&ndash;<input type="text" >&ndash;&gt;-->
+
+                                    <!--&lt;!&ndash;<input type="button" class="cafe-c-input-number-handler cafe-c-input-number-handler-up" value="+"></input>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;<input type="button" value="-">&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;<input type="text" value="">&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;<input type="button" value="+">&ndash;&gt;&ndash;&gt;-->
+
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                    <!--</div>-->
+                                    <div class="amount-wrapper ">
+                                        <div class="item-amount ">
+                                            <div class="sl">
+                                                <input class="min1" name="" type="button" value="-"
+                                                       onclick="min1()"/>
+                                                <input class="text_box" id="count_id" type="text" value=1
+                                                       style="width: 60px;height: 40px;font-size: larger; text-align: center;"/>
+                                                <input class="add" type="button" value="+"
+                                                       onclick="add()"/>
+                                                <font size="smaller" id="everyStock">库存余量:0</font>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="perform__order__price">
+                                <div class="number_left total_panel">合计</div>
+                                <div class="number_right"><span class="totol__price"><i>￥</i><span
+                                        id="totalMoney">0</span>
+        </span> <span class="totle__offer go__login">登录后查看是否享受优惠</span></div>
+                            </div>
+                            <div>
+                                <div data-spm="dbuy" class="buybtn" onclick="toBuy()">立即购票</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <br/>
+
+            <div id="perform__bd" class="perform__bd">
+                <div class="dm-tab">
+                    <div class="tabs-bar">
+                        <div data-spm="data-spm" class="tabs-item tabs-item-active">
+                            商品详情
+                        </div>
+                    </div>
+                    <div class="tabs-content">
+                        <div class="dm-tabs-panel">
+                            <div data-spm="detail-info" class="detail">
+                                <div class="list">
+                                    <div class="title">观演须知</div>
+                                    <div class="words">
+                                        <div><p class="item_title">演出时长</p>
+                                            <ul>
+                                                <li id="lasttime"></li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">限购政策</p>
+                                            <ul>
+                                                <li>每个账号最多购买5张。</li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">实名制</p>
+                                            <ul>
+                                                <li>购买时您需要输入购票人身份证信息，每笔订单对应一个证件号</li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">退换说明</p>
+                                            <ul>
+                                                <li>票品不支持退换票。如无法正常观看，还请自行处理，给您带来不便敬请谅解。</li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">儿童入场说明</p>
+                                            <ul>
+                                                <li>儿童一律凭成人票入场</li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">入场时间</p>
+                                            <ul>
+                                                <li>提前约90分钟</li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">座位类型</p>
+                                            <ul>
+                                                <li>请按门票对应位置，有序对号入座</li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">发票说明</p>
+                                            <ul>
+                                                <li>所需票价若为灰色，说明已经售完。您可以在当前页面进行缺货登记，后期如果有票会以短信形式及时通知。</li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">禁止携带物品</p>
+                                            <ul>
+                                                <li>
+                                                    由于安保和版权的原因，大多数演出、展览及比赛场所禁止携带食品、饮料、专业摄录设备、打火机等物品，请您注意现场工作人员和广播的提示，予以配合。
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">物品寄存</p>
+                                            <ul>
+                                                <li>无寄存处，请自行保管携带物品</li>
+                                            </ul>
+                                        </div>
+                                        <div><p class="item_title">主要演员（团体）</p>
+                                            <ul>
+                                                <li id="performer"></li>
+                                            </ul>
+                                        </div>
+                                        <div><!--<p class="item_title">黄牛网首次开售时全场可售门票总张数</p>-->
+                                            <ul>
+                                                <li id="allStock"></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="title">退换说明</div>
+                                    <div class="words"><p>不支持退换</p>
+                                        <p>因演出票的唯一性、时效性，本项目在购买后不支持退换票，如无法正常观看，还请自行处理，给您带来不便敬请谅解！</p></div>
+                                </div>
+                                <div class="list">
+                                    <div class="title">演出介绍</div>
+                                    <div class="words">
+                                        <p id="cdecription">
+                                        <p>
+                                        </p>
+                                        <!--<p style="text-align: center;"><img width="598" height="399" class="h2-lazyload"-->
+                                        <!--data-src="//img.alicdn.com/imgextra/i1/2251059038/O1CN01iq3mr22GdS9bfGNos_!!2251059038.png_q60.jpg_.webp"-->
+                                        <!--src="//img.alicdn.com/tfs/TB1PpVhDrvpK1RjSZFqXXcXUVXa-750-250.png">-->
+                                        <!--</p>-->
+                                        <!--<p>2018年12月29日、30日林宥嘉idol世界巡回演唱会唱响首站台北小巨蛋，idol世界巡回演唱会正式起航！演唱会开场影片的音乐就让人惊喜万分，由世-->
+                                        <!--界级音乐教父坂本龙一先生的作品拉开演唱会的大幕，他的音乐为本轮巡回演唱会定调，营造出一种往未知旅程出发前的神秘与壮烈感，并且有种特别的魔幻磁场，让歌迷一瞬间就进入林宥嘉的世界，一步步随著他探究idol的深层面貌。</p>-->
+                                        <!--<p>-->
+                                        <!--这一次的林宥嘉idol世界巡回演唱斥重金打造舞美，整个舞台用透明LED屏幕呈现。为了给歌迷耳目一新的全新体验。本次巡演由林宥嘉自己担任音乐总监，演唱会所有演出歌曲将全部重新改编，配合炫酷震撼的舞美，旨在给所有现场歌迷带来独一无-->
+                                        <!--二的体验。</p>-->
+                                        <!--<p>-->
+                                        <!--不久前，成都、上海双城预售同天开启便接连秒罄，足见林宥嘉令人惊叹的市场号召力，更有歌迷表示："晚了1秒钟就没票了！现实版'心酸'本人"，而已经开始晒订单的歌迷则表示："比抢到春运火车票还开心，激动似过年"。</p>-->
+                                        <!--<p>对此，林宥嘉也特别发布微博对歌迷表示感谢，表示将全力以赴，并说道："这不只是一场演唱会 ，是充满用心在各环节的小小梦想?梦的名字叫做「我才不管、-->
+                                        <!--我要让他们拥有最好的」。"</p>-->
+                                        <!--<p style="text-align: center;"><img width="599" height="398" class="h2-lazyload"-->
+                                        <!--data-src="//img.alicdn.com/imgextra/i2/2251059038/O1CN01qvoxaU2GdS9cjBGcB_!!2251059038.png_q60.jpg_.webp"-->
+                                        <!--src="//img.alicdn.com/tfs/TB1PpVhDrvpK1RjSZFqXXcXUVXa-750-250.png">-->
+                                        <!--</p>-->
+                                        <!--<p></p>-->
+                                        <!--<p>-->
+                                        <!--对于这场极具纪念价值的演唱会，他说："idol不是一场演唱会，更像是一个作品。当我意识到我自己出道十年了，我思考是要做演唱会还是专辑，我只用了两秒就决定做演唱会。因为十年的心情不能只用一张专辑来概括，而是需要用更多的篇幅来呈现，所以我希望大家来看演唱会，来感受这个作品。"</p>-->
+                                        <!--<p>-->
+                                        <!--idol世界巡回演唱会的每个桥段，也确实都可见到林宥嘉与团队的用心以及想传达的意念，让听众彷彿看完一场叙事电影或是一场大型艺术展，后劲十足回味无穷。</p>-->
+                                        <!--<p style="text-align: center;"><img width="597" height="396" class="h2-lazyload"-->
+                                        <!--data-src="//img.alicdn.com/imgextra/i2/2251059038/O1CN01L8QFQu2GdS9d2v3wK_!!2251059038.png_q60.jpg_.webp"-->
+                                        <!--src="//img.alicdn.com/tfs/TB1PpVhDrvpK1RjSZFqXXcXUVXa-750-250.png">-->
+                                        <!--</p>-->
+                                        <!--<p>-->
+                                        <!--2018年年底台北场首演后，媒体及观演歌迷们好评不断。电视节目制作人詹仁雄老师评价："很荣幸成为你作品的万分之一，用这样的音乐做为今年尾声，胜过百朵烟花，必须再唱，不能只有两万个人看见。"</p>-->
+                                        <!--<p>-->
+                                        <!--对此，林宥嘉认真表示，确实希望此次巡演将会尽可能地让世界各地的人看到，他自信地说：「我相信这是一场跨越语言隔阂的演唱会，连不懂中文的人都可以非常享受。」</p>-->
+                                        <!--<p style="text-align: center;"><img width="600" height="393.687707641196"-->
+                                        <!--class="h2-lazyload"-->
+                                        <!--data-src="//img.alicdn.com/imgextra/i4/2251059038/O1CN01qLKXW92GdS9dvSZ57_!!2251059038.png_q60.jpg_.webp"-->
+                                        <!--src="//img.alicdn.com/tfs/TB1PpVhDrvpK1RjSZFqXXcXUVXa-750-250.png">-->
+                                        <!--</p>-->
+                                        <!--<p>6月22日让我们期待林宥嘉idol世界巡回演唱会唱响济南！</p>-->
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="dm-footer">
+        <div class="w1200">
+            <ul class="footer__links">
+
+                <li class="footer__links__list"><a href="">帮助中心</a></li>
+                <li class="footer__links__grep">|</li>
+
+                <li class="footer__links__list"><a href="" data-spm="flink1">公司介绍</a></li>
+                <li class="footer__links__grep">|</li>
+
+                <li class="footer__links__list"><a href="" data-spm="flink2">品牌识别</a></li>
+                <li class="footer__links__grep">|</li>
+
+                <li class="footer__links__list"><a href="" data-spm="flink3">公司大事记</a></li>
+                <li class="footer__links__grep">|</li>
+
+                <li class="footer__links__list"><a href="" data-spm="flink4">协议及隐私权政策</a></li>
+                <li class="footer__links__grep">|</li>
+
+                <li class="footer__links__list"><a href="" target="_blank" data-spm="flink5">廉正举报</a></li>
+                <li class="footer__links__grep">|</li>
+
+                <li class="footer__links__list"><a href="">联系合作</a></li>
+                <li class="footer__links__grep">|</li>
+
+                <li class="footer__links__list"><a href="" target="_blank" data-spm="flink7">招聘信息</a></li>
+                <li class="footer__links__grep">|</li>
+
+                <li class="footer__links__list"><a href="" target="_blank" data-spm="flink8">防骗秘籍</a></li>
+
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

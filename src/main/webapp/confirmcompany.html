@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="css/lw/bootstrap.css">
+    <link rel="stylesheet" href="css/lw/font-awesome.min.css">
+    <link rel="stylesheet" href="css/lw/main.css">
+    <link rel="stylesheet" href="css/lw/doc.min.css">
+    <style>
+        .tree li {
+            list-style-type: none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" style="font-size:32px;" href="user.html">管理员后台</a></div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li style="padding-top:8px;">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">张三 <span class="caret"></span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="panel panel-default">
+                <div class="panel-heading">审核公司<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"></div></div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label >公司名称</label>
+                            <div id="cname"></div>
+                        </div>
+                        <div class="form-group">
+                            <label >公司地址</label>
+                            <div id="caddress"></div>
+                        </div>
+                        <div class="form-group">
+                            <label >公司电话</label>
+                            <div id="cphone"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>有关资料</label>
+                            <p class="help-block label label-warning">营业执照等资料</p>
+                            <div id="cdetails"></div>
+                        </div>
+                        <button style="display: none" id="shenpi" type="button" class="btn btn-success" onclick="alterCompanyById(1)">审批</button>
+                        <button style="display: none" id="bohui" type="button" class="btn btn-danger" onclick="alterCompanyById(2)">驳回</button>
+                        <button style="display: none" id="quxiao" type="button" class="btn btn-danger" onclick="alterCompanyById(3)">取消与此公司的合作</button>
+                        <div style="display: none" id="rejectCompany">
+                            <label>请输入驳回理由,理由可以为空：</label>
+                            <input type="text"id="Reason"/>
+                            <button type="button" onclick="submitReason()">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".list-group-item").click(function(){
+            if ( $(this).find("ul") ) {
+                $(this).toggleClass("tree-closed");
+                if ( $(this).hasClass("tree-closed") ) {
+                    $("ul", this).hide("fast");
+                } else {
+                    $("ul", this).show("fast");
+                }
+            }
+        });
+    });
+
+        var cid = window.location.search.split("=")[1];
+
+        //回显
+        $.ajax({
+            type:"POST",
+            url:"getCompanyById?pfmid="+cid,
+            contentType: "application/json; charset=utf-8",
+            success:function (responseText) {
+                var companyinfo = responseText[0];
+                console.log(companyinfo);
+                $("#cname").text(companyinfo.cname);
+                $("#caddress").text(companyinfo.caddress);
+                $("#cphone").text(companyinfo.cphone);
+                $("#cdetails").html(companyinfo.cdetails);
+                if (companyinfo.status == 0) {
+                    $("#shenpi").show();
+                    $("#bohui").show();
+                }else if (companyinfo.status == 1){
+                    $("#quxiao").show();
+                }else if (companyinfo.status == 2) {
+                    $("#shenpi").show();
+                }
+            },
+            error:function (responseText) {
+                console.log(responseText);
+            },
+            dataType:"json"
+        })
+
+        //大按钮
+        function alterCompanyById(number) {
+            if (confirm("您确定要执行这个操作吗？")){
+                if (number == 2) {
+                    $("#rejectCompany").show();
+                }else {
+                    $.ajax({
+                        type:"POST",
+                        url:"alterCompanyById",
+                        contentType: "application/json; charset=utf-8",
+                        data:JSON.stringify({
+                            "cid":cid,
+                            "status":number
+                        }),
+                        success:function (responseText) {
+
+                            if (responseText == 1){
+                                alert("操作成功");
+                                window.location.href = "manageCompanyAndShow.html";
+                            } else {
+                                alert("操作失败");
+                            }
+                        },
+                        error:function (responseText) {
+                            console.log(responseText);
+                        }
+                    })
+                }
+            }else {
+                console.log("取消了操作");
+            }
+        }
+
+        //提交驳回按钮
+    function submitReason() {
+        if (confirm("您确定要执行这个操作吗？")){
+            var Reason = $("#Reason").val();
+            $.ajax({
+                type:"POST",
+                url:"rejectCompanyById",
+                contentType:"application/json; charset=utf-8",
+                data:JSON.stringify({
+                    "cid":cid,
+                    "reason":Reason
+                }),
+                success:function (responseText) {
+                    if (responseText == 1) {
+                        alert("操作成功");
+                        window.location.href = "manageCompanyAndShow.html";
+                    }else {
+                        alert("操作失败");
+                    }
+                },
+                error:function (responseText) {
+                    console.log(responseText);
+                },
+                dataType:'json'
+            })
+        }else {
+            console.log("取消了操作");
+        }
+    }
+
+
+</script>
+</body>
+</html>

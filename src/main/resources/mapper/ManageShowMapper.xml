@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backGroundManager.dao.ManageShowDao">
+    
+    <select id="getCheckShow" resultType="com.backGroundManager.dto.ShowDetailsDto" parameterType="int">
+        select pf.pfmid,pf.showtitle,pf.ptype,pf.`status`,cp.cname
+        from performances as pf,company as cp,company_show as cs
+        where pf.pfmid = cs.pfmid and cs.cid = cp.cid and pf.status = #{status}
+    </select>
+
+    <select id="getShowById" resultType="com.backGroundManager.dto.ShowInfoDto" parameterType="int">
+        select pf.showtitle,cp.cname,pf.pname,pf.ptype,pf.ppicture,pf.pdecription,pf.status as zhuangtai
+        from performances as pf,company as cp,company_show as cs
+        where pf.pfmid = cs.pfmid and cs.cid = cp.cid and pf.pfmid = #{pfmid}
+    </select>
+
+    <update id="alterShowById" parameterType="com.backGroundManager.vo.StatusAndPfmidVo">
+        update performances set status = #{number}
+        where performances.pfmid = #{pfmid}
+    </update>
+    
+    <update id="rejectShowById" parameterType="com.backGroundManager.vo.StatusAndPfmidAndReasonVo">
+        update performances set status = #{status},reason = #{reason}
+        where performances.pfmid = #{pfmid}
+    </update>
+
+    <select id="getAllShowShow" parameterType="int" resultType="com.backGroundManager.dto.ShowShowDto">
+        select sd.showdate,sd.`begin`,sd.`end`,sd.vname,sd.saddress,sd.status,sd.showid
+        from showdetails as sd
+        where sd.pfmid = #{pfmid}
+    </select>
+
+
+
+    <update id="passShowShowById" parameterType="int">
+        update showdetails set status = 1
+        where showdetails.showid = #{showid}
+    </update>
+
+    <update id="rejectShowShowById" parameterType="com.backGroundManager.vo.ShowidAndReasonVo">
+        update showdetails set `status` = 2,reason = #{reason}
+        where showdetails.showid = #{showid}
+    </update>
+
+    <update id="querenShowShowById" parameterType="int">
+        update showdetails set status = 4
+        where showdetails.showid = #{showid}
+    </update>
+
+    <update id="quxiaoShowShowById" parameterType="int">
+        update showdetails set status = 3
+        where showdetails.showid = #{showid}
+    </update>
+</mapper>

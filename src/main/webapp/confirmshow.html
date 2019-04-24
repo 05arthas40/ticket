@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="css/lw/bootstrap.css">
+    <link rel="stylesheet" href="css/lw/font-awesome.min.css">
+    <link rel="stylesheet" href="css/lw/main.css">
+    <link rel="stylesheet" href="css/lw/doc.min.css">
+    <style>
+        .tree li {
+            list-style-type: none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">管理员后台</a></div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li style="padding-top:8px;">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">张三 <span class="caret"></span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="panel panel-default">
+                <div class="panel-heading">审批演出<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"></div></div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label >演出标题</label>
+                            <div id="showtitle"></div>
+                        </div>
+                        <div class="form-group">
+                            <label >演出所属公司</label>
+                            <div id="cname"></div>
+                        </div>
+                        <div class="form-group">
+                            <label >演出人员</label>
+                            <div id="pname"></div>
+                        </div>
+                        <div class="form-group">
+                            <label >演出类型</label>
+                            <div id="ptype"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>演出封面</label>
+                            <img id="ppicture"/>
+                        </div>
+                        <div class="form-group">
+                            <label>演出介绍</label>
+                            <p class="help-block label label-warning">请描述具体演出，场馆，以及费用信息等。并留下紧急电话。</p>
+                            <div id="pdecription"></div>
+                        </div>
+
+                        <div id="yanchuchangci" style="display: none">
+                            <label></label>
+                            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">演出场次</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <form class="form-inline" role="form" style="float:left;">
+                                            <!--<div class="form-group has-feedback">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">查询条件</div>
+                                                    <input class="form-control has-success" type="text" placeholder="请输入查询条件">
+                                                </div>
+                                            </div>-->
+                                            <!--<button type="button" class="btn btn-warning">查询</button>-->
+                                        </form>
+                                        <br>
+                                        <hr style="clear:both;">
+                                        <div class="table-responsive">
+                                            <table class="table  table-bordered" id="dataTable" >
+                                                <thead>
+                                                <tr >
+                                                    <th>演出日期</th>
+                                                    <th>开始时间</th>
+                                                    <th>结束时间</th>
+                                                    <th>演出场地</th>
+                                                    <th>具体地址</th>
+                                                    <th width="100">状态</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <!--<button type="button" id="shenpishow" class="btn btn-success" onclick="shenpishows()">审批</button>
+                                                        <button type="button" id="bohuishow" class="btn btn-danger" onclick="bohuishows()">驳回</button> -->
+                                                    </td>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div style="display: none" id="rejectInput">
+                                            <label>请输入驳回理由,理由可以为空：</label>
+                                            <input type="text" id="reason" value=""/>
+                                            <button id="sumbitReason" onclick="reclick()" type="button">提交</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" style="display: none" id="shenpi" class="btn btn-success" onclick="alterShowById(1)">审批</button>
+                        <button type="button" style="display: none" id="bohui" class="btn btn-danger" onclick="alterShowById(2)">驳回</button>
+                        <button type="button" style="display: none" id="queren" class="btn btn-success" onclick="alterShowById(4)">确认演出结束</button>
+                        <button type="button" style="display: none" id="quxiao" class="btn btn-danger" onclick="alterShowById(3)">取消此条演出</button>
+                        <div id="rejectInputOne" style="display: none">
+                            <label>请输入驳回理由,理由可以为空：</label>
+                            <input type="text" id="reasonOne"/>
+                            <button type="button" onclick="reclickOne(2)">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".list-group-item").click(function(){
+            if ( $(this).find("ul") ) {
+                $(this).toggleClass("tree-closed");
+                if ( $(this).hasClass("tree-closed") ) {
+                    $("ul", this).hide("fast");
+                } else {
+                    $("ul", this).show("fast");
+                }
+            }
+        });
+    });
+
+    var pfmid = window.location.search.split("=")[1];
+
+
+    //回显
+    $.ajax({
+        type:"POST",
+        url:"getShowById?pfmid="+pfmid,
+        contentType: "application/json; charset=utf-8",
+        success:function (responseText) {
+            var showinfo = responseText[0];
+            $("#showtitle").text(showinfo.showtitle);
+            $("#cname").text(showinfo.cname);
+            $("#pname").text(showinfo.pname);
+            $("#ptype").text(showinfo.ptype);
+            $("#ppicture").attr('src',showinfo.ppicture);
+            $("#pdecription").html(showinfo.pdecription)
+            if (showinfo.zhuangtai == 0 || showinfo.zhuangtai == 1 ||showinfo.zhuangtai == 4){
+                if (showinfo.zhuangtai == 0) {
+                    $("#shenpi").show();
+                    $("#bohui").show();
+                }else if (showinfo.zhuangtai == 1) {
+                    $("#queren").show();
+                    $("#quxiao").show();
+                    $("#yanchuchangci").show();
+                    yanchuchangci();
+                }else if (showinfo.zhuangtai == 4) {
+                    $("#yanchuchangci").show();
+                    yanchuchangci();
+                }
+            }else {
+                $("#yanchuchangci").show();
+                yanchuchangci();
+
+            }
+
+        },
+        error:function (responseText) {
+            console.log(responseText);
+        }
+    })
+
+
+    //大按钮
+    function alterShowById(number) {
+        //当点击确认演出结束时，需要判断状态是否都以处理完毕
+        if (number == 4) {
+            //遍历表格
+            var tb = document.getElementById('dataTable');
+            var rows = tb.rows;
+            //去掉第一行
+            for (var i = 1; i < rows.length; i++) {
+                for (var j = 0; j < rows[i].cells.length; j++) {
+                    var status = rows[i].cells[5].innerHTML;
+                    //我只需要每一行的第六个td
+                    if (status == '未审核'||status == '已审核'||status == '未通过审核'){
+                        console.log(status)
+                        alert("您有未审批或者未确认演出完成的，请审批确认完成后再给这场演出画上句号。");
+                        return false;
+                    }
+                    else {
+                        if (confirm("您确定要执行这个操作吗？")){
+                            $.ajax({
+                                type:"POST",
+                                url:"passShowById",
+                                contentType: "application/json; charset=utf-8",
+                                data:JSON.stringify({
+                                    "pfmid":pfmid,
+                                    "number":number
+                                }),
+                                success:function (responseText) {
+                                    if (responseText = 1){
+                                        alert("操作成功");
+                                        window.location.href = "manageCompanyAndShow.html.html";
+                                    } else {
+                                        alert("操作失败");
+                                    }
+                                },
+                                error:function (responseText) {
+                                    console.log(responseText);
+                                },
+                                dataType:"json"
+                            })
+                        }else {
+                            console.log("取消了操作")
+                        }
+                        return false;
+                    }
+                }
+            }
+            //当要驳回时，输入驳回理由
+        }else if (number == 2){
+            if (confirm("您确定要执行这个操作吗？")){
+                $("#rejectInputOne").show();
+            }else{
+                console.log("取消了操作");
+            }
+        } else {
+            if (confirm("您确定要执行这个操作吗？")){
+                $.ajax({
+                    type:"POST",
+                    url:"passShowById",
+                    contentType: "application/json; charset=utf-8",
+                    data:JSON.stringify({
+                        "pfmid":pfmid,
+                        "number":number
+                    }),
+                    success:function (responseText) {
+                        if (responseText = 1){
+                            alert("操作成功");
+                            window.location.href = "manageCompanyAndShow.html.html";
+                        } else {
+                            alert("操作失败");
+                        }
+                    },
+                    error:function (responseText) {
+                        console.log(responseText);
+                    },
+                    dataType:"json"
+                })
+            }else {
+                console.log("取消了操作")
+            }
+        }
+    }
+
+    //演出场次回显
+    function yanchuchangci() {
+        $("#dataTable tr:not(:first)").empty();
+        var text;
+
+        $.ajax({
+            Type:"GET",
+            url:"getAllShowShow?pfmid="+pfmid,
+            contentType: "application/json; charset=utf-8",
+            success:function (responseText) {
+                console.log(responseText)
+                $(responseText).each(function (index, item) {
+                    switch (item.status) {
+                        case 0:text = "未审核";break;
+                        case 1:text = "已审核";break;
+                        case 2:text = "未通过审核";break;
+                        case 3:text = "已取消";break;
+                        case 4:text = "演出完毕";break
+                    }
+                    $("<tr>"+
+                        "<td>"+item.showdate+"</td>"+
+                        "<td>"+item.begin+"</td>"+
+                        "<td>"+item.end+"</td>"+
+                        "<td>"+item.vname+"</td>"+
+                        "<td>"+item.saddress+"</td>"+
+                        "<td>"+text+"</td>"+
+                        "<td>"+
+                        "<button type=\"button\" style='display: none' class=\"btn btn-success btn-xs\" id='shenpishow"+index+"' onclick='shenpishows("+item.showid+")'>审批</button>"+
+                        "<button type=\"button\" style='display: none' class=\"btn btn-danger btn-xs\" id='bohuishow"+index+"' onclick='bohuishows("+item.showid+")'>驳回</button>"+
+                        "<button type=\"button\" style='display: none' class=\"btn btn-success btn-xs\" id='querenshow"+index+"' onclick='querenshows("+item.showid+")'>确认演出结束</button>"+
+                        "<button type=\"button\" style='display: none' class=\"btn btn-danger btn-xs\" id='quxiaoshow"+index+"' onclick='quxiaoshows("+item.showid+")'>临时取消</button>"+
+                        "</td>"+
+                        "</tr>").insertAfter($("#dataTable tr:eq(-1)"));
+                    //根据状态判断是否将按钮隐藏
+                    switch (item.status) {
+                        case 0:
+                            $("#shenpishow"+index).show();
+                            $("#bohuishow"+index).show();
+                            break;
+                        case 1:
+                            $("#querenshow"+index).show();
+                            $("#quxiaoshow"+index).show();
+                            break;
+                        case 2:
+                            $("#shenpishow"+index).show();
+                            break;
+                    }
+                })
+            },
+            error:function (responseText) {
+                console.log(responseText)
+            },
+        })
+    }
+
+    var success = "操作成功";
+    var error = "操作失败";
+    //小审批按钮
+    function shenpishows(showid) {
+        if (confirm("您确定要执行这个操作吗？")){
+        $.ajax({
+            type:"POST",
+            url:"passShowShowById?showid="+showid,
+            contentType: "application/json; charset=utf-8",
+            success:function (responseText) {
+                if (responseText == 1){
+                    yanchuchangci();
+                } else {
+                    alert(error);
+                }
+            },
+            error:function (responseText) {
+                console.log(responseText);
+            }
+
+        })
+        }else {
+            console.log("取消了操作")
+        }
+
+    }
+
+    var reshowid = 0;
+
+    //小驳回按钮
+    function bohuishows(showid) {
+        if (confirm("您确定要执行这个操作吗？")){
+            $("#rejectInput").show();
+            reshowid =showid;
+        }else {
+            console.log("取消了操作")
+        }
+
+    }
+
+    //小确认按钮
+    function querenshows(showid) {
+        if (confirm("您确定要执行这个操作吗？")){
+            $.ajax({
+                type:"POST",
+                url:"querenShowShowById?showid="+showid,
+                contentType:"application/json; charset=utf-8",
+                success:function (responseText) {
+                    if (responseText == 1) {
+                        yanchuchangci();
+                    }else {
+                        alert(error);
+                    }
+                },
+                error:function (responseText) {
+                    console.log(responseText);
+                }
+            })
+        }else {
+            console.log("取消了操作")
+        }
+    }
+
+    //小取消按钮
+    function quxiaoshows(showid) {
+        if (confirm("您确定要执行这个操作吗？")){
+            $.ajax({
+                type:"POST",
+                url:"quxiaoShowShowById?showid="+showid,
+                contentType:"application/json; charset=utf-8",
+                success:function (responseText) {
+                    if (responseText == 1) {
+                        yanchuchangci();
+                    }else {
+                        alert(error);
+                    }
+                },
+                error:function (responseText) {
+                    console.log(responseText);
+                }
+            })
+        }else {
+            console.log("取消了操作")
+        }
+    }
+
+    //小驳回按钮中转
+    function reclick() {
+        //拿到驳回理由
+        var reasons = $("#reason").val();
+        console.log(reasons,reshowid);
+        zhixing(reshowid,reasons);
+    }
+    //提交驳回理由的ajax
+    function zhixing(showid,reasontext){
+        if (confirm("您确定要执行这个操作吗？")){
+            $("#rejectInput").show();
+            $.ajax({
+                type:"POST",
+                url:"rejectShowShowById",
+                contentType:"application/json; charset=utf-8",
+                data:JSON.stringify({
+                    "showid":showid,
+                    "reason":reasontext
+                }),
+                success:function (responseText) {
+                    if (responseText == 1) {
+                        yanchuchangci();
+                        reshowid = 0;
+                        $("#rejectInput").hide();
+                    }else {
+                        alert("请勿重复提交");
+                    }
+                },
+                error:function (responseText) {
+                    console.log(responseText);
+                },
+                dataType:'json'
+            })
+        }else {
+            console.log("取消了操作");
+        }
+    }
+
+    //大驳回按钮
+    function reclickOne(number) {
+        if (confirm("您确定要执行这个操作吗？")){
+            var reasons = $("#reasonOne").val();
+            $.ajax({
+                type:"POST",
+                url:"rejectShowById",
+                contentType:"application/json; charset=utf-8",
+                data:JSON.stringify({
+                    "pfmid":pfmid,
+                    "status":number,
+                    "reason":reasons
+                }),
+                success:function (responseText) {
+                    if (responseText == 1) {
+                        alert(success);
+                        window.location.href = "manageCompanyAndShow.html.html";
+                    }else {
+                        alert("请勿重复提交");
+                    }
+                },
+                error:function (responseText) {
+                    console.log(responseText);
+                },
+                dataType:'json'
+            })
+        }else {
+            console.log("取消了操作");
+        }
+
+    }
+</script>
+</body>
+</html>

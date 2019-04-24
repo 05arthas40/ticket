@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.showManager.dao.ShowSortMapper">
+    <select id="getShowBy" parameterType="com.showManager.vo.ShowSortVo" resultType="com.showManager.dto.ShowSortDto">
+        select * FROM (
+        SELECT sc.showid,sc.showdate,sc.begin,sc.vname,sc.cityname,sv.showprice,p.showtitle,p.pname,p.ppicture,p.ptype
+        FROM
+        (SELECT s.*,c.* FROM showdetails s,show_city sc,city c where s.`status` = 1
+        and sc.showid=s.showid and sc.cityid=c.cityid ) sc
+        LEFT JOIN show_venue sv ON sc.showid = sv.showid and sv.seatType = 1
+        LEFT JOIN performances p on sc.pfmid = p.pfmid
+        <where>
+            p.`status` = 1
+            <if test="cityId != null and cityId != ''">
+                and sc.cityid = #{cityId}
+            </if>
+            <if test="pType != null and pType != ''">
+                and p.ptype=#{pType}
+            </if>
+            <choose>
+                <when test="date == 1 or date == 2">
+                    and DATE_FORMAT(sc.showdate,'%Y%m%d') = #{showdate1}
+                </when>
+                <when test="date == 3">
+                    and DATE_FORMAT(sc.showdate,'%Y%m%d') between #{showdate1} and #{showdate2}
+                </when>
+                <otherwise>
+                </otherwise>
+            </choose>
+        </where>
+        ) scvp
+        <where>
+            CONCAT(scvp.pname,scvp.vname,scvp.cityname,scvp.showtitle,scvp.ptype) like
+            #{keyword}
+            <choose>
+                <when test="sortBy == 2">
+                    order by scvp.showdate asc
+                </when>
+                <when test="sortBy == 3">
+                    order by scvp.showid desc
+                </when>
+                <otherwise>
+                </otherwise>
+            </choose>
+        </where>
+
+    </select>
+</mapper>
