@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="GB18030">
+<head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="css/lw/bootstrap.css">
+    <link rel="stylesheet" href="css/lw/font-awesome.min.css">
+    <link rel="stylesheet" href="css/lw/main.css">
+    <link rel="stylesheet" href="css/lw/jquery.pagination.css">
+    <style>
+        .tree li {
+            list-style-type: none;
+            cursor:pointer;
+        }
+        table tbody tr:nth-child(odd){background:#F4F4F4;}
+        table tbody td:nth-child(even){color:#C00;}
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">管理员后台</a></div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li style="padding-top:8px;">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">张三 <span class="caret"></span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <div class="tree">
+                <ul style="padding-left:0px;" class="list-group">
+                    <!--<li class="list-group-item tree-closed">
+                        <span> 修改选项 <span class="badge" style="float:right"></span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="#">个人信息</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="#">用户信息</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="#">商家信息</a>
+                            </li>
+                        </ul>
+                    </li>-->
+                    <li class="list-group-item tree-closed">
+                        <span> 管理审批演出 <span class="badge" style="float:right"></span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="#" onclick="CheckShow(0)">待审核</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="#" onclick="CheckShow(1)">确认演出完成/取消演出</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="#" onclick="CheckShow(2)">未通过的审核</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="#" onclick="CheckShow(3)">已取消的演出</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="#" onclick="CheckShow(4)">演出记录</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span> 管理审批公司 <span class="badge" style="float:right"></span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="#" onclick="CheckCompany(0)">待审核</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="#" onclick="CheckCompany(2)">未通过的审核</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="#" onclick="CheckCompany(1)">修改合作公司</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="#" onclick="CheckCompany(3)">已取消合作公司</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--<li class="list-group-item tree-closed">
+                        <span> 订单 <span class="badge" style="float:right"></span></span>
+                        <ul>
+                            <li>
+                                <a href="#">查询订单</a>
+                            </li>
+                            <li>
+                                <a href="#">查看退票</a>
+                            </li>
+                        </ul>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline" role="form" style="float:left;">
+                        <!--<div class="form-group has-feedback">
+                            <div class="input-group">
+                                <div class="input-group-addon">查询条件</div>
+                                <input class="form-control has-success" type="text" placeholder="请输入查询条件">
+                            </div>
+                        </div>-->
+                        <!--<button type="button" class="btn btn-warning">查询</button>-->
+                    </form>
+                    <br>
+                    <hr style="clear:both;">
+                    <div class="table-responsive">
+                        <table class="table  table-bordered" id="showDataTable" style="display: none">
+                            <thead>
+                            <tr >
+                                <th>演出标题</th>
+                                <th>演出类型</th>
+                                <th>所属公司</th>
+                                <th width="100">状态</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <table class="table table-bordered" id="companyDataTable" style="display: none">
+                            <thead>
+                            <tr >
+                                <th>公司名称</th>
+                                <th width="100">状态</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div id="pagination" style="display: none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.pagination.min.js"></script>
+<script type="text/javascript">
+   /* $("#pagination").pagination("Page");// 获取当前页数和总页数
+    $("#pagination").pagination("setPage", 1, 10);// 参数2：当前页数，参数3：总页数*/
+    $(function () {
+        $(".list-group-item").click(function(){
+            if ( $(this).find("ul") ) {
+                $(this).toggleClass("tree-closed");
+                if ( $(this).hasClass("tree-closed") ) {
+                    $("ul", this).hide("fast");
+                } else {
+                    $("ul", this).show("fast");
+                }
+            }
+        });
+    });
+
+    //管理审批演出的ajax
+    //状态判断  0：未审核，1：已审核，2：未通过审核，3：删除，4：圆满完成
+    function CheckShow(number,Current) {
+        $("#pagination").show();
+        if (Current == "undefined"||Current==""||Current==undefined) {
+            Current = 1;
+        }
+        //隐藏companyDataTable表格
+        $("#companyDataTable").hide();
+        //清空showDataTable表格
+        $("#showDataTable tr:not(:first)").empty();
+        $("#showDataTable").show();
+        //每次ajax先清空dataTable标签里面的值
+        var text;
+        $.ajax({
+            type:"POST",
+            url:"getCheckShow?status="+number+"&current="+Current,
+            contentType: "application/json; charset=utf-8",
+            success:function (responseText) {
+                console.log(responseText);
+                $(responseText.list).each(function (index, item) {
+                    console.log(item);
+                    switch (item.status) {
+                        case 0:text = "未审核";break;
+                        case 1:text = "已审核";break;
+                        case 2:text = "未通过审核";break;
+                        case 3:text = "已取消";break;
+                        case 4:text = "圆满完成";break;
+                    }
+                    $("<tr>"+
+/*                            "<td>"+item.pfmid+"</td>"+*/
+                            "<td><a href='confirmshow.html?pfmid="+item.pfmid+"'>"+item.showtitle+"</a></td>"+
+                            "<td>"+item.ptype+"</td>"+
+                            "<td>"+item.cname+"</td>"+
+                            "<td>"+text+"</td>"+
+                        "</tr>").insertAfter($("#showDataTable tr:eq(-1)"));
+                    $("#pagination").pagination({
+                        currentPage: responseText.pageNum,// 当前页数
+                        totalPage: responseText.pages,// 总页数
+                        isShow: true,// 是否显示首尾页
+                        count: responseText.pageSize,// 显示个数
+                        homePageText: "首页",// 首页文本
+                        endPageText: "尾页",// 尾页文本
+                        prevPageText: "上一页",// 上一页文本
+                        nextPageText: "下一页",// 下一页文本
+                        callback: function(current) {
+                            CheckShow(number,current)
+                        }
+                    });
+                })
+            },
+            error:function (responseText) {
+                console.log(responseText);
+            }
+        });
+
+    }
+
+
+    //管理审批公司的ajax
+    //状态判断  0：未审核，1：已认证，2：未通过审核，3：删除
+    function CheckCompany(number) {
+        //隐藏showDataTable表格
+        $("#showDataTable").hide();
+        //清空companyDataTable表格
+        $("#companyDataTable tr:not(:first)").empty();
+        $("#companyDataTable").show();
+        var text;
+        $.ajax({
+            type:"POST",
+            url:"getCheckCompany?status="+number,
+            contentType: "application/json; charset=utf-8",
+            success:function (responseText) {
+                $(responseText).each(function (index, item) {
+                    console.log(item);
+                    switch (item.status) {
+                        case 0:text = "未审核";break;
+                        case 1:text = "已认证";break;
+                        case 2:text = "未通过审核";break;
+                        case 3:text = "已取消";break;
+                    }
+                    $("<tr>"+
+                        "<td><a href='confirmcompany.html?cid="+item.cid+"'>"+item.cname+"</a></td>"+
+                        "<td>"+text+"</td>"+
+                        "</tr>").insertAfter($("#companyDataTable tr:eq(-1)"));
+                })
+            },
+            error:function (responseText) {
+             console.log(responseText);
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

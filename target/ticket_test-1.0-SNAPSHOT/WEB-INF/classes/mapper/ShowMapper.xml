@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.showManager.dao.ShowManagerDao">
+
+    <select id="getOneShowDetails" resultType="com.showManager.dto.ShowDetails" parameterType="int">
+        select p.ppicture,c.cityname,p.showtitle,s.showdate,s.`begin`,s.`end`,s.saddress,s.vname,sv.svid,sv.showprice,sv.seatCount,p.pname,p.pdecription
+        from showdetails s,city c,show_city sc,company cp,company_show cs,performances p,show_venue sv
+        where c.cityid=sc.cityid and s.showid=sc.showid and cp.cid=cs.cid and cs.pfmid=p.pfmid
+        and p.pfmid=s.pfmid and sv.showid=s.showid and s.showid=#{showid}
+
+    </select>
+
+    <select id="getShopCart" resultType="com.showManager.dto.ShowDetails" parameterType="List">
+        select cp.cid,p.ppicture,c.cityname,p.showtitle,s.showdate,s.`begin`,s.`end`,s.saddress,s.vname,sv.svid,sv.showprice,sv.seatCount,p.pname,p.pdecription
+        from showdetails s,city c,show_city sc,company cp,company_show cs,performances p,show_venue sv
+        where c.cityid=sc.cityid and s.showid=sc.showid and cp.cid=cs.cid and cs.pfmid=p.pfmid
+        and p.pfmid=s.pfmid and sv.showid=s.showid and sv.svid in
+
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="getOneStock" resultType="int">
+        SELECT sv.seatCount from show_venue sv where svid=#{svid};
+    </select>
+
+    <select id="getCityIdBysvid" resultType="int">
+        SELECT c.cityid FROM city c,show_city sc,showdetails s,show_venue sv WHERE sv.showid=s.showid and s.showid=sc.showid and sc.cityid=c.cityid and svid=#{svid}
+    </select>
+</mapper>

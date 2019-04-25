@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.companyManager.dao.CompanyDao">
+    <!--获取公司基础信息-->
+    <select id="getCompanyInfoById" parameterType="int" resultType="com.companyManager.dto.CompanyDto">
+        select cname 'name',caddress address,cdetails details from company where cid = #{Id}
+    </select>
+
+    <!--修改公司基础信息-->
+    <update id="toModiyCompanyBaseInfo" parameterType="com.companyManager.dto.CompanyDto">
+        update company set cname = #{name},caddress = #{address},cdetails = #{details}
+        where cid = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div class="header">
+    <div class="header03"></div>
+    <div class="header01"></div>
+    <div class="header02">商家信息管理系统</div>
+</div>
+<div class="left" id="LeftBox">
+    <!--<div class="left01">
+        <div class="left01_right"></div>
+        <div class="left01_left"></div>
+        <div class="left01_c">超级管理员：admin</div>
+    </div>-->
+    <div class="left02">
+        <div class="left02top">
+            <div class="left02top_right"></div>
+            <div class="left02top_left"></div>
+            <div class="left02top_c">商家信息管理</div>
+        </div>
+        <div class="left02down">
+            <div class="left02down01"><a href="companyBaseInfo.html"><!--onclick="show_menuB(80)"-->
+                <div id="Bf080" class="left02down01_img"></div>
+                商家信息</a></div>
+            <div class="left02down01_xia noneBox" id="Bli080">
+            </div>
+            <div class="left02down01"><a href="companyPrivateInfo.html"><!--onclick="show_menuB(81)"-->
+                <div id="Bf081" class="left02down01_img"></div>
+                账号信息管理</a></div>
+        </div>
+    </div>
+    <div class="left02">
+        <div class="left02top">
+            <div class="left02top_right"></div>
+            <div class="left02top_left"></div>
+            <div class="left02top_c">演出管理</div>
+        </div>
+        <div class="left02down">
+            <div class="left02down01"><a href="performanceApplicationList.html">
+                <div id="Bf082" class="left02down01_img"></div>
+                演出申请</a></div>
+            <div class="left02down01"><a href="#">
+                <div class="left02down01_img"></div>
+                演唱会销售信息</a></div>
+        </div>
+    </div>
+    <div class="left01">
+        <div class="left03_right"></div>
+        <div class="left01_left"></div>
+        <div class="left03_c">安全退出</div>
+    </div>
+</div>
+<!--右侧栏，内容主体-->
+<div class="rrcc" id="RightBox">
+    <div class="center" id="Mobile" onclick="show_menuC()"></div>
+    <div class="right" id="li010" style="width: 100%; height: 100%; border-bottom: transparent;">
+        <div class="right01"><img src="images/04.gif"/> 演出列表 <img src="images/04.gif"/> 演唱会列表 <img src="images/04.gif"/> 演唱会申请</div>
+        <div style="margin-left: 20px; width: 30%;float: left;">
+            <div>所属演出：</div>
+            <textarea class="txt" cols="30" rows="3" style="OVERFLOW: hidden" readonly="readonly"></textarea><br/>
+        </div>
+
+        <div style="margin-left: 20px; width: 30%;float: left;">
+            <div>演出时间：</div>
+            <input type="date" id="dateTime"/>
+            <div>演出时长：</div>
+            <input type="time" id="begin"/> 至 <input type="time" id="end"/>
+            <div>演出地：</div>
+            <textarea id="vname" class="txt" cols="30" rows="3" style="OVERFLOW: hidden"></textarea><br/>
+            <div>具体地点：</div>
+            <textarea id="address" class="txt" cols="30" rows="3" style="OVERFLOW: hidden"></textarea><br/>
+            <br/>
+            <input type="button" value="确认申请" style="width: 100px; height: 30px" onclick="addShowApplication()"/>
+        </div>
+
+        <div style="margin-left: 20px; width: 30%;float: left;">
+            <table border="2px" cellpadding="5px" cellspacing="0" id="dataTable" style="width: 100%;text-align: center">
+                <tr>
+                    <th>座位区间</th>
+                    <th>座位数量</th>
+                    <th>座位票价</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="button" value="编辑"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center"><a href="#" onclick="addseatType()">添加</a></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+    var temp = 0;
+
+    function show_menuC() {
+        if (temp == 0) {
+            document.getElementById('LeftBox').style.display = 'none';
+            document.getElementById('RightBox').style.marginLeft = '0';
+            document.getElementById('Mobile').style.background = 'url(images/center.gif)';
+
+            temp = 1;
+        } else {
+            document.getElementById('RightBox').style.marginLeft = '222px';
+            document.getElementById('LeftBox').style.display = 'block';
+            document.getElementById('Mobile').style.background = 'url(images/center0.gif)';
+
+            temp = 0;
+        }
+    }
+
+    var performanceId = window.location.search.split("=")[1];
+    //初始化页面，得到目标演唱会的详细信息
+    $.ajax({
+        url: "getPerformanceName?performanceId="+performanceId,
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        success: function(responseText) {
+            $("textarea :first").val(responseText);
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+
+    $("tr input:button").click(function() {
+        str = $(this).val()=="编辑"?"确定":"编辑";
+
+        $(this).val(str);   // 按钮被点击后，在“编辑”和“确定”之间切换
+
+        $(this).parent().siblings("td").each(function() {  // 获取当前行的其他单元格
+
+            obj_text = $(this).find("input:text");    // 判断单元格下是否有文本框
+
+            if(!obj_text.length) {
+                // 如果没有文本框，则添加文本框使之可以编辑
+                $(this).html("<input type='text' style=\"width: 40px\" value='"+$(this).text()+"'>");
+            }  else {
+                $(this).html(obj_text.val());// 如果已经存在文本框，则将其显示为文本框修改的值
+            }
+        });
+
+    })
+    //使用ajax添加演唱会场次
+    function addShowApplication() {
+        var showTime = $("#dateTime").val();
+        var begin = $("#begin").val();
+        var end = $("#end").val();
+        var vname = $("#vname").val();
+        var address = $("#address").val();
+        var seats = new Array();
+        var j = $("table tr:eq(-2) td:eq(0)").text();
+        for (var i = 0; i < parseInt(j); i++) {
+            var seatType = $("table tr:eq("+(i+1)+") td:eq(0)").text();
+            var seatCount = $("table tr:eq("+(i+1)+") td:eq(1)").text();
+            var seatPrice = $("table tr:eq("+(i+1)+") td:eq(2)").text();
+            var seat = {
+                "seatType": parseInt(seatType),
+                "seatCount": parseInt(seatCount),
+                "seatPrice": parseInt(seatPrice)
+            };
+            seats[i] = seat;
+        };
+        var ShowAndVenue = {
+            "performanceId": performanceId,
+            "showTime": showTime,
+            "begin": begin,
+            "end": end,
+            "vname": vname,
+            "address": address,
+            "venues": seats
+        };
+        $.ajax({
+            url: "addShowAndVenue",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(ShowAndVenue),
+            success: function (responseText) {
+                if (responseText == true) {
+                    alert("申请成功");
+                } else {
+                    alert("操作失败");
+                }
+                window.location.href = "showApplicationList.html?"
+            },
+            error: function () {
+                console.log("服务器错误")
+            }
+        });
+    };
+
+    function addseatType() {
+        var t=$("table tr:eq(-2) td:eq(0)").text();
+        var seat = parseInt(t)+1;
+        var str = "<tr>"+
+        "<td>"+seat+"</td>"+
+        "<td></td>"+
+        "<td></td>"+
+        "<td><input type=\"button\" value=\"编辑\"/></td>"+
+            "</tr>";
+        $(str).insertAfter($("#dataTable tr:eq(-2)"));
+        $("tr input:button").click(function() {
+            str = $(this).val()=="编辑"?"确定":"编辑";
+
+            $(this).val(str);   // 按钮被点击后，在“编辑”和“确定”之间切换
+
+            $(this).parent().siblings("td").each(function() {  // 获取当前行的其他单元格
+
+                obj_text = $(this).find("input:text");    // 判断单元格下是否有文本框
+
+                if(!obj_text.length) {
+                    // 如果没有文本框，则添加文本框使之可以编辑
+                    $(this).html("<input type='text' style=\"width: 40px\" value='"+$(this).text()+"'>");
+                }  else {
+                    $(this).html(obj_text.val());// 如果已经存在文本框，则将其显示为文本框修改的值
+                }
+            });
+        });
+    };
+</script>
+</body>
+</html>

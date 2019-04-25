@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orderManager.dao.OrderDao">
+    <select id="getAddresses" parameterType="int" resultType="com.orderManager.dto.UserAdressDto">
+        select * from user_address where status=1 and userid=#{userid}
+    </select>
+
+    <select id="getAddressByUaid" parameterType="int" resultType="com.orderManager.dto.UserAdressDto">
+        select * from user_address where status=1 and uaid=#{uaid}
+    </select>
+
+    <update id="setUnDefault" parameterType="int">
+       update user_address set isdefault=0 where userid=#{userid}
+    </update>
+
+    <update id="editAddress" parameterType="com.orderManager.dto.UserAdressDto">
+       update user_address set isdefault=#{isDefault},uaname=#{uaname},
+        uaphone=#{uaphone},uaddress=#{uaddress}where uaid=#{uaid}
+    </update>
+
+    <insert id="addAddress" parameterType="com.orderManager.dto.UserAdressDto">
+       insert into user_address(uaname,uaphone,uaddress,isdefault,userid) value(#{uaname},
+       #{uaphone},#{uaddress},#{isDefault},#{userid})
+    </insert>
+
+    <update id="delAddresses" parameterType="int">
+       update user_address set status=0 where uaid=#{uaid}
+    </update>
+
+    <insert id="addOrder" parameterType="com.orderManager.vo.OrderVo">
+       insert into ticketorder(userid,cid,ordertime,expfee,discount,totalprice,uaname,uaphone,uaddress) value(#{userid},
+       #{cid},#{ordertime},#{expfee},#{discount},#{totalprice},#{uaname},#{uaphone},#{uaddress})
+    </insert>
+
+    <select id="getOrderid" resultType="int">
+       select max(orderid) from ticketorder
+    </select>
+
+    <delete id="delOrder" parameterType="int">
+        delete from ticketorder where orderid=#{orderid}
+    </delete>
+
+    <insert id="addShortCut" parameterType="com.orderManager.vo.ShortCutVo">
+      insert into shortcut(svid,orderid,ticketcount,singleprice,price)
+      value(#{svid},#{orderid},#{ticketcount},#{singleprice},#{price})
+    </insert>
+
+    <insert id="addOrderDetail" parameterType="com.orderManager.vo.OrderDetailVo">
+         insert into orderdetail(svid,orderid,ticketcount) value(#{svid},#{orderid},#{ticketcount})
+    </insert>
+
+    <select id="seeOrders" resultType="com.orderManager.dto.OrderAllDto" parameterType="com.orderManager.vo.SeeOrders">
+        select t.*,o.svid,o.ticketcount from ticketorder t LEFT JOIN orderdetail o on
+        t.orderid=o.orderid
+        <where>
+            <trim suffixOverrides="and">
+                <if test="cid !=null and cid !=''">
+                    and cid=#{cid}
+                </if>
+                <if test="userid!=null and userid!=''">
+                    and userid=#{userid}
+                </if>
+                    and status=#{status}
+            </trim>
+        </where>
+    </select>
+</mapper>

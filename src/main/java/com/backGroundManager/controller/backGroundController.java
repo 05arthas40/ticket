@@ -19,41 +19,41 @@ public class backGroundController {
     @Autowired
     backGroundService backGroundService;
 
-    //条件查询
-//    @RequestMapping(value = "showUserInfo",method = RequestMethod.POST)
-//    public Object listUserInfo(@RequestBody(required = false) userVo userVo){
-//        if (userVo.getPage() == null){
-//            userVo.setPage(1);
-//        }
-//        if (userVo.getStart() == null){
-//            userVo.setStart(1);
-//        }
-//        PageHelper.startPage(userVo.getPage(),3);
-//        List<user> userList = backGroundService.listUserInfo(userVo);
-//        PageInfo<user> userPageInfo = new PageInfo<user>(userList);
-//        System.out.println(userPageInfo);
-//        return userPageInfo;
-//    }
-    //修改信息
-//    @RequestMapping(value = "updateUser")
-//    public Object updateUserById(@RequestBody user user) {
-//        System.out.println(user);
-//        if(user.getUserid() == 0){
-//            return false+"";
-//        }
-//        boolean flag = this.backGroundService.updateUserById(user);
-//        return flag;
-//    }
-    //删除用户（status置0）
-//    @RequestMapping(value = "deleteUser",method = RequestMethod.POST)
-//    public Object deleteUserById(@RequestBody user user) {
-//        System.out.println(user);
-//        if(user.getUserid() == 0){
-//            return false+"";
-//        }
-//        boolean flag = this.backGroundService.deleteUserById(user);
-//        return flag;
-//    }
+//    条件查询
+    @RequestMapping(value = "showUserInfo",method = RequestMethod.POST)
+    public Object listUserInfo(@RequestBody(required = false) userVo userVo){
+        if (userVo.getPage() == null){
+            userVo.setPage(1);
+        }
+        if (userVo.getStart() == null){
+            userVo.setStart(1);
+        }
+        PageHelper.startPage(userVo.getPage(),3);
+        List<user> userList = backGroundService.listUserInfo(userVo);
+        PageInfo<user> userPageInfo = new PageInfo<user>(userList);
+        System.out.println(userPageInfo);
+        return userPageInfo;
+    }
+//    修改信息
+    @RequestMapping(value = "updateUser")
+    public Object updateUserById(@RequestBody user user) {
+        System.out.println(user);
+        if(user.getUserid() == 0){
+            return false+"";
+        }
+        boolean flag = this.backGroundService.updateUserById(user);
+        return flag;
+    }
+//    删除用户(status置0)
+    @RequestMapping(value = "deleteUser",method = RequestMethod.POST)
+    public Object deleteUserById(@RequestBody user user) {
+        System.out.println(user);
+        if(user.getUserid() == 0){
+            return false+"";
+        }
+        boolean flag = this.backGroundService.deleteUserById(user);
+        return flag;
+    }
 
 
 

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>无标题文档</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div class="header">
+    <div class="header03"></div>
+    <div class="header01"></div>
+    <div class="header02">商家信息管理系统</div>
+</div>
+<div class="left" id="LeftBox">
+    <div class="left02">
+        <div class="left02top">
+            <div class="left02top_right"></div>
+            <div class="left02top_left"></div>
+            <div class="left02top_c">商家信息管理</div>
+        </div>
+        <div class="left02down">
+            <div class="left02down01">
+                <div id="Bf080" class="left02down01_img"></div>
+                商家信息</a></div>
+            <div class="left02down01_xia noneBox" id="Bli080">
+            </div>
+            <div class="left02down01"><a href="companyPrivateInfo.html">
+                <div id="Bf081" class="left02down01_img"></div>
+                账号信息管理</a></div>
+        </div>
+    </div>
+    <div class="left02">
+        <div class="left02top">
+            <div class="left02top_right"></div>
+            <div class="left02top_left"></div>
+            <div class="left02top_c">演出管理</div>
+        </div>
+        <div class="left02down">
+            <div class="left02down01"><a href="performanceApplicationList.html">
+                <div id="Bf082" class="left02down01_img"></div>
+                演出申请</a></div>
+            <div class="left02down01"><a href="#">
+                <div class="left02down01_img"></div>
+                演唱会销售信息</a></div>
+        </div>
+    </div>
+    <div class="left01">
+        <div class="left03_right"></div>
+        <div class="left01_left"></div>
+        <div class="left03_c">安全退出</div>
+    </div>
+</div>
+
+<!--右侧栏，内容主体-->
+<div class="rrcc" id="RightBox">
+    <div class="center" id="Mobile" onclick="show_menuC()"></div>
+    <div class="right" id="li010" style="width: 100%">
+        <div class="right01"><img src="images/04.gif"/> 商家信息修改</div>
+        <div style="margin-left: 20px; height: 100%; width: 45%; float: left">
+            <div>公司名称：</div>
+            <textarea class="txt" cols="30" rows="2" style="OVERFLOW: hidden; resize: none"
+                      readonly="readonly"></textarea><br/>
+            <div>公司地址：</div>
+            <textarea class="txt" cols="30" rows="3" style="OVERFLOW: hidden" readonly="readonly"></textarea><br/>
+            <input type="button" id="modiy" onclick="toModiy()" value="修改"/>
+            <input type="button" value="取消修改" id="modiyOff" onclick="toModiyOff()" style="display: none"/>
+        </div>
+        <div style="margin-left: 20px;height: 100%; width: 45%; float: left">
+            <div>公司资料：</div>
+            <img src="images/companyImgs/unknow.jpg" style=" width: 200px;" alt=""/>
+            <img src="images/companyImgs/营业许可.jpg" style=" width: 200px;" alt=""/>
+            <div>
+                <label>请选择一个图像文件：</label>
+                <input type="file" id="file_input" multiple/>
+            </div>
+            <br/>
+            <input type="button" id="updateImage" value="更新资料"/>
+            <input type="button" id="updateOff" style="display: none" value="取消"/>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+    var temp = 0;
+
+    function show_menuC() {
+        if (temp == 0) {
+            document.getElementById('LeftBox').style.display = 'none';
+            document.getElementById('RightBox').style.marginLeft = '0';
+            document.getElementById('Mobile').style.background = 'url(images/center.gif)';
+
+            temp = 1;
+        } else {
+            document.getElementById('RightBox').style.marginLeft = '222px';
+            document.getElementById('LeftBox').style.display = 'block';
+            document.getElementById('Mobile').style.background = 'url(images/center0.gif)';
+
+            temp = 0;
+        }
+    }
+
+    // var CompanyId = $.session.get("CompanyId");
+    var CompanyId = 2;
+    console.log("companyId:" + CompanyId);
+
+    function init() {
+        $.ajax({
+            type: "POST",
+            url: "getCompanyBaseInfoById?companyId=" + CompanyId,
+            contentType: "application/json; charset=utf-8",
+            success: function (responseText) {
+                console.log(responseText);
+                $("textarea :eq(0)").val(responseText.name);
+                $("textarea :eq(1)").val(responseText.address);
+            },
+            error: function () {
+                console.log("服务器错误");
+            },
+            dataType: "json"
+        });
+    }
+
+    init();
+
+    function toModiy() {
+        if ($("#modiy").val() == "修改") {
+            $("#modiy").val("确认修改");
+            $("#modiyOff").css("display", "inline");
+            $("textarea.txt").removeAttr("readonly");
+        } else {
+            var name = $("textarea :eq(0)").val();
+            var address = $("textarea :eq(1)").val();
+
+            $.ajax({
+                type: "POST",
+                url: "toModiyCompanyBaseInfo",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "id": CompanyId,
+                    "name": name,
+                    "address": address
+                }),
+                success: function (responseText) {
+                    if (responseText == true) {
+                        window.location.reload()
+                    } else {
+                        alert("修改失败");
+                    }
+                },
+                error: function () {
+                    console.log("服务器错误");
+                },
+                dataType: "json"
+            })
+        }
+    }
+
+    function toModiyOff() {
+        window.location.reload();
+    }
+
+    $("#updateImage").click(function () {
+        $("#updateOff").css("display","inline");
+    })
+
+    $("#updateOff").click(function () {
+        location.reload();
+    })
+
+    $("#file_input").change(function () {
+        //获取用户上传的图片
+        var fileObj = this.files[0];
+        //把图片对象转换成url
+        var fileUrl = window.URL.createObjectURL(fileObj);
+        $("#file_input").css("width","200px");
+        $("#file_input").attr("src", fileUrl);
+    })
+</script>
+</body>
+</html>

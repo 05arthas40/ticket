@@ -1,0 +1,453 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的大麦-个人信息</title><link rel="stylesheet" href="//dui.damai.cn/damai_v2/passport/ui-min.css" />
+<link rel="shortcut icon" type="image/x-icon" href="https://passport.damai.cn/images/favicon.ico" />
+<style type="text/css">.onError{color:#f52954;}</style>
+<script type="text/javascript" src="//dui.damai.cn/damai_v2/common/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="//dui.damai.cn/damai_v2/passport/ui-min.js"></script> 
+<script src="/js/base.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/dateselects.js"></script>
+<script type="text/javascript" src="/js/formValidator.js?t=20160925"></script>
+<script type="text/javascript" src="/js/myinfo.js?t=20160925"></script>
+<script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript">
+    var currNavName = "MyInfo";
+    //页面展示u.userid,u.username,u.gender,u.name,u.phone,u.email,u.idc
+    var userid=1;
+    $(function () {
+        $.ajax(
+            {
+                type:"post",
+                url: 'getAllUserInfo?userid='+userid,
+                contentType: "application/json;charset=utf-8",
+                success:function (responseText) {
+                    console.log(responseText);
+                    $("#nickinp").attr("value",responseText.nickname);
+                    $("#realinp").attr("value",responseText.name);
+                    if(responseText.gender==0){
+                        $("#sexRadio").attr("checked","");
+                        $("#sexRadio1").attr("checked","checked")
+                    }
+                    $("#cardinp").attr("value",responseText.idc);
+                },
+                error:function (responseText) {
+                    console.log("出错了宝贝")
+                }
+            }
+        )
+    });
+    //修改个人信息
+    function updateInfo() {
+        alert("进入提交");
+        $("#userid").attr("value",userid);
+        $("#myinfoform").submit();
+    };
+    function saveImg() {
+        alert("触发提交点击事件")
+        $("#my_headImg").submit()
+    }
+</script>
+
+<link rel="stylesheet" href="//g.alicdn.com/??damai/pc/1.0.3/p/head/index.css,damai/pc/1.0.3/p/footer/index.css"/>
+</head>
+
+<body><script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&e5f437575e340&trid=0b802c9515554176333221093ea879&asid=AQAAAAAhyrVcImkSAgAAAAAy1nLwtVBXeg==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+
+
+<!--ems start-->
+
+
+<div class="dm-header-wrap">
+	<div class="dm-header-box" data-spm="top">
+		<a href="//www.damai.cn"><img class="i-logo" src="//gw.alicdn.com/tfs/TB1D1QUxjDpK1RjSZFrXXa78VXa-230-104.png" alt="大麦" /></a>
+		<div class="location-header">
+			<img class="i-icon-location" src="//img.alicdn.com/tfs/TB1XHDuxNGYBuNjy0FnXXX5lpXa-28-32.png" alt="定位" />
+			<span class="city-location">全国</span>
+			<img class="i-arrow-location" src="https://img.alicdn.com/tfs/TB1vnUBxStYBeNjSspaXXaOOFXa-20-12.png" alt="箭头" />
+			<div class="city-header-wrap">
+				<div class="city-header" data-spm="city">
+					<div class="now-city">
+						<span class="title-city">当前城市:</span>
+						<span class="name-city select-city">全国</span>
+					</div>
+					<div class="hot-city">
+						<span class="title-city">热门城市:</span>
+						<div class="list-other"></div>
+					</div>
+					<div class="other-city">
+						<span class="title-city">其他城市:</span>
+						<div class="list-other"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="recommend-header">
+			<a href="//www.damai.cn" class="type-recommend select" data-spm="dhome">首页</a>
+			<a href="//search.damai.cn/search.htm?order=1" class="type-recommend" data-spm="dcategory">分类</a>
+			
+			
+		</div>
+		<div class="right-header" data-spm="nick">
+			<div class="box-header user-header">
+				<a href="javascript:void(0)" class="J_userinfo_img" data-spm="duserinfo"><img class="i-box-header i-user" src="//img.alicdn.com/tfs/TB14UKCGQyWBuNjy0FpXXassXXa-54-54.png" /></a>
+				<a href="//passport.damai.cn/accountinfo/myinfo" class="J_userinfo_name" data-spm="duserinfo">
+					<div class="span-box-header name-user"></div>
+				</a>
+				<div class="login-user show">
+					<span class="span-box-header span-user" data-spm="dlogin">登录</span>
+				</div>
+				<div class="list-wrap">
+					<div class="list-login">
+						<a href="//passport.damai.cn/accountinfo/myinfo" class="li-login select" data-spm="duserinfo">个人信息</a>
+						<a href="//my.damai.cn/account/accountSafe" class="li-login" data-spm="daccountsetting">账号设置</a>
+						<a href="orderList.html" class="li-login" data-spm="dordermanage">订单管理</a>
+						<a href="//www.damai.cn/redirect.aspx?type=logout" data-spm="dexit" class="li-login out-login">退出登录</a>
+					</div>
+				</div>
+			</div>
+			<div class="box-header download-header">
+				<img class="i-box-header i-download" src="//img.alicdn.com/tfs/TB1A9eIGKuSBuNjy1XcXXcYjFXa-54-54.png" alt="下载" />
+				<span class="span-box-header">下载</span>
+				<div class="ewm-download">
+					<img class="i-ewm" src="//img.alicdn.com/tfs/TB1r0uFxHSYBuNjSspiXXXNzpXa-280-280.png" />
+				</div>
+			</div>
+			<div class="box-header">
+				<a href="//en.damai.cn/" data-spm="denglish">
+					<img class="i-box-header" src="//img.alicdn.com/tfs/TB13UKCGQyWBuNjy0FpXXassXXa-54-54.png" alt="英文站" />
+					<span class="span-box-header">English</span>
+				</a>
+			</div>
+		</div>
+		<div class="search-header" data-spm="searchtxt">
+			<img class="i-search" src="//img.alicdn.com/tfs/TB1qv3jxGmWBuNjy1XaXXXCbXXa-34-36.png" alt="搜索" />
+			<input class="input-search" placeholder="搜索明星、演出、体育赛事" data-spm="dsearchbtn" />
+			<div class="btn-search" data-spm="dsearchbtn2">搜索</div>
+			<div class="list-search-wrap">
+				<div class="list-search">
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<!--ems end-->
+
+<div class="red-line"></div>
+<!--main-->
+<div class="main">
+<!--left of start-->
+<div class="sidenav">
+   <div id="mydamai">
+    <h3>我的大麦</h3>
+    <dl>
+    <dt>交易中心</dt>
+        <dd><a id="nav_Order" href="orderList.html" title="订单管理" domain=""><span >订单管理</span></a></dd>
+        
+        <!--<dd><a id="nav_myCoupon" href="http://coupon.damai.cn/coupon-web-damai/mycoupon/myCoupon" title="我的优惠券"  domain=""><span >我的优惠券</span></a></dd>-->
+    <dl>
+    <!--
+    <dt>互动中心</dt>
+        <dd><a id="nav_MessCenter" href="http://my.damai.cn/interaction/siteMessage" title="站内消息"  domain=""><span >站内消息</span></a></dd>
+        <dd><a id="nav_MyComment" href="http://my.damai.cn/interaction/myComment" title="我的评论"  domain=""><span >我的评论</span></a></dd>
+        <dd><a id="nav_MyQuestion" href="http://my.damai.cn/interaction/myQuestion" title="我的提问"  domain=""><span >我的提问</span></a></dd></dl>
+    <dl>
+    -->
+    <dt>账户中心</dt>
+        <dd><a id="nav_MyAddress" href="myAddress.html" title="收货地址" domain=""><span >收货地址</span></a></dd>
+        <dd><a id="nav_AccountSafty" href="accountsetting.html" title="账号设置" domain=""><span >账号设置</span></a></dd>
+        
+        <dd><a id="nav_MyInfo" href="myinfo.html" title="个人信息"  domain=""><span >个人信息</span></a></dd>
+        
+        <!--<dd><a id="nav_MyInfo" href="https://passport.damai.cn/customerManage/customerManageIndex" title="常用购票人"  domain=""><span >常用购票人</span></a></dd>-->
+    </dl>
+
+    <script type='text/javascript'>
+    (function(){ 
+        document.getElementById('mydamai').style.display='none';
+        var object=document.getElementById('nav_'+currNavName);
+        if(object) object.className+=' on';
+        document.getElementById('mydamai').style.display='';
+    })();
+    </script>
+
+    </dl>
+   </div>
+ </div>
+
+<!--left of end-->
+<!--right of start-->
+<div class="right-main">
+        <div class="breadcrumb"> 
+<span>个人信息</span></div>
+<div class="tab-mydamai">
+    <ul class="title">
+        <li><a class="on" href="myinfo.html">基本资料</a></li>
+        <li><a href="setHeadPhoto.html">头像设置</a></li>
+        
+        <li class="right">资料完整度：<span>20%</span></li>
+    </ul>
+    <div class="c-n box01">
+        <div class="per-edit-list">
+        <form id="myinfoform" method="post" action="updateUserBaseInfo">
+            <div class="per-edit-msg">完善更多个人信息，有助于我们为您提供更加个性化的服务，大麦网将尊重并保护您的隐私。</div>
+            <dl>
+                <dt><span class="c4" style="padding-right:3px;color:red;">*</span>昵称：</dt>
+                <dd>
+                    <input id="nickinp" type="text" class="input-text-2" name="nickname" value="麦子0etCd"/>
+                    <span id="nickinpTip" class="tip"></span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>真实姓名：</dt>
+                <dd>
+                        <input id="realinp" disabled="true" type="text" class="input-text-2" name="name" value=""/>
+                        <span id="realinpTip" class="tip"></span>
+                </dd>
+            </dl>
+            <dl>
+                <dt><span class="c4" style="padding-right:3px;color:red;">*</span>性别：</dt>
+                <dd>
+                    <label class="radio">
+                        <input style="-webkit-appearance:radio" type="radio" id="sexRadio" value="1" name="gender"  checked="checked"  /><span class="m">男</span>
+                    </label>
+                    <label class="radio">
+                        <input style="-webkit-appearance:radio" type="radio" id="sexRadio1" value="0" name="gender"  /><span class="f">女</span>
+                    </label>
+                    <span id="sexRadioTip" class="tip"></span>
+                </dd>
+            </dl>
+           <!-- <dl>
+                <dt>出生日期：</dt>
+                <dd>
+                <script type="text/javascript">
+                    FnCreateYearMonthDay('birthY', 1990, 'birthM', 1, 'birthD', 1);
+                </script> 
+                </dd>
+            </dl>-->
+            <dl><input type="hidden" name="userid" id="userid"></dl>
+            <dl>
+                <dt>身份证号：</dt>
+                <dd>
+                    <input id="cardinp" disabled="true" type="text" class="input-text-1" name="idc" value=""/>
+                    <span id="cardinpTip" class="tip"></span>
+                </dd>
+            </dl>
+            <button id="sumBgn" class="btn05" onclick="updateInfo()"> 确认修改</button>
+        </form>
+
+            <!--<form id="my_headImg" method="post" action="updateHeadImg" enctype="multipart/form-data">
+                <input type="file" name="fileImg" value="选择上传图片"/>
+                <input type="submit" value="上传照片" />
+            </form>-->
+        </div>
+    </div>
+</div>
+ 
+</div>
+</div>
+<!--right of end-->
+
+<script type="text/javascript" src="//cp.damai.cn/js/Service51La/SeoFlowStatistics.js?45"></script>
+
+<script>
+if(typeof JsLoader === 'undefined') {window.JsLoader = {load:function(){},before:function(){},complete:function(){},completeAfter:function(){}};}
+</script>
+<script src="//dui.damai.cn/dm_2014/common/dui-min.js" type="text/javascript"></script>
+<script src="//dui.damai.cn/dm_2014/common/app-min.js" type="text/javascript"></script>
+</div>
+<!--返回顶部及帮助中心-->
+<div class="new-fast">
+    <a onclick="jvascript:$('body,html').animate({ scrollTop: 0 }, 500);" class="fast-top" href="#">返回顶部</a>
+    <a class="fast-help" href="//www.damai.cn/helpcollect.html#selfservice" target="_blank">帮助中心</a>
+</div>
+
+<!-- 成功提示层 begin -->
+<div class="tips-y-b">
+    <div class="tips-y-b-con"><p></p></div>
+</div>
+<div class="tips-f-b">
+    <div class="tips-f-b-con"><p></p></div>
+</div>
+
+<!-- 成功提示层 start -->
+
+<!--ems start-->
+
+
+<div class="dm-footer">
+    <div class="w1200">
+        <ul class="footer__links">
+            
+            <li class="footer__links__list"><a href="//help.damai.cn" target="_blank" data-spm="flink0">帮助中心</a></li>
+            <li class="footer__links__grep">|</li>
+            
+            <li class="footer__links__list"><a href="&#x2F;&#x2F;help.damai.cn&#x2F;helpPage.htm?pageId=69&amp;categoryId=30" target="_blank" data-spm="flink1">公司介绍</a></li>
+            <li class="footer__links__grep">|</li>
+            
+            <li class="footer__links__list"><a href="&#x2F;&#x2F;help.damai.cn&#x2F;helpPage.htm?pageId=70&amp;categoryId=30" target="_blank" data-spm="flink2">品牌识别</a></li>
+            <li class="footer__links__grep">|</li>
+            
+            <li class="footer__links__list"><a href="&#x2F;&#x2F;help.damai.cn&#x2F;helpPage.htm?pageId=72&amp;categoryId=30" target="_blank" data-spm="flink3">公司大事记</a></li>
+            <li class="footer__links__grep">|</li>
+            
+            <li class="footer__links__list"><a href="&#x2F;&#x2F;help.damai.cn&#x2F;helpPage.htm?pageId=40&amp;categoryId=14" target="_blank" data-spm="flink4">协议及隐私权政策</a></li>
+            <li class="footer__links__grep">|</li>
+            
+            <li class="footer__links__list"><a href="&#x2F;&#x2F;jubao.alibaba.com&#x2F;internet&#x2F;readme.htm?spm=a2o6e.search.0.0.72f44d15Votov6&amp;site=damai" target="_blank" data-spm="flink5">廉正举报</a></li>
+            <li class="footer__links__grep">|</li>
+            
+            <li class="footer__links__list"><a href="&#x2F;&#x2F;help.damai.cn&#x2F;helpPage.htm?pageId=58&amp;categoryId=5" target="_blank" data-spm="flink6">联系合作</a></li>
+            <li class="footer__links__grep">|</li>
+            
+            <li class="footer__links__list"><a href="&#x2F;&#x2F;job.alibaba.com&#x2F;zhaopin&#x2F;positionList.htm?keyWord=JXU1OTI3JXU5RUE2&amp;_input_charset=UTF-8" target="_blank" data-spm="flink7">招聘信息</a></li>
+            <li class="footer__links__grep">|</li>
+            
+            <li class="footer__links__list"><a href="&#x2F;&#x2F;x.damai.cn&#x2F;markets&#x2F;special&#x2F;fangzhapian?spm=a2o6e.home.0.0.75df48d3hqGWGD&amp;wh_ttid=pc" target="_blank" data-spm="flink8">防骗秘籍</a></li>
+            
+            
+        </ul>
+        <div class="footer__ft">
+            <div class="footer__ft_fl">
+                <a href="//www.damai.cn/?spm=a2o6e.home.0.0.591b48d3QzpG8B" target="_blank" class="footer__ft__logo">
+                    <img src="https://img.alicdn.com/tfs/TB1NTQWxlLoK1RjSZFuXXXn0XXa-167-60.png" alt="">
+                </a>
+                <div class="footer__ft__code__box">
+                    <img class="footer__ft__code" src="//img.alicdn.com/tfs/TB1r0uFxHSYBuNjSspiXXXNzpXa-280-280.png" alt="">
+                    <span>APP下载</span>
+                </div>
+            </div>
+            <div class="footer__ft_fr">
+                <div class="footer__fr__contact">
+
+                    <a style="margin-left:0;" href="//online.damai.cn/alime/index?from=damai_pc_item&v=3" class="footer__fr__contact__btn alime">在线客服</a>
+                </div>
+                <ul class="footer__ft__words">
+                    <li class="footer__ft__certificate"><a
+                            href="http://www.miitbeian.gov.cn?spm=a2o6e.home.0.0.5b4d48d3mVzb2Z" target="_blank">京ICP证031057号</a></li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a href="http://www.miitbeian.gov.cn" target="_blank">京ICP备11043884号</a></li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a
+                            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037341" target="_blank">京公网安备11010502037341号</a>
+                    </li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a href="//img.alicdn.com/tfs/TB1K9r6xN9YBuNjy0FfXXXIsVXa-1152-799.jpg" target="_blank">广播电视节目制作经营许可证
+                        (京)字第02253号</a></li>
+                </ul>
+                <ul class="footer__ft__words">
+                    <li class="footer__ft__certificate"><a
+                            href="//img.alicdn.com/tfs/TB1AsH4xH9YBuNjy0FgXXcxcXXa-1420-1032.jpg" target="_blank">网络文化经营许可证
+                        京网文[2016]3438-413号</a></li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a href="//img.alicdn.com/tfs/TB1DfD6CxGYBuNjy0FnXXX5lpXa-1079-1527.jpg" target="_blank">营业性演出许可证
+                        京市演587号</a></li>
+                </ul>
+                <ul class="footer__ft__words">
+                    <li class="footer__ft__certificate">北京红马传媒文化发展有限公司 版权所有</li>
+                    <li class="footer__ft__certificate"><a
+                            href="//www.damai.cn/?spm=a2o6e.home.0.0.591b48d3QzpG8B">大麦网</a></li>
+                    <li>Copyright 2003-2018 All Rights Reserved</li>
+                </ul>
+                <ul class="footer__ft__words">
+                    <li>举报投诉邮箱：damai_tousu@member.alibaba.com</li>
+                </ul>
+                <div class="footer__ft__img">
+                    <span id="siteseal">
+                    <script async="" type="text/javascript">
+                            function verifySeal() {
+                                var bgHeight = "null";
+                                var bgWidth = "593";
+                                var url = "https:\/\/seal.godaddy.com\/verifySeal?sealID=LU6rXPgk5BZ67ZEYpYS2JcN3AyCJOs6aD3HBo4dwA3iGeqp6csKFmqgB0zLL";
+                                window.open(url, 'SealVerfication', 'menubar=no,toolbar=no,personalbar=no,location=yes,status=no,resizable=yes,fullscreen=no,scrollbars=no,width=' + bgWidth + ',height=' + bgHeight);
+                            }
+                    </script>
+                    <img style="cursor:pointer;cursor:hand" class="footer__ft__img1"
+                         src="//img.alicdn.com/tfs/TB1gw_ZxNWYBuNjy1zkXXXGGpXa-131-32.gif"
+                         onclick="verifySeal();" alt="SSL site seal - click to verify"
+                         data-spm-anchor-id="a2o6e.home.0.i1.5b4d48d3mVzb2Z">
+                    </span>
+                    <a rel="nofollow" title="电子营业执照" target="_blank"
+                       href="//img.alicdn.com/tfs/TB1CChlpwDqK1RjSZSyXXaxEVXa-1200-1672.jpg">
+                        <img class="footer__ft__img2" alt="" src="//img.alicdn.com/tfs/TB1ZO80pyOYBuNjSsD4XXbSkFXa-141-41.png">
+                    </a>
+
+                    <a rel="nofollow" target="_blank" href="https://www.pcisecuritystandards.org/">
+                        <img src="//img.alicdn.com/tfs/TB1Y580pyOYBuNjSsD4XXbSkFXa-83-50.png" class="footer__ft__img3">
+                    </a>
+                    <a rel="nofollow" target="_blank"
+                       href="http://www.itrust.org.cn/home/index/itrust_certifi/wm/1756737221">
+                        <img src="//img.alicdn.com/tfs/TB1pM_ZxNWYBuNjy1zkXXXGGpXa-114-40.png" class="footer__ft__img4w">
+                    </a>
+                    <a target="_blank" href="https://search.szfw.org/cert/l/CX20130327002367002885"
+                       id="___szfw_logo___">
+                        <img class="footer__ft__img4" src="//img.alicdn.com/tfs/TB1C4nNxTlYBeNjSszcXXbwhFXa-114-42.png">
+                    </a>
+                    <script type="text/javascript">(function () {
+                        document.getElementById('___szfw_logo___').oncontextmenu = function () {
+                            return false;
+                        }
+                    })();</script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.sidebar{top: 72.5%;}
+.sidebar .item .icon {
+    background-image: url(https://img.alicdn.com/tfs/TB1u1U9xmzqK1RjSZFHXXb3CpXa-64-180.png);
+}
+img{border: 0;}
+</style>
+<script type="text/javascript" src="https://g.alicdn.com/dt/tracker/3.5.4/??tracker.Tracker.js,tracker.interfaceTrackerPlugin.js,tracker.performanceTrackerPlugin.js" crossorigin></script>
+<script type="text/javascript">
+  
+var tracker = new window.Tracker({
+  pid: 'damaipc',
+  plugins: [
+    [window.interfaceTrackerPlugin],
+    [window.performanceTrackerPlugin]
+  ],
+});
+
+// 启动 tracker 并监听全局 JS 异常
+tracker.install();
+
+(function(){var f=function(){};if(!window.console){window.console={log:f,info:f,warn:f,debug:f,error:f}}}());
+</script>
+
+<script src="//g.alicdn.com/mtb/lib-mtop/2.3.16/mtop.js"></script>
+<script data-config="{combine:true}" src="//g.alicdn.com/kissy/k/6.2.4/seed.js"></script>
+<script src="//g.alicdn.com/damai/pc/1.0.28/p/head/index.js" ></script>
+<!--ems end-->
+
+</body>
+</html> 
+<!-- DPlus Start -->
+    <!-- start Dplus --><script type="text/javascript">!function(a,b){if(!b.__SV){var c,d,e,f;window.dplus=b,b._i=[],b.init=function(a,c,d){function g(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]),a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var h=b;for("undefined"!=typeof d?h=b[d]=[]:d="dplus",h.people=h.people||[],h.toString=function(a){var b="dplus";return"dplus"!==d&&(b+="."+d),a||(b+=" (stub)"),b},h.people.toString=function(){return h.toString(1)+".people (stub)"},e="disable track track_links track_forms register unregister get_property identify clear set_config get_config get_distinct_id track_pageview register_once track_with_tag time_event people.set people.unset people.delete_user".split(" "),f=0;f<e.length;f++)g(h,e[f]);b._i.push([a,c,d])},b.__SV=1.1,c=a.createElement("script"),c.type="text/javascript",c.charset="utf-8",c.async=!0,c.src="https://w.cnzz.com/dplus.php?token=7415364c9dab5n09ff68",d=a.getElementsByTagName("script")[0],d.parentNode.insertBefore(c,d)}}(document,window.dplus||[]),dplus.init("7415364c9dab5n09ff68");</script><!-- end Dplus -->
+    <!-- start Dplus Define -->
+    <script type="text/javascript">!function(a,b){var c,d;window.__dplusDefineCacheQueue=[],b.define=function(){window.__dplusDefineCacheQueue.push(Array.prototype.slice.call(arguments))},c=a.createElement("script"),c.type="text/javascript",c.charset="utf-8",c.async=!0,c.src="https://w.cnzz.com/dplus.define.php",d=a.getElementsByTagName("script")[0],d.parentNode.insertBefore(c,d)}(document,window.dplus);</script><!-- end Dplus Define -->
+    <script type="text/javascript">
+    $(function(){
+            dplus.define('page', function(page){
+                page.init("7415364c9dab5n09ff68", {
+                'page_duration': true,
+                'clean_url': true
+                });
+            });
+
+            dplus.define('page', function(page){
+                page.setType('my');
+                page.setTitle('个人信息');
+                page.view();
+            });
+     });
+    </script>
+    <!-- DPlus End -->

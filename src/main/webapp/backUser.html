@@ -18,6 +18,7 @@
         table tbody tr:nth-child(odd){background:#F4F4F4;}
         table tbody td:nth-child(even){color:#C00;}
     </style>
+    <link rel="stylesheet" href="css/jquery.pagination.css" />
 </head>
 
 <body>
@@ -35,7 +36,7 @@
                             <i class="glyphicon glyphicon-user"></i> admin <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
+<!--                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>-->
                             <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
                             <li class="divider"></li>
                             <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
@@ -48,9 +49,9 @@
                     </button>
                 </li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+<!--            <form class="navbar-form navbar-right">-->
+<!--                <input type="text" class="form-control" placeholder="Search...">-->
+<!--            </form>-->
         </div>
     </div>
 </nav>
@@ -122,7 +123,6 @@
                         <a href="param.html"><i class="glyphicon glyphicon-list-alt"></i> 参数设置 </a>
                     </li>
                 </ul>
-                <a href="http://10.3.135.79:8080/ticket/login.html">login</a>
             </div>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -146,8 +146,8 @@
                                 <input class="form-control has-success" type="text" placeholder="请输入联系电话">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>
-                        <p></p>
+                        <button type="button" class="btn btn-warning" onclick="initPage()"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                        <div></div>
                     </form>
                     <button type="button" class="btn btn-primary" style="float:right;" onclick="window.location.href='add.html'"><i class="glyphicon glyphicon-plus"></i> 新增</button>
                     <br>
@@ -165,22 +165,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-<!--                                <td><input type="checkbox"></td>-->
-                                <td>Lorem</td>
-                                <td>ipsum</td>
-                                <td>dolor</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i></button>
-                                    <button type="button" class="btn btn-danger btn-xs"><i class=" glyphicon glyphicon-remove"></i></button>
-                                </td>
-                            </tr>
+                            <tr style="display: block" id="unShow"></tr>
                             </tbody>
                             <tfoot>
                             <tr >
                                 <td colspan="6" align="center">
-                                    <ul class="pagination">
+                                    <ul class="pagination" id = "pagination">
                                         <li class="disabled"><a href="#">上一页</a></li>
                                         <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                                         <li><a href="#">2</a></li>
@@ -191,7 +181,6 @@
                                     </ul>
                                 </td>
                             </tr>
-
                             </tfoot>
                         </table>
                     </div>
@@ -204,6 +193,7 @@
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="script/docs.min.js"></script>
+<script src="js/jquery.pagination.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $(".list-group-item").click(function(){
@@ -220,6 +210,21 @@
     $("tbody .btn-success").click(function(){
         window.location.href = "assignRole.html";
     });
+    // $("#pagination").pagination("getPage");
+    // $("#pagination").pagination("setPage", currentPage, totalPage);
+    // $("#pagination").pagination({
+    //     currentPage: 4,// 当前页数
+    //     totalPage: 16,// 总页数
+    //     isShow: true,// 是否显示首尾页
+    //     count: 7,// 显示个数
+    //     homePageText: "首页",// 首页文本
+    //     endPageText: "尾页",// 尾页文本
+    //     prevPageText: "上一页",// 上一页文本
+    //     nextPageText: "下一页",// 下一页文本
+    //     callback: function(current) {
+    //         // 回调,current(当前页数)
+    //     }
+    // });
     $.ajax({
         type: 'POST',
         url: 'showUserInfo',
@@ -235,9 +240,9 @@
                     "<td>"+item.phone+"</td>"+
                     "<td>"+
                     "<button type=\"button\" onclick='jumpToEdit("+item.userid+")' class=\"btn btn-primary btn-xs\"><i class=\" glyphicon glyphicon-pencil\"></i></button>"+
-                    "<button type=\"button\" onabort='delete' class=\"btn btn-danger btn-xs\"><i class=\" glyphicon glyphicon-remove\"></i></button>"+
+                    "<button type=\"button\" onclick='toDelete()' class=\"btn btn-danger btn-xs\"><i class=\" glyphicon glyphicon-remove\"></i></button>"+
                     "</td>"+
-                    "</tr>").insertAfter($("#userTable tr:eq(1)"));
+                    "</tr>").insertBefore($("#unShow"));
             })
         },
         error:function (response) {
@@ -245,8 +250,11 @@
         }
     });
     function jumpToEdit(userid) {
-        alert(userid);
+        // alert(userid);
         window.location.href = "updateUser.html?userid="+userid;
+    }
+    function toDelete() {
+        window.location.reload();
     }
 </script>
 </body>

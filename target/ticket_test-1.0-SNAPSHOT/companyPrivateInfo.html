@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>无标题文档</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div class="header">
+    <div class="header03"></div>
+    <div class="header01"></div>
+    <div class="header02">商家信息管理系统</div>
+</div>
+<div class="left" id="LeftBox">
+    <!--<div class="left01">
+        <div class="left01_right"></div>
+        <div class="left01_left"></div>
+        <div class="left01_c">登陆商家名：XXX</div>
+    </div>-->
+    <div class="left02">
+        <div class="left02top">
+            <div class="left02top_right"></div>
+            <div class="left02top_left"></div>
+            <div class="left02top_c">商家信息管理</div>
+        </div>
+        <div class="left02down">
+            <div class="left02down01"><a  href="companyBaseInfo.html"><!--onclick="show_menuB(80)"-->
+                <div id="Bf080" class="left02down01_img"></div>
+                商家信息</a></div>
+            <div class="left02down01">
+                <div id="Bf081" class="left02down01_img"></div>
+                账号信息管理</a></div>
+        </div>
+    </div>
+    <div class="left02">
+        <div class="left02top">
+            <div class="left02top_right"></div>
+            <div class="left02top_left"></div>
+            <div class="left02top_c">演出管理</div>
+        </div>
+        <div class="left02down">
+            <div class="left02down01"><a href="performanceApplicationList.html"><!--onclick="show_menuB(82)"-->
+                <div id="Bf082" class="left02down01_img"></div>
+                演出申请</a></div>
+            <div class="left02down01"><a href="#">
+                <div class="left02down01_img"></div>
+                演唱会销售信息</a></div>
+        </div>
+    </div>
+    <div class="left01">
+        <div class="left03_right"></div>
+        <div class="left01_left"></div>
+        <div class="left03_c">安全退出</div>
+    </div>
+</div>
+
+<!--右侧栏，内容主体-->
+<div class="rrcc" id="RightBox">
+    <div class="center" id="Mobile" onclick="show_menuC()"></div>
+    <div class="right" id="li010">
+        <div class="right01"><img src="images/04.gif"/> 商家信息修改</div>
+        <div style="margin-left: 20px">
+            联系电话：<input id="phone" type="text" readonly="readonly"/>
+            <input type="button" value="修改" id="pModiy" onclick="phoneModiy()" style="margin-left: 20px"/>
+            <input type="button" value="取消修改" id="pModiyOff" onclick="phoneModiyOff()" style="margin-left: 20px; display: none"/>
+            <br/>
+            <hr/>
+            账号密码
+            <input type="button" value="修改" id="aModiy" onclick="pwModiy()" style="margin-left: 20px"/>
+            <input type="button" value="取消修改" id="aModiyOff" onclick="pwModiyOff()" style="margin-left: 20px; display: none"/>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+    var temp = 0;
+
+    function show_menuC() {
+        if (temp == 0) {
+            document.getElementById('LeftBox').style.display = 'none';
+            document.getElementById('RightBox').style.marginLeft = '0';
+            document.getElementById('Mobile').style.background = 'url(images/center.gif)';
+
+            temp = 1;
+        } else {
+            document.getElementById('RightBox').style.marginLeft = '222px';
+            document.getElementById('LeftBox').style.display = 'block';
+            document.getElementById('Mobile').style.background = 'url(images/center0.gif)';
+
+            temp = 0;
+        }
+    }
+
+    function phoneModiy() {
+        $("#pModiy").val("确认修改");
+        $("#pModiyOff").css("display","inline");
+        $("#phone").removeAttr("readonly");
+    }
+
+    function phoneModiyOff() {
+        location.reload();
+    }
+
+    function pwModiy() {
+        $("#aModiy").val("确认修改");
+        $("#aModiyOff").css("display","inline");
+    }
+
+    function pwModiyOff() {
+        location.reload();
+    }
+</script>
+</body>
+</html>

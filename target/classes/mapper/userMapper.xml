@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.userManager.dao.UserMapper">
+    <select id="getAllUserInfo" resultType="com.userManager.dto.UserInfoDto" parameterType="int">
+      SELECT u.userid,u.nickname,u.gender,u.name,u.phone,u.email,u.idc
+      FROM `user` u where userid=#{userid} and status=1
+    </select>
+
+    <resultMap id="getUserAddressMap" type="com.userManager.dto.UserAddressDto">
+
+        <collection property="userAddressList" ofType="com.userManager.pojo.UserAddress">
+            <result property="uaid" column="uaid"></result>
+            <result property="uaname" column="uaname"></result>
+            <result property="uaphone" column="uaphone"></result>
+            <result property="uaddress" column="uaddress"></result>
+            <result property="isDefault" column="isDefault"></result>
+        </collection>
+    </resultMap>
+    <select id="getUserAddress" resultMap="getUserAddressMap" parameterType="com.userManager.vo.UserAddressVo">
+        SELECT ua.uaid,ua.uaname,ua.uaphone,ua.uaddress,ua.isDefault
+      FROM `user` u LEFT JOIN user_address ua on u.userid=ua.userid
+      WHERE u.status=1 and ua.status=1
+      <if test="uaid!=null and uaid!=''">
+        and uaid=#{uaid}
+      </if>
+        <if test="userid!=null and userid!=''">
+        and u.userid=#{userid}
+      </if>
+    </select>
+
+
+    <update id="updateUserInfo" parameterType="com.userManager.vo.UserInfoVo">
+        UPDATE user
+        <set>
+            <if test="nickname!=null and nickname!=''">
+               nickname=#{nickname},
+            </if>
+            <if test="gender!=null and gender!=''">
+                gender=#{gender}
+            </if>
+        </set>
+        where userid=#{userid} and status=1
+    </update>
+
+    <update id="updateUserAddress" parameterType="com.userManager.vo.UserAddressVo">
+        UPDATE user_address
+        <set>
+            <if test="uaname!=null and uaname!=''">
+                uaname=#{uaname},
+            </if>
+            <if test="uaphone!=null and uaphone!=''">
+                uaphone=#{uaphone},
+            </if>
+            <if test="uaddress!=null and uaddress!=''">
+                uaddress=#{uaddress},
+            </if>
+            <if test="isDefault!=null and isDefault!=''">
+                isDefault=#{isDefault},
+            </if>
+        </set>
+        where uaid=#{uaid} and userid=#{userid} and status=1
+    </update>
+    <select id="getIsDefault" parameterType="com.userManager.vo.UserAddressVo" resultType="int">
+        SELECT ua.uaid from user_address ua where isDefault=1 and userid=#{userid} and  status=1
+    </select>
+    <update id="updateOtherIsDefaultAsNot" parameterType="int">
+        UPDATE user_address set isDefault=0 where uaid=#{uaid}
+    </update>
+
+    <update id="updatePassword" parameterType="com.userManager.pojo.UserInfo">
+        update user
+        <set>
+            password=#{password}
+        </set>
+        where userid=#{userid}
+    </update>
+    <update id="saveEmail" parameterType="com.userManager.vo.UserEmailVo">
+        update user
+        <set>
+            email=#{email}
+        </set>
+        where userid=#{userid}
+    </update>
+    <insert id="addUserAddress" parameterType="com.userManager.vo.UserAddressVo">
+        insert into user_address(uaid,status,userid,uaname,uaphone,uaddress,isDefault)
+        values (default ,1,#{userid},#{uaname},#{uaphone},#{uaddress},0)
+    </insert>
+    <delete id="delAddress" parameterType="int">
+        delete from user_address where uaid=#{uaid}
+    </delete>
+</mapper>
