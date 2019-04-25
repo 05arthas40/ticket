@@ -12,4 +12,6 @@ public interface backGroundDao {
     public int deleteUserById(user user);
 
     public List<user> listUserInfo(userVo userVo);
+
+    List<user> listUserInfo(user user);
 }

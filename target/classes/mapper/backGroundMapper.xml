@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.backGroundManager.dao.backGroundDao">
 <!--  显示列表  -->
-    <select id="listUserInfo" parameterType="com.backGroundManager.vo.userVo" resultType="com.backGroundManager.vo.userVo">
+    <select id="listUserInfo" parameterType="com.backGroundManager.pojo.user" resultType="com.backGroundManager.pojo.user">
         SELECT userid,username,password,phone,name,email from user
         WHERE status = 1
         <if test="userid!=null and userid !=''">

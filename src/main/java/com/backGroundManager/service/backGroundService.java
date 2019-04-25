@@ -13,4 +13,5 @@ public interface backGroundService {
 
     List<user> listUserInfo(userVo userVo);
 
+    List<user> listUserInfo(user user);
 }

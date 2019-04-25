@@ -219,13 +219,14 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
     })
   }
 })()*/
+userid=$.cookie("userid");
 function saveImg() {
     alert("进入点击事件");
     var formData=new FormData();
-    formData.append("Img",$("#headImg")[0].files);
+    formData.append("Img",$("#headImg")[0].files[0]);
     console.log(formData)
     $.ajax({
-        url: "updateHeadImg",
+        url: "updateHeadImg?userid="+userid,
         type: "POST",
         data: formData,
         processData: false,

@@ -34,4 +34,9 @@ public class backGroundServiceImpl implements backGroundService {
     public List<user> listUserInfo(userVo userVo) {
         return this.backGroundDao.listUserInfo(userVo);
     }
+
+    @Override
+    public List<user> listUserInfo(user user) {
+        return this.backGroundDao.listUserInfo(user);
+    }
 }

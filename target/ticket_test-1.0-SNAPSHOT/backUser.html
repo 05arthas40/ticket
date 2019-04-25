@@ -26,7 +26,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <div><a class="navbar-brand" style="font-size:32px;" href="#">黄牛票务 - 角色管理</a></div>
+            <div><a class="navbar-brand" style="font-size:32px;" href="backMain.html">黄牛票务</a></div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -36,10 +36,10 @@
                             <i class="glyphicon glyphicon-user"></i> admin <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
+                            <!--                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>-->
                             <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
                             <li class="divider"></li>
-                            <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+                            <li><a href="backLogin.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
                         </ul>
                     </div>
                 </li>
@@ -49,9 +49,9 @@
                     </button>
                 </li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+            <!--<form class="navbar-form navbar-right">-->
+            <!--<input type="text" class="form-control" placeholder="查询">-->
+            <!--</form>-->
         </div>
     </div>
 </nav>
@@ -79,7 +79,7 @@
                         <span><i class="glyphicon glyphicon-ok"></i> 业务审核 <span class="badge" style="float:right">3</span></span>
                         <ul style="margin-top:10px;display:none;">
                             <li style="height:30px;">
-                                <a href="auth_cert.html"><i class="glyphicon glyphicon-check"></i> 演出审批 </a>
+                                <a href="manageCompanyAndShow.html"><i class="glyphicon glyphicon-check"></i> 综合审批 </a>
                             </li>
                             <li style="height:30px;">
                                 <a href="auth_adv.html"><i class="glyphicon glyphicon-check"></i> 广告审核 </a>
@@ -93,9 +93,6 @@
                         <span><i class="glyphicon glyphicon-th-large"></i> 业务管理 <span class="badge" style="float:right">5</span></span>
                         <ul style="margin-top:10px;display:none;">
                             <li style="height:30px;">
-                                <a href="cert.html"><i class="glyphicon glyphicon-picture"></i> 企业资格认证 </a>
-                            </li>
-                            <li style="height:30px;">
                                 <a href="type.html"><i class="glyphicon glyphicon-equalizer"></i> 订单管理 </a>
                             </li>
                             <li style="height:30px;">
@@ -107,16 +104,16 @@
                             <li style="height:30px;">
                                 <a href="#"><i class="glyphicon glyphicon-hdd"></i> 数据统计 </a>
                             </li>
-<!--                            后续可新增功能-->
-<!--                            <li style="height:30px;">-->
-<!--                                <a href="message.html"><i class="glyphicon glyphicon-comment"></i> 消息模板 </a>-->
-<!--                            </li>-->
-<!--                            <li style="height:30px;">-->
-<!--                                <a href="project_type.html"><i class="glyphicon glyphicon-list"></i> 项目分类</a>-->
-<!--                            </li>-->
-<!--                            <li style="height:30px;">-->
-<!--                                <a href="tag.html"><i class="glyphicon glyphicon-tags"></i> 项目标签</a>-->
-<!--                            </li>-->
+                            <!--后续可新增功能-->
+                            <!--<li style="height:30px;">-->
+                                <!--<a href="message.html"><i class="glyphicon glyphicon-comment"></i> 消息模板 </a>-->
+                            <!--</li>-->
+                            <!--<li style="height:30px;">-->
+                                <!--<a href="project_type.html"><i class="glyphicon glyphicon-list"></i> 项目分类</a>-->
+                            <!--</li>-->
+                            <!--<li style="height:30px;">-->
+                                <!--<a href="tag.html"><i class="glyphicon glyphicon-tags"></i> 项目标签</a>-->
+                            <!--</li>-->
                         </ul>
                     </li>
                     <li class="list-group-item tree-closed" >
@@ -135,19 +132,19 @@
                         <div class="form-group has-feedback">
                             <div class="input-group">
                                 <div class="input-group-addon">用户名</div>
-                                <input class="form-control has-success" type="text" placeholder="请输入用户名">
+                                <input class="form-control has-success" id="usernameTxt" type="text" placeholder="请输入用户名">
                             </div>
                             <div class="input-group">
                                 <div class="input-group-addon">名称</div>
-                                <input class="form-control has-success" type="text" placeholder="请输入名称">
+                                <input class="form-control has-success" id="nameTxt" type="text" placeholder="请输入名称">
                             </div>
                             <div class="input-group">
                                 <div class="input-group-addon">联系电话</div>
-                                <input class="form-control has-success" type="text" placeholder="请输入联系电话">
+                                <input class="form-control has-success" id="phoneTxt" type="text" placeholder="请输入联系电话">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>
-                        <p></p>
+                        <button type="button" class="btn btn-warning" onclick="initPage()"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                        <div></div>
                     </form>
                     <button type="button" class="btn btn-primary" style="float:right;" onclick="window.location.href='add.html'"><i class="glyphicon glyphicon-plus"></i> 新增</button>
                     <br>
@@ -170,7 +167,14 @@
                             <tfoot>
                             <tr >
                                 <td colspan="6" align="center">
-                                    <ul class="pagination">
+                                    <ul class="pagination" id = "pagination">
+                                        <li class="disabled"><a href="#">上一页</a></li>
+                                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">下一页</a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -218,6 +222,40 @@
     //         // 回调,current(当前页数)
     //     }
     // });
+    // function initPage(num,page) {
+    //     $("#userTable tr:not(:first)").empty("");
+    //
+    //     var usernametxt = $("#usernameTxt").val().trim();
+    //     var nametxt = $("#nameTxt").val().trim();
+    //     var phonetxt = $("#phoneTxt").val().trim();
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'showUserInfo',
+    //         data:JSON.stringify({
+    //             "username":usernametxt,
+    //             "name":nametxt,
+    //             "phone":phonetxt,
+    //             "page":page,
+    //             "start":num
+    //         }),
+    //         contentType:"application/json;cahrset=utf-8",
+    //         success:function(response){
+    //             console.log(response);
+    //             $("#page").pagination({
+    //                 currentPage: response.pageNum,// 当前页数
+    //                 totalPage: response.pages,// 总页数
+    //                 isShow: true,// 是否显示首尾页
+    //                 count: response.pageSize,// 显示个数
+    //                 homePageText: "首页",// 首页文本
+    //                 endPageText: "尾页",// 尾页文本
+    //                 prevPageText: "上一页",// 上一页文本
+    //                 nextPageText: "下一页",
+    //                 callback: function(current) {
+    //                     initPage(num,current);
+    //                 }
+    //             })
+    //
+    // }
     $.ajax({
         type: 'POST',
         url: 'showUserInfo',

@@ -132,15 +132,15 @@
                         <div class="form-group has-feedback">
                             <div class="input-group">
                                 <div class="input-group-addon">用户名</div>
-                                <input class="form-control has-success" type="text" placeholder="请输入用户名">
+                                <input class="form-control has-success" id="usernameTxt" type="text" placeholder="请输入用户名">
                             </div>
                             <div class="input-group">
                                 <div class="input-group-addon">名称</div>
-                                <input class="form-control has-success" type="text" placeholder="请输入名称">
+                                <input class="form-control has-success" id="nameTxt" type="text" placeholder="请输入名称">
                             </div>
                             <div class="input-group">
                                 <div class="input-group-addon">联系电话</div>
-                                <input class="form-control has-success" type="text" placeholder="请输入联系电话">
+                                <input class="form-control has-success" id="phoneTxt" type="text" placeholder="请输入联系电话">
                             </div>
                         </div>
                         <button type="button" class="btn btn-warning" onclick="initPage()"><i class="glyphicon glyphicon-search"></i> 查询</button>
@@ -222,6 +222,40 @@
     //         // 回调,current(当前页数)
     //     }
     // });
+    // function initPage(num,page) {
+    //     $("#userTable tr:not(:first)").empty("");
+    //
+    //     var usernametxt = $("#usernameTxt").val().trim();
+    //     var nametxt = $("#nameTxt").val().trim();
+    //     var phonetxt = $("#phoneTxt").val().trim();
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'showUserInfo',
+    //         data:JSON.stringify({
+    //             "username":usernametxt,
+    //             "name":nametxt,
+    //             "phone":phonetxt,
+    //             "page":page,
+    //             "start":num
+    //         }),
+    //         contentType:"application/json;cahrset=utf-8",
+    //         success:function(response){
+    //             console.log(response);
+    //             $("#page").pagination({
+    //                 currentPage: response.pageNum,// 当前页数
+    //                 totalPage: response.pages,// 总页数
+    //                 isShow: true,// 是否显示首尾页
+    //                 count: response.pageSize,// 显示个数
+    //                 homePageText: "首页",// 首页文本
+    //                 endPageText: "尾页",// 尾页文本
+    //                 prevPageText: "上一页",// 上一页文本
+    //                 nextPageText: "下一页",
+    //                 callback: function(current) {
+    //                     initPage(num,current);
+    //                 }
+    //             })
+    //
+    // }
     $.ajax({
         type: 'POST',
         url: 'showUserInfo',

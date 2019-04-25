@@ -10,5 +10,5 @@ public class user {
     String phone;
     String name;
     String email;
-    byte status;
+    String status;
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.companyManager.mapper.PerformanceMapper">
+    <!--得到performance详细信息-->
+    <resultMap id="performanceInfoMap" type="com.companyManager.dto.PerformanceDto">
+        <id column="showtitle" property="showTitle"></id>
+        <result column="pname" property="perfromerName"></result>
+        <result column="pdecription" property="decription"></result>
+        <result column="ppicture" property="picturePath"></result>
+        <result column="ptype" property="perfromType"></result>
+    </resultMap>
+    <select id="getPerformancesById" parameterType="int" resultMap="performanceInfoMap">
+        select showtitle,pname,pdecription,ppicture,ptype
+        from performances
+        where pfmid = #{performanceId}
+    </select>
+
+    <!--得到performance粗略信息-->
+    <resultMap id="performanceApplication" type="com.companyManager.dto.PerformanceApplication">
+        <id column="pfmid" property="performanceId"></id>
+        <result column="showtitle" property="showTitle"></result>
+        <result column="pname" property="perfromerName"></result>
+        <result column="status" property="pstatus"></result>
+    </resultMap>
+    <select id="getAllPerformance" parameterType="int" resultMap="performanceApplication">
+        select p.pfmid,p.showtitle,p.pname,p.`status`
+        from performances p,company_show cs
+        where p.pfmid = cs.pfmid and cs.cid = #{companyId}
+    </select>
+
+    <!--得到performance下的所有show信息-->
+    <select id="getAllShowInfo" parameterType="int" resultType="com.companyManager.dto.ShowApplication">
+        select sd.showid,showdate,sd.`begin`,sd.`end`,sd.vname,sd.saddress,sd.`status`
+        from performances p,showdetails sd
+        where p.pfmid = sd.pfmid
+        and p.pfmid = #{performanceId}
+    </select>
+
+    <!--得到show_venue信息-->
+    <select id="getVenueByShowId" parameterType="int" resultType="com.companyManager.dto.VenueDto">
+        select seatType,seatCount,showprice from show_venue where showid = #{showId}
+    </select>
+
+    <!--添加show回显演出名-->
+    <select id="getPerformanceName" parameterType="int" resultType="java.lang.String">
+        select showtitle from performances where pfmid = #{performanceId}
+    </select>
+
+    <!--添加showAndVenue-->
+    <insert id="addshowinfo" parameterType="com.companyManager.dto.ShowAndVenue" useGeneratedKeys="true" keyProperty="showId">
+        insert into showdetails(pfmid,showdate,`begin`,`end`,vname,saddress,`status`)
+        VALUES(#{performanceId},#{showTime},#{begin},#{end},#{vname},#{address},0)
+    </insert>
+
+    <insert id="addVenueinfos" parameterType="map">
+        INSERT into show_venue(showid,seatType,seatCount,showprice)
+        VALUES
+        <foreach collection="venues" item="venue" separator=",">
+            (#{showId},#{venue.seatType},#{venue.seatCount},#{venue.seatPrice})
+        </foreach>
+    </insert>
+
+    <insert id="addPerformance" parameterType="com.companyManager.pojo.Performance" useGeneratedKeys="true" keyProperty="performanceId">
+        insert into performances(showtitle,pname,pdecription,ppicture,ptype,status)
+        VALUES(#{showTitle},#{perfromerName},#{decription},#{picturePath},#{perfromType},0)
+    </insert>
+    
+    <insert id="addCompanyShow" parameterType="map">
+        insert into company_show(cid,pfmid)
+        VALUES(#{cid},#{pid})
+    </insert>
+</mapper>

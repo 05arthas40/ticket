@@ -21,19 +21,25 @@ public class backGroundController {
 
 //    条件查询
     @RequestMapping(value = "showUserInfo",method = RequestMethod.POST)
-    public Object listUserInfo(@RequestBody(required = false) userVo userVo){
-        if (userVo.getPage() == null){
-            userVo.setPage(1);
-        }
-        if (userVo.getStart() == null){
-            userVo.setStart(1);
-        }
-        PageHelper.startPage(userVo.getPage(),3);
-        List<user> userList = backGroundService.listUserInfo(userVo);
-        PageInfo<user> userPageInfo = new PageInfo<user>(userList);
-        System.out.println(userPageInfo);
-        return userPageInfo;
+    public Object listUserInfo(@RequestBody(required = false) user user){
+        List<user> userList = backGroundService.listUserInfo(user);
+        System.out.println(userList);
+        return userList;
     }
+//    @RequestMapping(value = "showUserInfo",method = RequestMethod.POST)
+//    public Object listUserInfo(@RequestBody(required = false) userVo userVo){
+//        if (userVo.getPage() == null){
+//            userVo.setPage(1);
+//        }
+//        if (userVo.getStart() == null){
+//            userVo.setStart(1);
+//        }
+//        PageHelper.startPage(userVo.getPage(),3);
+//        List<user> userList = backGroundService.listUserInfo(userVo);
+//        PageInfo<user> userPageInfo = new PageInfo<user>(userList);
+//        System.out.println(userPageInfo);
+//        return userPageInfo;
+//    }
 //    修改信息
     @RequestMapping(value = "updateUser")
     public Object updateUserById(@RequestBody user user) {

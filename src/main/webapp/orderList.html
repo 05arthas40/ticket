@@ -118,7 +118,7 @@
                     <div class="list-login">
                         <a href="//passport.damai.cn/accountinfo/myinfo" class="li-login select" data-spm="duserinfo">个人信息</a>
                         <a href="//my.damai.cn/account/accountSafe" class="li-login" data-spm="daccountsetting">账号设置</a>
-                        <a href="//orders.damai.cn/orderList" class="li-login" data-spm="dordermanage">订单管理</a>
+                        <a href="orderList.html" class="li-login" data-spm="dordermanage">订单管理</a>
                         <a href="//www.damai.cn/redirect.aspx?type=logout" data-spm="dexit" class="li-login out-login">退出登录</a>
                     </div>
                 </div>
@@ -175,31 +175,31 @@
                     <dl>
                     -->
                     <dt>账户中心</dt>
-                    <dd><a id="nav_MyAddress" href="myAddress.html" title="收货地址" domain=""><span >收货地址</span></a></dd>
+                    <dd><a id="nav_MyAddress" href="myAddress.html" title="收货地址"  domain=""><span >收货地址</span></a></dd>
                     <dd><a id="nav_AccountSafty" href="accountsetting.html" title="账号设置" domain=""><span >账号设置</span></a></dd>
 
                     <dd><a id="nav_MyInfo" href="myinfo.html" title="个人信息" domain=""><span >个人信息</span></a></dd>
 
                     <!--        <dd><a id="nav_MyInfo" href="https://passport.damai.cn/customerManage/customerManageIndex" title="常用购票人"  domain=""><span >常用购票人</span></a></dd>-->
                 </dl>
-
+                <script type="text/javascript" src="js/jquery.cookie.js"></script>
                 <script type='text/javascript'>
+                    userid=$.cookie("userid");
                     $(function () {
                         $.ajax(
                             {
-                                type:'post',
-                                url:'seeOrders',
+                                type:'get',
+                                url:'seeOrders?userid='+userid+'&status=1',
                                 contentType:'application/json;charset=utf-8',
-                                data: JSON.stringify({
-                                    "cid":cid
-                                }),
+                                data: JSON.stringify(
+                                ),
                                 success:function (responseText) {
-                                    console.log(responseText);
-                                    $("#uaname").attr("value",responseText.uaname)
-                                    $("#uaphone").attr("value",responseText.uaphone)
-                                    $("#uaddress").attr("value",responseText.uaddress)
-                                    $("#totalPrice").attr("value",responseText.totalPrice)
-                                    $("#svid").attr("value",responseText.svid)
+                                    console.log(responseText[0].uaname);
+                                    $("#uaname").html(responseText[0].uaname)
+                                    $("#uaphone").html(responseText[0].uaphone)
+                                    $("#uaddress").html(responseText[0].uaddress)
+                                    $("#totalPrice").html(responseText[0].totalPrice)
+                                  /*  $("#svid").html(responseText[0].svid)*/
                                 },
                                 error:function (responseText) {
                                     alert("出错了宝贝")
@@ -284,18 +284,20 @@
                                         <div class="next-row project-name-wrapper" data-spm="list">
                                             <div class="next-col project-name-right">
                                                 <div class="next-row project-name" data-spm="dtitle" id="uaname">
-                                                    林子祥
+
                                                 </div>
                                                 <div class="next-row project-name" data-spm="dtitle" id="uaphone">
                                                     电话
                                                 </div>
-                                                <div class="next-row project-name-venue"  >宝能国际体育演艺中心</div>
+                                                <div class="next-row project-name-venue">演出时间：</div>
                                                 <div class="next-row project-name-perform"><span id="ordertime">2019.06.22 19:30-21:30</span>
                                                 </div>
                                                 <div class="next-row project-name-venue">演出地点：</div>
                                                 <div class="dm-pay-detail-content" id="uaddress">湛江</div>
                                                 <div class="next-row project-name-venue"  >总价：</div>
                                                 <div class="dm-pay-detail-content" id="totalprice">242342</div>
+                                                <div class="next-row project-name-venue"  >票数：</div>
+                                                <div class="dm-pay-detail-content" id="ticketcount">242342</div>
                                             </div>
                                         </div>
                                     </div>

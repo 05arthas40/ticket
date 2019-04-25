@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="//g.alicdn.com/damai/mh-css/pc.css"/>
     <!--<script type="text/javascript" src="https://a.alipayobjects.com/??seajs/seajs/2.1.1/sea.js,seajs/seajs-combo/1.0.0/seajs-combo.js,seajs/seajs-style/1.0.0/seajs-style.js"></script>-->
     <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <script>
+        userid=$.cookie("userid");
         function sendMail() {
             var email=$("#Email").val();
             console.log(email)
@@ -41,7 +43,6 @@
             )
         }
         function bindMail() {
-            var userid=1;
             var email=$("#Email").val();
             var checkCode=$("#checkCode").val();
             $.ajax(
