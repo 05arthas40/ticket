@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快照页面</title>
+</head>
+<body>
 <!Doctype html>
 <html>
 <head>
@@ -12,116 +19,82 @@
     <script type="text/javascript">
 
         $(function () {
+
             //每种价位的价格
             var everyMoney = -1;
 
-            //通过传入的showid使用ajax来获取演出信息
-            var showid = window.location.href.split("showid=")[1];
+            var ssvid = window.location.href.split("svid=")[1].split("&")[0];
+            var scount = window.location.href.split("count=")[1].split("&")[0];
+
+            $.ajax({
+                type:"POST",
+                url:"getShowidBySvid?svid="+ssvid,
+                success:function (showid) {
+                    /*
+                    通过传入的showid用ajax获取对应演出的具体信息
+                    */
+                    $.ajax({
+                        type: "POST",
+                        url: "getOneShowDetails?showid=" + showid,
+                        success: function (data) {
+                            //以下为搬运工作
+                            $("#poster").attr("src", "img/" + data[0].ppicture);//海报
+                            $("#headtitle").html(data[0].showtitle);//大字标题
+                            $("#datetime").html("时间：" + data[0].showdate + " | " + data[0].begin);//演出时间
+                            $("#venue").html("场馆：" + data[0].saddress + " | " + data[0].vname);//演出场馆
+                            $("#gdmap").attr('href', "https://www.amap.com/search?query=" + data[0].vname);//高德地图链接
+                            var beginhour = data[0].begin.split(":")[0];//定义开始时间（小时）
+                            var beginminute = data[0].begin.split(":")[1];//定义开始时间（分钟）
+                            var endhour = data[0].end.split(":")[0];//定义结束时间（小时）
+                            var endminute = data[0].end.split(":")[1];//定义结束时间（分钟）
+                            var last = (endhour - beginhour) * 60 + (endminute - beginminute);//通过上面四个计算演出持续时间
+                            $("#lasttime").html(last + "分钟（以现场为准）");//持续时间
+                            $("#chooseshow").html(data[0].saddress + data[0].showdate);//选择演出
+                            $("#performer").html(data[0].pname);//演员是谁
+                            $("#cdecription").html(data[0].pdescription);//演出简介（富文本）
+
+
+                            var quehuo;//判断是否缺货
+                            var showprice;//记录价位
+                            /*
+                                遍历data
+                             */
+                            for (var i = 0; i < data.length; i++) {
+                                quehuo = data[i].seatCount > 0 ? "" : "缺货登记";
+                                showprice = data[i].showprice  + "元";
+                                //拼接价位框
+                                $("#chooseVenue").append("<div class=\"select_right_list_item sku_item select2 svid\" id='svid" + data[i].svid + "'>" +
+                                    "<span class=\"notticket\">" + quehuo + "</span>\n" +
+                                    "<div class=\"skuname\">" + showprice + "</div>\n" +
+                                    "</div>");
+
+                                /*
+                                    不缺货则添加点击事件：点击变红、单价变更、通过showThisStock（）使用ajax获取当前库存、数量置1
+                                 */
+                                if (data[i].svid==ssvid) {
+                                    $("#svid" + data[i].svid).addClass("active");
+                                    $("#everyStock").html("库存余量:"+data[i].seatCount);
+                                }
+
+
+                            }
+                            setTotalMoney(scount);
+                        },
+                        error: function () {
+                            alert("糟糕，传输好像出错了")
+                        }
+
+                    })
+                },
+                error:function () {
+                    alert("传值有误");
+                }
+            })
 
             /*
                 选择数量框blur事件
              */
-            $("#count_id").blur(function () {
-                //获得框内输入的值的整数
-                var count = parseInt($(this).val());
-                //获得库存
-                var stock = $("#everyStock").html().split(":")[1];
-
-                //不为数字则置一
-                if (isNaN(count)) {
-                    $(this).val(1);
-                    setTotalMoney(1);
-                } else {
-                    //是数字，但是超过库存或5张则判断
-                    if (count > stock || count > 5) {
-                        //若库存大于5则置5
-                        if (stock > 5) {
-                            $(this).val(5);
-                            setTotalMoney(5);
-                        } else {
-                            //若库存小于于5则置为库存
-                            $(this).val(stock);
-                            setTotalMoney(stock);
-                        }
-                    } else if (count < 1) {
-                        //负数时的操作
-                        $(this).val(1);
-                        setTotalMoney(1);
-                    } else {
-                        //都满足就直接用输入框里的值
-                        $(this).val(count);
-                        setTotalMoney(count)
-                    }
-                }
-            })
-
-
-            /*
-                通过传入的showid用ajax获取对应演出的具体信息
-             */
-            $.ajax({
-                type: "POST",
-                url: "getOneShowDetails?showid=" + showid,
-                success: function (data) {
-                    //以下为搬运工作
-                    $("#poster").attr("src", "images/" + data[0].ppicture);//海报
-                    $("#headtitle").html(data[0].showtitle);//大字标题
-                    $("#datetime").html("时间：" + data[0].showdate + " | " + data[0].begin);//演出时间
-                    $("#venue").html("场馆：" + data[0].saddress + " | " + data[0].vname);//演出场馆
-                    $("#gdmap").attr('href', "https://www.amap.com/search?query=" + data[0].vname);//高德地图链接
-                    var beginhour = data[0].begin.split(":")[0];//定义开始时间（小时）
-                    var beginminute = data[0].begin.split(":")[1];//定义开始时间（分钟）
-                    var endhour = data[0].end.split(":")[0];//定义结束时间（小时）
-                    var endminute = data[0].end.split(":")[1];//定义结束时间（分钟）
-                    var last = (endhour - beginhour) * 60 + (endminute - beginminute);//通过上面四个计算演出持续时间
-                    $("#lasttime").html(last + "分钟（以现场为准）");//持续时间
-                    $("#chooseshow").html(data[0].saddress + data[0].showdate);//选择演出
-                    $("#performer").html(data[0].pname);//演员是谁
-                    $("#cdecription").html(data[0].pdecription);//演出简介（富文本）
-
-                    var quehuo;//判断是否缺货
-                    var showprice;//记录价位
-                    /*
-                        遍历data
-                     */
-                    console.log(data);
-                    for (var i = 0; i < data.length; i++) {
-                        quehuo = data[i].seatCount > 0 ? "" : "缺货登记";
-                        showprice = data[i].showprice + "元";
-                        //拼接价位框
-                        $("#chooseVenue").append("<div class=\"select_right_list_item sku_item select2 svid\" id='svid" + data[i].svid + "'>" +
-                            "<span class=\"notticket\">" + quehuo + "</span>\n" +
-                            "<div class=\"skuname\">" + showprice + "</div>\n" +
-                            "</div>");
-
-                        /*
-                            不缺货则添加点击事件：点击变红、单价变更、通过showThisStock（）使用ajax获取当前库存、数量置1
-                         */
-                        if (quehuo == "") {
-                            $("#svid" + data[i].svid).click(function () {
-                                $(".select2").each(function () {
-                                    $(this).removeClass("active");
-                                });
-                                $(this).addClass("active");
-
-                                everyMoney = $(this).children("div").html();
-                                everyMoney = everyMoney.split("元")[0];
-                                $("#totalMoney").html(everyMoney);
-
-                                var vid = $(this).attr("id").split("id")[1];
-                                showThisStock(vid);
-                                $("#count_id").val(1);
-                            })
-
-                        }
-
-                    }
-                },
-                error: function () {
-                    alert("糟糕，传输好像出错了")
-                }
-
-            })
+            $("#count_id").val(scount);
 
 
         })
@@ -145,46 +118,6 @@
             }
         }
 
-        /**
-         * 点击+号时执行的方法
-         */
-        function add() {
-            var counta = parseInt($("#count_id").val());
-            var stocka = parseInt($("#everyStock").html().split(":")[1]);
-            if (counta < stocka && counta < 5) {
-                $("#count_id").val(counta - 0 + 1);
-                setTotalMoney(counta + 1);
-            }
-        }
-
-        /**
-         * 点击-号时执行的方法
-         */
-        function min1() {
-            var countm = parseInt($("#count_id").val());
-            if (countm > 1) {
-                $("#count_id").val(countm - 1);
-                setTotalMoney(countm - 1);
-            }
-        }
-
-        /**
-         * 通过ajax获取对应svid的库存
-         * @param sid：其实是svid
-         */
-        function showThisStock(sid) {
-            $.ajax({
-                type: "POST",
-                url: "getOneStock?svid=" + sid,
-                success: function (data) {
-                    $("#everyStock").html("库存余量:" + data);
-                },
-                error: function () {
-                    alert("获取库存失败")
-                }
-
-            })
-        }
 
         /**
          * 通过传入数量框的值来计算总价
@@ -200,33 +133,8 @@
                 }
             })
         }
-        $(function () {
-            $('#keyword').bind('keypress', function (event) {
-                if (event.keyCode == "13") {
-                    toKeyword();
-                }
-            });
-        })
-        function toKeyword() {
-            var ksvid;
-            $(".svid").each(function () {
-                ksvid=$(this).attr("id").split("id")[1];
-            })
 
-            var keyword = $("#keyword").val();
-            $.ajax({
-                type:"POST",
-                url:"getCityIdBysvid?svid="+ksvid,
-                success:function (data) {
 
-                    window.location.href="shopsort.html?keyword="+keyword+"&cityId="+data+"&pType=&date=";
-                },
-                error:function () {
-                    alert("获取信息错误")
-                }
-            })
-
-        }
 
 
     </script>
@@ -264,11 +172,11 @@
 
 <div class="dm-header-wrap">
     <div class="dm-header-box" data-spm="top">
-        <a href="head.html"><img class="i-logo" src="images/welogo.jpg"></a>
+        <a href="#"><img class="i-logo" src="img/pinle.jpg"></a>
 
         <div class="recommend-header">
-            <a href="head.html" class="type-recommend" data-spm="dhome" >首页</a>
-            <a href="shopsort.html?keyword=&cityId=&pType=&date=" class="type-recommend" data-spm="dcategory" ">分类</a>
+            <a href="#" class="type-recommend" data-spm="dhome" onclick="toKeyword()">首页</a>
+            <a href="#" class="type-recommend" data-spm="dcategory" onclick="toKeyword()">分类</a>
 
         </div>
 
@@ -475,9 +383,8 @@
                                 </div>
                                 <div class="list">
                                     <div class="title">演出介绍</div>
-                                    <div class="words">
-                                        <p id="cdecription">
-                                        <p>
+                                    <div id="cdecription">
+                                        <p>123123
                                         </p>
                                         <!--<p style="text-align: center;"><img width="598" height="399" class="h2-lazyload"-->
                                         <!--data-src="//img.alicdn.com/imgextra/i1/2251059038/O1CN01iq3mr22GdS9bfGNos_!!2251059038.png_q60.jpg_.webp"-->
@@ -515,7 +422,7 @@
                                         <!--src="//img.alicdn.com/tfs/TB1PpVhDrvpK1RjSZFqXXcXUVXa-750-250.png">-->
                                         <!--</p>-->
                                         <!--<p>6月22日让我们期待林宥嘉idol世界巡回演唱会唱响济南！</p>-->
-                                        </p>
+
                                     </div>
                                 </div>
                             </div>
@@ -568,4 +475,6 @@
 
 </body>
 
+</html>
+</body>
 </html>

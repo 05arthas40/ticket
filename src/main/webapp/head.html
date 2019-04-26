@@ -90,21 +90,25 @@
 
             /*---------------------enter跳转分割线---------------------------*/
             var cookie = document.cookie;
-            var flag = cookie.indexOf("userid");
-            if (flag != -1){
-                $.ajax({
-                    type:"POST",
-                    url:"getNickname",
-                    contentType:"application/json;cahrset=utf-8",
-                    success:function (response) {
-                        $("#login").empty();
-                        $("#login").append("<span href='myinfo.html' class='span-box-header span-user' data-spm='dlogin'>"+response.nickname+"</span>");
-                        $("#portrait").attr("src","images/"+response.icon);
-                    },
-                    error:function (response) {
-                        console.log(response);
-                    }
-                })
+            var string = cookie.split("=")[0];
+            var string1 = cookie.split("=")[1].split(";")[0];
+            alert(string == "userid");
+            if (string == "userid"){
+                $("#login").empty();
+                $("#login").append("<span  class='span-box-header span-user' data-spm='dlogin'><a href='myinfo.html'>"+string1+"</a></span>");
+                // $.ajax({
+                //     type:"POST",
+                //     url:"getNickname",
+                //     contentType:"application/json;cahrset=utf-8",
+                //     success:function (response) {
+                //         $("#login").empty();
+                //         $("#login").append("<span href='myinfo.html' class='span-box-header span-user' data-spm='dlogin'>"+response.nickname+"</span>");
+                //         $("#portrait").attr("src","images/"+response.icon);
+                //     },
+                //     error:function (response) {
+                //         console.log(response);
+                //     }
+                // })
             }
             /*---------------------登录跳转分割线---------------------------*/
             $.ajax({
@@ -141,11 +145,15 @@
 
                 },
                 error: function () {
-                    alert("数据传输有误")
-                }
+                    alert("数据传输有误");
+                },
             })
 
         })
+
+        function toLogin(){
+            window.location.href="login.html"
+        }
 
         function toSearch() {
             var search = $("#search").val();
@@ -284,7 +292,7 @@
                     <div class="span-box-header name-user"></div>
                 </a>
                 <div class="login-user show" id="login">
-                    <span class="span-box-header span-user" data-spm="dlogin">登录</span>
+                    <span class="span-box-header span-user" onclick="toLogin()" data-spm="dlogin">登录</span>
                 </div>
 
             </div>
@@ -306,12 +314,12 @@
 
 <div class="slideBox">
     <ul>
-        <li><img src="img/1.jpg" alt="" width="800" height="300"/></li>
-        <li><img src="img/2.jpg" alt="" width="800" height="300"/></li>
-        <li><img src="img/3.jpg" alt="" width="800" height="300"/></li>
-        <li><img src="img/kunkun.jpg" alt="" width="800" height="300"/></li>
-        <li><img src="img/kunkun.jpg" alt="" width="800" height="300"/></li>
-        <li><img src="img/kunkun.jpg" alt="" width="800" height="300"/></li>
+        <li><a href="shopdetails.html?showid=1"><img  src="images/1.jpg" alt="" width="800" height="300"/></a></li>
+        <li><a href="shopdetails.html?showid=2"><img src="images/kunkun.jpg" alt="" width="800" height="300"/></a></li>
+        <li><a href="shopdetails.html?showid=3"><img src="images/1.jpg" alt="" width="800" height="300"/></a></li>
+        <li><a href="shopdetails.html?showid=4"><img src="images/kunkun.jpg" alt="" width="800" height="300"/></a></li>
+        <li><a href="shopdetails.html?showid=5"><img src="images/1.jpg" alt="" width="800" height="300"/></a></li>
+        <li><a href="shopdetails.html?showid=6"><img src="images/kunkun.jpg" alt="" width="800" height="300"/></a></li>
     </ul>
     <div class="spanBox">
         <span class="active"> </span>

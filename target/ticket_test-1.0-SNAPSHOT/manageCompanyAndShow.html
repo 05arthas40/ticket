@@ -352,6 +352,9 @@
     //管理审批公司的ajax
     //状态判断  0：未审核，1：已认证，2：未通过审核，3：删除
     function CheckCompany(number) {
+        $("#pagination").hide();
+        //清空公司下拉框
+        $("#cname").empty();
         //隐藏showDataTable表格
         $("#showDataTable").hide();
         //清空companyDataTable表格

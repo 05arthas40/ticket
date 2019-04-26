@@ -1,6 +1,7 @@
 package com.showManager.controller;
 
 import com.showManager.dto.ShowHomeDto;
+import com.showManager.dto.Userdto;
 import com.showManager.pojo.UserInfo;
 import com.showManager.service.ShowHomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +25,18 @@ public class ShowHomeController {
     }
 
     @RequestMapping(value = "getNickname",method = RequestMethod.POST)
-    public Object UserInfo(@RequestBody @Valid HttpSession session){
+    public Object UserInfo(HttpSession session){
         UserInfo userinfo = (UserInfo) session.getAttribute("user");
+        System.out.println(session.getAttribute("user"));
+
+        System.out.println(session.getAttributeNames());
         if (userinfo.getNickname()==null){
             userinfo.setNickname(userinfo.getUsername());
         }
         if (userinfo.getIcon()==null){
             userinfo.setIcon("1.jpg");
         }
+        System.out.println(userinfo.toString());
         return userinfo;
     }
 }
