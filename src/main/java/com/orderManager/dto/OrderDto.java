@@ -1,69 +1,33 @@
 package com.orderManager.dto;
 
-public class OrderAllDto {
-    private int odid;
+public class OrderDto {
     private int orderid;
-    private int svid;
     private int userid;
     private int cid;
-    private int ticketcount;
-    private String price;
-    private String singleprice;
     private String ordertime;
     private String expfee;
     private double discount=1.00;
     private String  totalprice;
-    private int status;
     private String uaname;
     private String uaphone;
     private String  uaddress;
-    private String shoturl;
+    private int status;
 
     @Override
     public String toString() {
-        return "OrderAllDto{" +
-                "odid=" + odid +
-                ", orderid=" + orderid +
-                ", svid=" + svid +
+        return "OrderVo{" +
+                "orderid=" + orderid +
                 ", userid=" + userid +
                 ", cid=" + cid +
-                ", ticketcount=" + ticketcount +
-                ", price='" + price + '\'' +
-                ", singleprice='" + singleprice + '\'' +
                 ", ordertime='" + ordertime + '\'' +
                 ", expfee='" + expfee + '\'' +
                 ", discount=" + discount +
                 ", totalprice='" + totalprice + '\'' +
-                ", status=" + status +
                 ", uaname='" + uaname + '\'' +
                 ", uaphone='" + uaphone + '\'' +
                 ", uaddress='" + uaddress + '\'' +
-                ", shoturl='" + shoturl + '\'' +
+                ", status=" + status +
                 '}';
-    }
-
-    public String getShoturl() {
-        return shoturl;
-    }
-
-    public void setShoturl(String shoturl) {
-        this.shoturl = shoturl;
-    }
-
-    public String getSingleprice() {
-        return singleprice;
-    }
-
-    public void setSingleprice(String singleprice) {
-        this.singleprice = singleprice;
-    }
-
-    public String getOrdertime() {
-        return ordertime;
-    }
-
-    public void setOrdertime(String ordertime) {
-        this.ordertime = ordertime;
     }
 
     public String getUaname() {
@@ -90,13 +54,6 @@ public class OrderAllDto {
         this.uaddress = uaddress;
     }
 
-    public int getOdid() {
-        return odid;
-    }
-
-    public void setOdid(int odid) {
-        this.odid = odid;
-    }
 
     public int getOrderid() {
         return orderid;
@@ -104,31 +61,6 @@ public class OrderAllDto {
 
     public void setOrderid(int orderid) {
         this.orderid = orderid;
-    }
-
-    public int getSvid() {
-        return svid;
-    }
-
-    public void setSvid(int svid) {
-        this.svid = svid;
-    }
-
-    public int getTicketcount() {
-        return ticketcount;
-    }
-
-    public void setTicketcount(int ticketcount) {
-        this.ticketcount = ticketcount;
-    }
-
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
     }
 
     public int getUserid() {
@@ -147,6 +79,13 @@ public class OrderAllDto {
         this.cid = cid;
     }
 
+    public String getOrdertime() {
+        return ordertime;
+    }
+
+    public void setOrdertime(String ordertime) {
+        this.ordertime = ordertime;
+    }
 
     public String getExpfee() {
         return expfee;

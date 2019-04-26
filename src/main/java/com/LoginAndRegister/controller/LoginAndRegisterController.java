@@ -84,6 +84,7 @@ public class LoginAndRegisterController {
                 //将登录信息添加进map,方便后面判断是否重复登录
                 UserloginMap.add(loginInfo.getLogin_number(),session.getId());
                 Userdto userdto = getUserdto();
+                System.out.println(userdto);
                 session.setAttribute("user",userdto);
                 Cookie cookie=new Cookie("userid",userdto.getUserid().toString());
                 cookie.setMaxAge(1800);

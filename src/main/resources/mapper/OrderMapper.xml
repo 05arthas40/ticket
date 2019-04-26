@@ -35,17 +35,9 @@
     </insert>
 
     <select id="getOrderid" resultType="int">
-       select max(orderid) from ticketorder
+       select orderid from ticketorder where ordertime=#{arg0} and uaphone=#{arg1}
     </select>
 
-    <delete id="delOrder" parameterType="int">
-        delete from ticketorder where orderid=#{orderid}
-    </delete>
-
-    <insert id="addShortCut" parameterType="com.orderManager.vo.ShortCutVo">
-      insert into shortcut(svid,orderid,ticketcount,singleprice,price)
-      value(#{svid},#{orderid},#{ticketcount},#{singleprice},#{price})
-    </insert>
 
     <insert id="addOrderDetail" parameterType="com.orderManager.vo.OrderDetailVo">
          insert into orderdetail(svid,orderid,ticketcount) value(#{svid},#{orderid},#{ticketcount})
@@ -62,8 +54,38 @@
                 <if test="userid!=null and userid!=''">
                     and userid=#{userid}
                 </if>
-                    and status=#{status}
+                and status=#{status}
             </trim>
         </where>
     </select>
+
+    <select id="getOrderByOrderId" resultType="com.orderManager.dto.OrderDto" parameterType="int">
+       select * from ticketorder where orderid=#{orderid}
+    </select>
+
+    <select id="getFlowByTrade_no" resultType="int" parameterType="String">
+       select count(*) from flows where trade_no=#{trade_nos}
+    </select>
+
+    <select id="getFlowByOrderid" resultType="int" parameterType="int">
+       select orderid from flows where orderid=#{orderid}
+    </select>
+
+    <insert id="addFlow" parameterType="com.orderManager.vo.FlowsVo">
+         insert into flows(orderid,creattime,paytime,paytitle,tradestatus,trade_no)
+          value(#{orderid},#{creattime},#{paytime},#{paytitle},#{tradestatus},#{trade_no})
+    </insert>
+
+    <update id="updateFlow" parameterType="com.orderManager.vo.FlowsVo">
+       update flows set createtime=#{createtime},paytime=#{paytime},paytitle=#{paytitle},
+       tradestatus=#{tradestatus},trade_no=#{trade_no} where orderid=#{orderid}
+    </update>
+
+    <select id="getFlows" resultType="com.orderManager.dto.FlowsDto">
+       select * from  flows
+    </select>
+
+    <update id="setSuccess" parameterType="int">
+       update ticketorder set status=1  where orderid=#{orderid}
+    </update>
 </mapper>

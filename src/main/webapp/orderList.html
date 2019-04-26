@@ -118,7 +118,7 @@
                     <div class="list-login">
                         <a href="//passport.damai.cn/accountinfo/myinfo" class="li-login select" data-spm="duserinfo">个人信息</a>
                         <a href="//my.damai.cn/account/accountSafe" class="li-login" data-spm="daccountsetting">账号设置</a>
-                        <a href="orderList.html" class="li-login" data-spm="dordermanage">订单管理</a>
+                        <a href="//orders.damai.cn/orderList" class="li-login" data-spm="dordermanage">订单管理</a>
                         <a href="//www.damai.cn/redirect.aspx?type=logout" data-spm="dexit" class="li-login out-login">退出登录</a>
                     </div>
                 </div>
@@ -194,11 +194,13 @@
                                 data: JSON.stringify(
                                 ),
                                 success:function (responseText) {
-                                    console.log(responseText[0].uaname);
-                                    $("#uaname").html(responseText[0].uaname)
-                                    $("#uaphone").html(responseText[0].uaphone)
-                                    $("#uaddress").html(responseText[0].uaddress)
-                                    $("#totalPrice").html(responseText[0].totalPrice)
+                                    console.log(responseText);
+                                    $("#uaname").html(responseText[0].uaname);
+                                    $("#ordertime").html(responseText[0].ordertime);
+                                    $("#uaphone").html(responseText[0].uaphone);
+                                    $("#uaddress").html(responseText[0].uaddress);
+                                    $("#totalprice").html(responseText[0].totalprice);
+                                    $("#ticketcount").html(responseText[0].ticketcount)
                                   /*  $("#svid").html(responseText[0].svid)*/
                                 },
                                 error:function (responseText) {

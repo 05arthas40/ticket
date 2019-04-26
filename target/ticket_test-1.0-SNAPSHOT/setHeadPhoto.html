@@ -9,7 +9,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="https://passport.damai.cn/images/favicon.ico" />
 <script type="text/javascript" src="//dui.damai.cn/damai_v2/common/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="//dui.damai.cn/damai_v2/passport/ui-min.js"></script> -->
-<script src="js/userManager/base.js" type="text/javascript"></script>
+<script src="js/base.js" type="text/javascript"></script>
 
 <link rel="stylesheet" type="text/css" href="//g.alicdn.com/damai/usercenter/0.1.5/css/style.css">
 <script type="text/javascript">
@@ -181,15 +181,15 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
 
                   <div class="dm-crop-row">
                     <div class="dm-crop-preview">
-                      <img class="dm-crop-preview__image" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+                      <img class="dm-crop-preview__image" id="showHeadImg">
                     </div>
                   </div>
 
                   <div class="dm-crop-row">
-                    <a class="dm-crop-btn dm-crop-btn__upload" href="javascript:;">
+                    <a class="dm-crop-btn dm-crop-btn__upload" id="choosePicture" onclick="">
                         选择照片
                         <form id="my_headImg" method="post" action="updateHeadImg" enctype="multipart/form-data">
-                            <input type="file" name="file Img" id="headImg" />
+                            <input type="file" name="fileImg" id="headImg" />
                         </form>
                     </a>
                     <div class="dm-crop-text">支持JPG、PNG</div>
@@ -205,6 +205,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
 </div> 
 <!--<script src="js/crop.js"></script>-->
 <script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+       <script type="text/javascript" src="js/userManager/jquery.cookie.js"></script>
 <script>
 /*(function () {
   window.onload = function () {
@@ -220,15 +221,29 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
   }
 })()*/
 userid=$.cookie("userid");
+
+//图片改变事件--改变展示的图片
+
+
+$("#headImg").change(function () {
+    //获取用户上传的图片
+    var fileObj = this.files[0];
+    //把图片对象转换成url
+    var fileUrl = window.URL.createObjectURL(fileObj);
+    $("#showHeadImg").css("width","200px");
+    $("#showHeadImg").attr("src", fileUrl);
+})
 function saveImg() {
     alert("进入点击事件");
     var formData=new FormData();
-    formData.append("Img",$("#headImg")[0].files[0]);
+    alert(formData)
+    formData.append("img",$("#headImg")[0].files[0]);
     console.log(formData)
     $.ajax({
-        url: "updateHeadImg?userid="+userid,
+        url: "updateHeadImg",
         type: "POST",
         data: formData,
+        dataType:"json",
         processData: false,
         contentType: false,
         success: function(response){
@@ -240,7 +255,7 @@ function saveImg() {
             alert("请求失败，宝贝")
         }
     });
-   /*$("#my_headImg").submit()*/
+   $("#my_headImg").submit()
 }
 </script>
 

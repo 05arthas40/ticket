@@ -60,7 +60,7 @@
 <div class="rrcc" id="RightBox">
     <div class="center" id="Mobile" onclick="show_menuC()"></div>
     <div class="right" id="li010" style="width: 100%; height: 100%; border-bottom: transparent;">
-        <div class="right01"><img src="images/04.gif"/> 演出列表 <img src="images/04.gif"/> 演唱会列表 <img src="images/04.gif"/> 演唱会申请</div>
+        <div class="right01"><img src="images/companyAndShow/04.gif"/> 演出列表 <img src="images/companyAndShow/04.gif"/> 演唱会列表 <img src="images/companyAndShow/04.gif"/> 演唱会申请</div>
         <div style="margin-left: 20px; width: 30%;float: left;">
             <div>所属演出：</div>
             <textarea class="txt" cols="30" rows="3" style="OVERFLOW: hidden" readonly="readonly"></textarea><br/>
@@ -76,7 +76,7 @@
             <div>具体地点：</div>
             <textarea id="address" class="txt" cols="30" rows="3" style="OVERFLOW: hidden"></textarea><br/>
             <br/>
-            <input type="button" value="确认申请" style="width: 100px; height: 30px" onclick="addShowApplication()"/>
+            <input type="button" value="确认申请" style="width: 100px; height: 30px" onclick="return addShowApplication()"/>
         </div>
 
         <div style="margin-left: 20px; width: 30%;float: left;">
@@ -191,10 +191,12 @@
             success: function (responseText) {
                 if (responseText == true) {
                     alert("申请成功");
+
                 } else {
                     alert("操作失败");
                 }
-                window.location.href = "showApplicationList.html?"
+                window.location.href = "showApplicationList.html?performanceId="+performanceId;
+                return false;
             },
             error: function () {
                 console.log("服务器错误")

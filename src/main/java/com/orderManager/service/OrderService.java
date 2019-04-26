@@ -1,14 +1,13 @@
 package com.orderManager.service;
 
 
-
+import com.orderManager.dto.FlowsDto;
 import com.orderManager.dto.OrderAllDto;
+import com.orderManager.dto.OrderDto;
 import com.orderManager.dto.UserAdressDto;
-import com.orderManager.vo.OrderAllVo;
-import com.orderManager.vo.OrderDetailVo;
-import com.orderManager.vo.OrderVo;
-import com.orderManager.vo.SeeOrders;
+import com.orderManager.vo.*;
 
+import javax.management.ObjectName;
 import java.util.List;
 
 public interface OrderService {
@@ -22,15 +21,21 @@ public interface OrderService {
 
     boolean delAddresses(int uaid);
 
-    OrderDetailVo getOrderDetailVo(OrderAllVo vo);
-
-    OrderVo getOrderVo(OrderAllVo vo);
-
-    boolean submitOrder(OrderDetailVo detailVo, OrderAllVo vo);
-
-    int getOrderIdAfterAdd(OrderVo orderVo);
-
-    void delOrder(int orderid);
+    int submitOrder(OrderAllVo vo);
 
     List<OrderAllDto> seeOrders(SeeOrders orders);
+
+    OrderDto getOrderByOrderId(int orderid);
+
+    int getFlowByTrade_no(String trade_no);
+
+    Object getFlowByOrderid(int orderid);
+
+    int addFlow(FlowsVo flowsVo);
+
+    int updateFlow(FlowsVo flowsVo);
+
+    List<FlowsDto> getFlows();
+
+    int setSuccess(int orderid);
 }

@@ -36,7 +36,9 @@ public class PerformanceController {
      */
     @RequestMapping(value = "getAllPerformance",method = RequestMethod.POST)
     public List<PerformanceApplication> getAllPerformance(@RequestParam int companyId) {
-        return performanceService.getAllPerforman(companyId);
+        List<PerformanceApplication> list= performanceService.getAllPerforman(companyId);
+        System.out.println(list);
+        return list;
     }
 
     /**

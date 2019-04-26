@@ -6,6 +6,7 @@ import com.userManager.pojo.UserInfo;
 import com.userManager.service.UserInfoService;
 import com.userManager.util.CodeUtil;
 //import com.userManager.util.MailUtil;
+import com.userManager.util.MailUtil;
 import com.userManager.vo.UserAddressVo;
 import com.userManager.vo.UserEmailVo;
 import com.userManager.vo.UserInfoVo;
@@ -147,24 +148,24 @@ public class userInfoController {
         return b;
     }
 
-//    @ResponseBody
-//    @RequestMapping(value = "sendMail",method = RequestMethod.POST)
-//    //发送邮箱验证码验证邮箱
-//    public Object sendMail(@RequestBody UserEmailVo userEmailVo, HttpServletRequest request){
-//        System.out.println(userEmailVo);
-//        String email = userEmailVo.getEmail();
-//        String randomCode = CodeUtil.getRandomCode();
-//        boolean flag=true;
-//        if(!email.matches("^\\w+@(\\w+\\.)+\\w+$")){
-//            System.out.println("请输入正确邮箱格式");
-//            flag=false;
-//            return flag;
-//        }
-//        if(flag){
-//            //发送邮件
-//            new Thread(new MailUtil(email,randomCode)).start();
-//        }
-//        request.getSession().setAttribute("checkCode",randomCode);
-//        return flag;
-//    }
+    @ResponseBody
+    @RequestMapping(value = "sendMail",method = RequestMethod.POST)
+    //发送邮箱验证码验证邮箱
+    public Object sendMail(@RequestBody UserEmailVo userEmailVo, HttpServletRequest request){
+        System.out.println(userEmailVo);
+        String email = userEmailVo.getEmail();
+        String randomCode = CodeUtil.getRandomCode();
+        boolean flag=true;
+        if(!email.matches("^\\w+@(\\w+\\.)+\\w+$")){
+            System.out.println("请输入正确邮箱格式");
+            flag=false;
+            return flag;
+        }
+        if(flag){
+            //发送邮件
+            new Thread(new MailUtil(email,randomCode)).start();
+        }
+        request.getSession().setAttribute("checkCode",randomCode);
+        return flag;
+    }
 }

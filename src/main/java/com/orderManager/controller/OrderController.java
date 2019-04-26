@@ -1,11 +1,11 @@
 package com.orderManager.controller;
 
 import com.alibaba.fastjson.JSONObject;
-//import com.alipay.api.AlipayApiException;
-//import com.alipay.api.AlipayClient;
-//import com.alipay.api.DefaultAlipayClient;
-//import com.alipay.api.request.AlipayFundTransOrderQueryRequest;
-//import com.alipay.api.response.AlipayFundTransOrderQueryResponse;
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.request.AlipayFundTransOrderQueryRequest;
+import com.alipay.api.response.AlipayFundTransOrderQueryResponse;
 import com.orderManager.dto.OrderAllDto;
 import com.orderManager.dto.UserAdressDto;
 import com.orderManager.service.OrderService;
@@ -32,8 +32,6 @@ public class OrderController {
 
     @RequestMapping(value = "getAddressByUaid", method = RequestMethod.POST)
     public Object getAddressByUaid(int uaid) {
-        System.out.println(uaid);
-        System.out.println(service.getAddressByUaid(uaid));
         return service.getAddressByUaid(uaid);
     }
 
@@ -51,39 +49,26 @@ public class OrderController {
 
     @RequestMapping(value = "editAddress", method = RequestMethod.POST)
     public Object editAddress(@RequestBody UserAdressDto dto) {
-        System.out.println(dto);
-        System.out.println(service.editAddress(dto));
+
         return service.editAddress(dto);
     }
 
     @RequestMapping(value = "submitOrder", method = RequestMethod.POST)
-    public boolean submitOrder(@RequestBody OrderAllVo vo) {
+    public int submitOrder(@RequestBody OrderAllVo vo) {
         System.out.println(vo);
-        OrderDetailVo detailVo = service.getOrderDetailVo(vo);
-        OrderVo orderVo = service.getOrderVo(vo);
         int orderid = 0;
-        boolean flag = false;
         try {
-            orderid = service.getOrderIdAfterAdd(orderVo);
-            if (orderid > 0) {
-                try {
-                    detailVo.setOrderid(orderid);
-                    flag = service.submitOrder(detailVo, vo);
-                } catch (Exception e) {
-                    service.delOrder(detailVo.getOrderid());
-                    System.out.println(e.getMessage());
-                }
-            }
+            orderid = service.submitOrder(vo);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return flag;
+        return orderid;
     }
 
     @RequestMapping(value = "seeOrders", method = RequestMethod.GET)
     public Object seeOrders(SeeOrders orders) {
         System.out.println(orders);
-        List<OrderAllDto> order=service.seeOrders(orders);
+        List<OrderAllDto> order = service.seeOrders(orders);
         System.out.println(order);
         return order;
     }

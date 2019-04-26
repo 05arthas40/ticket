@@ -1,12 +1,11 @@
 package com.orderManager.dao;
 
 
+import com.orderManager.dto.FlowsDto;
 import com.orderManager.dto.OrderAllDto;
+import com.orderManager.dto.OrderDto;
 import com.orderManager.dto.UserAdressDto;
-import com.orderManager.vo.OrderDetailVo;
-import com.orderManager.vo.OrderVo;
-import com.orderManager.vo.SeeOrders;
-import com.orderManager.vo.ShortCutVo;
+import com.orderManager.vo.*;
 
 import java.util.List;
 
@@ -24,14 +23,23 @@ public interface OrderDao {
 
     int addOrder(OrderVo orderVo);
 
-    int getOrderid();
-
-    void delOrder(int orderid);
-
-    int addShortCut(ShortCutVo shortCutVo);
+    int getOrderid(String ordertime, String uaphone);
 
     int addOrderDetail(OrderDetailVo detailVo);
 
     List<OrderAllDto> seeOrders(SeeOrders orders);
 
+    List<OrderDto> getOrderByOrderId(int orderid);
+
+    int getFlowByTrade_no(String trade_no);
+
+    Object getFlowByOrderid(int orderid);
+
+    int addFlow(FlowsVo flowsVo);
+
+    int updateFlow(FlowsVo flowsVo);
+
+    List<FlowsDto> getFlows();
+
+    int setSuccess(int orderid);
 }

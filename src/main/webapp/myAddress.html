@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -181,8 +182,8 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
         
 <!--        <dd><a id="nav_MyInfo" href="https://passport.damai.cn/customerManage/customerManageIndex" title="常用购票人"  domain=""><span >常用购票人</span></a></dd>-->
     </dl>
-
     <script type='text/javascript'>
+
 		 userid=$.cookie("userid");
     (function(){ 
         document.getElementById('mydamai').style.display='none';
@@ -211,12 +212,12 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
                             "\t\t\t<dd style=\"width: 580px;word-break: break-all;\">"+item.userAddressList[0].uaddress+"</dd>";
                         if(item.userAddressList[0].isDefault==1){
                             str += "\t\t\t<dt  class='isDefault'>"+"默认地址"+"</dt>\n"+
-                                "\t\t\t<a class='f1 mr10 m_c3' href='editAddress.html?uaid="+item.userAddressList[0].uaid+"&userid="+userid+"'>修改</a>" +
+                                "\t\t\t<a class='f1 mr10 m_c3' href='editAddress1.html?uaid="+item.userAddressList[0].uaid+"&userid="+userid+"'>修改</a>" +
                                 "\t\t\t<a class='f1 mr10 m_c3' onclick='delAddress()' value='"+item.userAddressList[0].uaid+"'>删除</input>" +
                                 "<br><br>"
                         }else {
                             str += "\t\t\t<dt  class='isDefault hidden'>"+"默认地址"+"</dt>\n"+
-                                "\t\t\t<a class='f1 mr10 m_c3' href='editAddress.html?uaid="+item.userAddressList[0].uaid+"&userid="+userid+"'>修改</a>" +
+                                "\t\t\t<a class='f1 mr10 m_c3' href='editAddress1.html?uaid="+item.userAddressList[0].uaid+"&userid="+userid+"'>修改</a>" +
                                 "\t\t\t<a class='f1 mr10 m_c3' onclick='delAddress("+item.userAddressList[0].uaid+")'>删除</input>" +
                                 "<br><br>"
 						}

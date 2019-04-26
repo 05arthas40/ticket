@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="//g.alicdn.com/damai/pc/1.0.36/p/index/index.css">
     <script src="//g.alicdn.com/secdev/sufei_data/3.7.1/index.js" id="aplus-sufei"></script>
     <script src="//g.alicdn.com/secdev/nsv/1.0.59/ns_b_70_3_f.js"></script>
+    <script type="text/javascript" src="js/userManager/jquery.cookie.js"></script>
+
 
     <script src="jquery/jquery-2.1.1.min.js"></script>
     <script src="unslider.min.js"></script>
@@ -90,25 +92,25 @@
 
             /*---------------------enter跳转分割线---------------------------*/
             var cookie = document.cookie;
-            var string = cookie.split("=")[0];
-            var string1 = cookie.split("=")[1].split(";")[0];
-            alert(string == "userid");
-            if (string == "userid"){
+            var string = cookie.split("=")[1].split(";")[1];
+            var string1 = cookie.split("=")[2].split(";")[0];
+
+            if (string != null){
                 $("#login").empty();
                 $("#login").append("<span  class='span-box-header span-user' data-spm='dlogin'><a href='myinfo.html'>"+string1+"</a></span>");
-                // $.ajax({
-                //     type:"POST",
-                //     url:"getNickname",
-                //     contentType:"application/json;cahrset=utf-8",
-                //     success:function (response) {
-                //         $("#login").empty();
-                //         $("#login").append("<span href='myinfo.html' class='span-box-header span-user' data-spm='dlogin'>"+response.nickname+"</span>");
-                //         $("#portrait").attr("src","images/"+response.icon);
-                //     },
-                //     error:function (response) {
-                //         console.log(response);
-                //     }
-                // })
+            //     $.ajax({
+            //         type:"POST",
+            //         url:"getNickname",
+            //         contentType:"application/json;cahrset=utf-8",
+            //         success:function (response) {
+            //             $("#login").empty();
+            //             $("#login").append("<span href='myinfo.html' class='span-box-header span-user' data-spm='dlogin'>"+response.nickname+"</span>");
+            //             $("#portrait").attr("src","images/"+response.icon);
+            //         },
+            //         error:function (response) {
+            //             console.log(response);
+            //         }
+            //     })
             }
             /*---------------------登录跳转分割线---------------------------*/
             $.ajax({

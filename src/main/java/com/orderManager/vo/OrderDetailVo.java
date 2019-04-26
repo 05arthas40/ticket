@@ -5,6 +5,7 @@ public class OrderDetailVo {
     private int orderid;
     private int svid;
     private int ticketcount;
+    private String shoturl;
 
     @Override
     public String toString() {
@@ -13,10 +14,17 @@ public class OrderDetailVo {
                 ", orderid=" + orderid +
                 ", svid=" + svid +
                 ", ticketcount=" + ticketcount +
+                ", shoturl='" + shoturl + '\'' +
                 '}';
     }
 
+    public String getShoturl() {
+        return shoturl;
+    }
 
+    public void setShoturl(String shoturl) {
+        this.shoturl = shoturl;
+    }
 
 
     public int getOdid() {

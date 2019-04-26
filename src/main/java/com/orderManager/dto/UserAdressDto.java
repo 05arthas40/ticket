@@ -4,6 +4,15 @@ public class UserAdressDto {
     private int userid;
     private int uaid;
     private String uaname;
+
+    public String getUaphone() {
+        return uaphone;
+    }
+
+    public void setUaphone(String uaphone) {
+        this.uaphone = uaphone;
+    }
+
     private String  uaphone;
     private String  uaddress;
     private byte  isDefault;
@@ -46,13 +55,6 @@ public class UserAdressDto {
         this.uaname = uaname;
     }
 
-    public String getUaphone() {
-        return uaphone;
-    }
-
-    public void setUaphone(String uaphone) {
-        this.uaphone = uaphone;
-    }
 
     public String getUaddress() {
         return uaddress;
