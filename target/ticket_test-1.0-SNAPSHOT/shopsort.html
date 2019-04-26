@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,6 +19,7 @@
     <link rel="stylesheet" href="//g.alicdn.com/damai/??/vue-pc/0.0.19/vendor.css,vue-pc/0.0.19/search/search.css">
     <link rel="stylesheet" href="//g.alicdn.com/??damai/pc/1.0.36/p/head/index.css,damai/pc/1.0.36/p/footer/index.css">
     <link rel="stylesheet" type="text/css" href="css/jquery.pagination.css">
+    <link rel="stylesheet" type="text/css" href="css/search-form.css">
     <script src="//g.alicdn.com/secdev/sufei_data/3.7.1/index.js" id="aplus-sufei"></script>
     <script src="//g.alicdn.com/secdev/nsv/1.0.59/ns_b_70_3_f.js"></script>
 </head>
@@ -59,7 +62,7 @@
         </div>
         <div class="search-header" data-spm="searchtxt">
             <img class="i-search" src="//img.alicdn.com/tfs/TB1qv3jxGmWBuNjy1XaXXXCbXXa-34-36.png" alt="搜索">
-            <input class="input-search" id="search" placeholder="搜索明星、演出、体育赛事" data-spm="dsearchbtn" id="keyword">
+            <input class="input-search" placeholder="搜一搜，我这里有好康的" data-spm="dsearchbtn" id="search">
             <div class="btn-search" data-spm="dsearchbtn2" onclick="searchByKeyword()">搜索</div>
             <div class="list-search-wrap">
                 <div class="list-search">
@@ -304,7 +307,6 @@
         /**
          * 点击搜索按钮进行分类跳转
          */
-
         function searchByKeyword(){
             var Keyword = $("#search").val().trim();
             var url = "shopsort.html?keyword=" + Keyword + "&cityId=" + cityId + "&pType=" + type + "&date=" + date;
@@ -454,7 +456,7 @@
                             <!--类别-->
                                     "<span data-v-678d2ef7='' class='items__img__tag'>"+list[i].ptype+"</span>"+
                             <!--图片-->
-                                    "<img data-v-678d2ef7='' alt='项目图片' src='images/"+list[i].ppicture+"' lazy='loaded'>"+
+                                    "<img data-v-678d2ef7='' alt='项目图片' src='img/"+list[i].ppicture+"' lazy='loaded'>"+
                                 "</a>"+
                                 "<div data-v-678d2ef7=' class='items__txt'>"+
                                 <!--名字-->
@@ -484,7 +486,7 @@
                                 <!--价格-->
                                     "<div data-v-678d2ef7='' class='items__txt__time'>"+
                                         "<div data-v-678d2ef7='' class='items__txt__price'>" +
-                                            "<span data-v-678d2ef7=''>"+list[i].showprice/100+"<i data-v-678d2ef7=''>&nbsp;元</i></span>" +
+                                            "<span data-v-678d2ef7=''>"+list[i].showprice+"<i data-v-678d2ef7=''>&nbsp;元</i></span>" +
                                             "售票中</div>"+
                                     "</div>"+
                                 "</div>"+

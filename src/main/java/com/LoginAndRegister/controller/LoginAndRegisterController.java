@@ -1,5 +1,6 @@
 package com.LoginAndRegister.controller;
 
+import com.LoginAndRegister.XssFilter.JsoupUtils;
 import com.LoginAndRegister.dto.Marchantinfodto;
 import com.LoginAndRegister.dto.Userdto;
 import com.LoginAndRegister.entity.UserCheckTokenInfo;
@@ -37,6 +38,17 @@ public class LoginAndRegisterController {
     RegisgerService regisgerService;
     @Autowired
     LoginService loginService;
+
+    private Userdto userdto;
+
+    public Userdto getUserdto() {
+        return userdto;
+    }
+
+    public void setUserdto(Userdto userdto) {
+        this.userdto = userdto;
+    }
+
     /**
      * 登录验证中心
      * @param loginInfo 登录信息
@@ -71,6 +83,11 @@ public class LoginAndRegisterController {
                 session.setAttribute("userinfo",loginInfo);
                 //将登录信息添加进map,方便后面判断是否重复登录
                 UserloginMap.add(loginInfo.getLogin_number(),session.getId());
+                Userdto userdto = getUserdto();
+                session.setAttribute("user",userdto);
+                Cookie cookie=new Cookie("userid",userdto.getUserid().toString());
+                cookie.setMaxAge(1800);
+                response.addCookie(cookie);
                 return "success";
             }
         }
@@ -149,7 +166,10 @@ public class LoginAndRegisterController {
         //获取校验错误信息
         List s = geterrorInfo(bindingResult);
         if(s!=null){return s.toString();}
-        System.out.println(registerMarchant);
+        String clean = JsoupUtils.clean(registerMarchant.toString());
+
+        Object parse = JSONObject.parse("{"+clean+"}");
+        System.out.println(parse);
         boolean isregist = regisgerService.RegisterMarchant(registerMarchant);
         if (isregist){
             return "success";
@@ -201,6 +221,7 @@ public class LoginAndRegisterController {
     public String checkUserCenter(LoginInfo loginInfo,HttpSession session){
         //数据中心校验
         Userdto userdto = loginService.loginCheck(loginInfo);
+        setUserdto(userdto);
         //如果校验成功，则发送令牌
         if(userdto!=null&&userdto.toString()!=""){
             //创建全局会话

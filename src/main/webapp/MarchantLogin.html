@@ -98,8 +98,8 @@
                 //这里的名字一定要和input的一样
                 login_number:{
                     //最小长度8，最大长度10
-                    minlength: 8,
-                    maxlength: 11
+                    minlength: 2,
+                    maxlength: 12
                 },
                 login_password:{
                     minlength: 6,
@@ -157,7 +157,7 @@
                 if(message=="success"){
                     alert("登录成功")
                     setCookie('marchantLogin','true',1800); // 半个小时
-                     location.href="index.html";
+                     location.href="companyBaseInfo.html";
                 }else{
                     alert("登录失败")
                     location.reload();

@@ -9,11 +9,12 @@ public class ShowSortDto {
     String begin;
     String vname;
     String cityname;
-    Double showprice;
+    String showprice;
     String showtitle;
     String pname;
     String ppicture;
     String ptype;
+
 
     public int getShowid() {
         return showid;
@@ -48,11 +49,11 @@ public class ShowSortDto {
         this.vname = vname;
     }
 
-    public Double getShowprice() {
+    public String getShowprice() {
         return showprice;
     }
 
-    public void setShowprice(Double showprice) {
+    public void setShowprice(String showprice) {
         this.showprice = showprice;
     }
 

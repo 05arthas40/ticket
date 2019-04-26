@@ -1,7 +1,5 @@
 package com.showManager.dto;
 
-import java.util.Date;
-
 public class ShowDetails {
     String ppicture;
     String cityname;
@@ -12,13 +10,13 @@ public class ShowDetails {
     String saddress;
     String vname;
     Integer svid;
-    Long showprice;
+    String showprice;
     Integer seatCount;
     String pname;
     String pdecription;
     Integer cid;
 
-    public ShowDetails(String ppicture, String cityname, String showtitle, String showdate, String begin, String end, String saddress, String vname, Integer svid, Long showprice, Integer seatCount, String pname, String pdecription, Integer cid) {
+    public ShowDetails(String ppicture, String cityname, String showtitle, String showdate, String begin, String end, String saddress, String vname, Integer svid, String showprice, Integer seatCount, String pname, String pdecription, Integer cid) {
         this.ppicture = ppicture;
         this.cityname = cityname;
         this.showtitle = showtitle;
@@ -46,7 +44,7 @@ public class ShowDetails {
     public ShowDetails() {
     }
 
-    public ShowDetails(String ppicture, String cityname, String showtitle, String showdate, String begin, String end, String saddress, String vname, Integer svid, Long showprice, Integer seatCount, String pname, String pdecription) {
+    public ShowDetails(String ppicture, String cityname, String showtitle, String showdate, String begin, String end, String saddress, String vname, Integer svid, String showprice, Integer seatCount, String pname, String pdecription) {
         this.ppicture = ppicture;
         this.cityname = cityname;
         this.showtitle = showtitle;
@@ -134,11 +132,11 @@ public class ShowDetails {
         this.svid = svid;
     }
 
-    public Long getShowprice() {
+    public String getShowprice() {
         return showprice;
     }
 
-    public void setShowprice(Long showprice) {
+    public void setShowprice(String showprice) {
         this.showprice = showprice;
     }
 

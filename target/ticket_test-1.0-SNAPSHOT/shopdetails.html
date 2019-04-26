@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/sheetStyle1.css">
     <link rel="stylesheet" href="css/sheetStyle2.css">
 
-    <script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
 
     <script type="text/javascript">
 
@@ -87,7 +87,7 @@
                     console.log(data);
                     for (var i = 0; i < data.length; i++) {
                         quehuo = data[i].seatCount > 0 ? "" : "缺货登记";
-                        showprice = data[i].showprice / 100 + "元";
+                        showprice = data[i].showprice + "元";
                         //拼接价位框
                         $("#chooseVenue").append("<div class=\"select_right_list_item sku_item select2 svid\" id='svid" + data[i].svid + "'>" +
                             "<span class=\"notticket\">" + quehuo + "</span>\n" +
@@ -267,8 +267,8 @@
         <a href="head.html"><img class="i-logo" src="img/pinle.jpg"></a>
 
         <div class="recommend-header">
-            <a href="head.html" class="type-recommend" data-spm="dhome" onclick="toKeyword()">首页</a>
-            <a href="shopsort.html?keyword=&cityId=&pType=&date=" class="type-recommend" data-spm="dcategory" onclick="toKeyword()">分类</a>
+            <a href="head.html" class="type-recommend" data-spm="dhome" ">首页</a>
+            <a href="shopsort.html?keyword=&cityId=&pType=&date=" class="type-recommend" data-spm="dcategory" ">分类</a>
 
         </div>
 
@@ -292,7 +292,7 @@
         <div class="search-header" data-spm="searchtxt">
             <img class="i-search" src="//img.alicdn.com/tfs/TB1qv3jxGmWBuNjy1XaXXXCbXXa-34-36.png" alt="搜索">
             <input class="input-search" placeholder="搜一搜，我这里有好康的" data-spm="dsearchbtn" id="keyword">
-            <div class="btn-search" id="btn" data-spm="dsearchbtn2" onclick="toKeyword()">搜索</div>
+            <div class="btn-search" data-spm="dsearchbtn2" onclick="toKeyword()">搜索</div>
             <div class="list-search-wrap">
                 <div class="list-search">
                 </div>

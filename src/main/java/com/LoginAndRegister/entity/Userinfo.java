@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 public class Userinfo {
     private Integer userid;
-    private String username;
+    private String userame;
     private String password;
     private String phone;
     private String  name;
