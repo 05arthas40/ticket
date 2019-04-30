@@ -213,7 +213,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
                         if(item.userAddressList[0].isDefault==1){
                             str += "\t\t\t<dt  class='isDefault'>"+"默认地址"+"</dt>\n"+
                                 "\t\t\t<a class='f1 mr10 m_c3' href='editAddress1.html?uaid="+item.userAddressList[0].uaid+"&userid="+userid+"'>修改</a>" +
-                                "\t\t\t<a class='f1 mr10 m_c3' onclick='delAddress()' value='"+item.userAddressList[0].uaid+"'>删除</input>" +
+                                "\t\t\t<a class='f1 mr10 m_c3' onclick='delAddress("+item.userAddressList[0].uaid+")' value='"+item.userAddressList[0].uaid+"'>删除</input>" +
                                 "<br><br>"
                         }else {
                             str += "\t\t\t<dt  class='isDefault hidden'>"+"默认地址"+"</dt>\n"+

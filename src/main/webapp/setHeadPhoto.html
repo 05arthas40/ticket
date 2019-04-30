@@ -135,14 +135,14 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
         <!--<dd><a id="nav_MyInfo" href="https://passport.damai.cn/customerManage/customerManageIndex" title="常用购票人"  domain=""><span >常用购票人</span></a></dd>-->
     </dl>
 
-    <script type='text/javascript'>
+   <!-- <script type='text/javascript'>
     (function(){ 
         document.getElementById('mydamai').style.display='none';
         var object=document.getElementById('nav_'+currNavName);
         if(object) object.className+=' on';
         document.getElementById('mydamai').style.display='';
     })();
-    </script>
+    </script>-->
    </div>
  </div>
 
@@ -168,7 +168,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
                       <div class="dm-crop-picker__text">请选择一张照片</div>
                       <a class="dm-crop-btn dm-crop-btn__upload" href="javascript:;">
                         选择照片
-                        <input type="file" />
+                       <!-- <input type="file" />-->
                       </a>
                     </div>
                     <div class="dm-crop-mask"></div>
@@ -186,12 +186,13 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
                   </div>
 
                   <div class="dm-crop-row">
-                    <a class="dm-crop-btn dm-crop-btn__upload" id="choosePicture" onclick="">
-                        选择照片
-                        <form id="my_headImg" method="post" action="updateHeadImg" enctype="multipart/form-data">
-                            <input type="file" name="fileImg" id="headImg" />
-                        </form>
+                    <a class="dm-crop-btn dm-crop-btn__upload" id="choosePicture" onclick="">选择照片
+                      <form id="my_headImg" action="updateHeadImg" enctype="multipart/form-data" method="post">
+                          <input type="file" id="headImg" name="multipartfile"/>
+                      </form>
+
                     </a>
+
                     <div class="dm-crop-text">支持JPG、PNG</div>
                   </div>
                   <div class="dm-crop-row">
@@ -234,29 +235,40 @@ $("#headImg").change(function () {
     $("#showHeadImg").attr("src", fileUrl);
 })
 function saveImg() {
-    alert("进入点击事件");
     var formData=new FormData();
-    alert(formData)
-    formData.append("img",$("#headImg")[0].files[0]);
-    console.log(formData)
-    $.ajax({
-        url: "updateHeadImg",
-        type: "POST",
-        data: formData,
-        dataType:"json",
-        processData: false,
-        contentType: false,
-        success: function(response){
-            // 根据返回结果指定界面操作
-            alert("请求ajax成功");
-            console.log(response);
-        },
-        error:function (response) {
-            alert("请求失败，宝贝")
-        }
-    });
-   $("#my_headImg").submit()
+    var headimg=$("#headImg")[0].files[0];
+    if(headimg===undefined){
+        alert("请选择你的头像");
+    }
+    console.log(headimg);
+    formData.append("multipartfile",headimg);
+    var img = formData.get("multipartfile");
+    console.log(img)
+    if(headimg!==undefined){
+        $.ajax(
+            {
+                type:'post',
+                url:'updateHeadImg',
+                cache: false,
+                processData: false,
+                contentType: false,
+                data:formData,
+                success:function (responseText) {
+                    console.log(responseText);
+                    alert("上传成功");
+                    window.location.href="myinfo.html"
+                },
+                error:function (responseText) {
+                    alert("出错了宝贝")
+                },
+                dataType:'json'
+            });
+    }
 }
+/*function saveImg() {
+    alert("进入点击事件");
+    $("#my_headImg").submit();
+}*/
 </script>
 
  
@@ -264,13 +276,9 @@ function saveImg() {
 </div>
 <!--right of end-->
 
-<script type="text/javascript" src="//cp.damai.cn/js/Service51La/SeoFlowStatistics.js?45"></script>
 
-<script>
-if(typeof JsLoader === 'undefined') {window.JsLoader = {load:function(){},before:function(){},complete:function(){},completeAfter:function(){}};}
-</script>
-<script src="//dui.damai.cn/dm_2014/common/dui-min.js" type="text/javascript"></script>
-<script src="//dui.damai.cn/dm_2014/common/app-min.js" type="text/javascript"></script>
+
+
 </div>
 <!--返回顶部及帮助中心-->
 <div class="new-fast">
@@ -416,26 +424,26 @@ if(typeof JsLoader === 'undefined') {window.JsLoader = {load:function(){},before
 }
 img{border: 0;}
 </style>
-<script type="text/javascript" src="https://g.alicdn.com/dt/tracker/3.5.4/??tracker.Tracker.js,tracker.interfaceTrackerPlugin.js,tracker.performanceTrackerPlugin.js" crossorigin></script>
+<!--<script type="text/javascript" src="https://g.alicdn.com/dt/tracker/3.5.4/??tracker.Tracker.js,tracker.interfaceTrackerPlugin.js,tracker.performanceTrackerPlugin.js" crossorigin></script>-->
 <script type="text/javascript">
-  
+/*
 var tracker = new window.Tracker({
   pid: 'damaipc',
   plugins: [
     [window.interfaceTrackerPlugin],
     [window.performanceTrackerPlugin]
   ],
-});
+});*/
 
 // 启动 tracker 并监听全局 JS 异常
-tracker.install();
+/*tracker.install();*/
 
 (function(){var f=function(){};if(!window.console){window.console={log:f,info:f,warn:f,debug:f,error:f}}}());
 </script>
-
+<!--
 <script src="//g.alicdn.com/mtb/lib-mtop/2.3.16/mtop.js"></script>
 <script data-config="{combine:true}" src="//g.alicdn.com/kissy/k/6.2.4/seed.js"></script>
-<script src="//g.alicdn.com/damai/pc/1.0.28/p/head/index.js" ></script>
+<script src="//g.alicdn.com/damai/pc/1.0.28/p/head/index.js" ></script>-->
 <!--ems end-->
 
 </body>

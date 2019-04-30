@@ -48,7 +48,7 @@
     <div class="left01">
         <div class="left03_right"></div>
         <div class="left01_left"></div>
-        <div class="left03_c"><a href="head.html">安全退出</a></div>
+        <div class="left03_c">安全退出</div>
     </div>
 </div>
 
@@ -57,22 +57,24 @@
     <div class="center" id="Mobile" onclick="show_menuC()"></div>
     <div class="right" id="li010" style="width: 100%">
         <div class="right01"><img src="images/companyAndShow/04.gif"/> 商家信息修改</div>
+
         <div style="margin-left: 20px; height: 100%; width: 45%; float: left">
-            <div>公司名称：</div>
+            <h3>公司名称：</h3>
             <textarea class="txt" cols="30" rows="2" style="OVERFLOW: hidden; resize: none"
                       readonly="readonly"></textarea><br/>
-            <div>公司地址：</div>
+            <h3>公司地址：</h3>
             <textarea class="txt" cols="30" rows="3" style="OVERFLOW: hidden" readonly="readonly"></textarea><br/>
             <input type="button" id="modiy" onclick="toModiy()" value="修改"/>
             <input type="button" value="取消修改" id="modiyOff" onclick="toModiyOff()" style="display: none"/>
         </div>
+
         <div style="margin-left: 20px;height: 100%; width: 45%; float: left">
-            <div>公司资料：</div>
-            <img src="" style=" width: 200px;" alt=""/>
-            <img src="" style=" width: 200px;" alt=""/>
-            <div>
-                <label>请选择一个图像文件：</label>
-                <input type="file" id="file_input" multiple/>
+            <h3>公司资料：</h3>
+            <div id="infoImgs">
+            </div>
+            <div id="updateBox" style="display: none">
+                <label >请选择商家证明图像文件：</label>
+                <input id="file_input"  type="file"  multiple="multiple"/>
             </div>
             <br/>
             <input type="button" id="updateImage" value="更新资料"/>
@@ -106,9 +108,22 @@
             url: "getCompanyBaseInfoById",
             contentType: "application/json; charset=utf-8",
             success: function (responseText) {
-                console.log(responseText);
                 $("textarea :eq(0)").val(responseText.name);
                 $("textarea :eq(1)").val(responseText.address);
+                //解析图片地址
+                var split = responseText.details.split(";");
+                //加载图片
+                $(split).each(function (indes, item) {
+                    //创建标签
+                    var img = document.createElement("img");
+                    img.className = "infoImg";
+                    img.src = item;
+                    img.style.cssText = "width: 200px;";
+                    img.alt = "公司证明图片";
+                    //添加标签
+                    var infoImgs = document.getElementById("infoImgs");
+                    infoImgs.appendChild(img);
+                })
             },
             error: function () {
                 console.log("服务器错误");
@@ -124,7 +139,7 @@
     function getCookie(cookieName) {
         var strCookie = document.cookie;
         var arrCookie = strCookie.split("; ");
-        for(var i = 0; i < arrCookie.length; i++){
+        for(var i = 0; i <  arrCookie.length; i++){
             var arr = arrCookie[i].split("=");
             if(cookieName == arr[0]){
                 return arr[1];
@@ -134,9 +149,9 @@
     }
 
     var companyId = getCookie("companyId");//拿到名字为companyId的cookie值
-    console.log("companyId="+companyId)
 
     var id = 0;
+    //基本信息修改
     function toModiy() {
         if ($("#modiy").val() == "修改") {
             $("#modiy").val("确认修改");
@@ -151,7 +166,7 @@
                 url: "toModiyCompanyBaseInfo",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
-                    "id": CompanyId,
+                    "id": companyId,
                     "name": name,
                     "address": address
                 }),
@@ -174,21 +189,79 @@
         window.location.reload();
     }
 
-    $("#updateImage").click(function () {
-        $("#updateOff").css("display","inline");
+
+    /*
+    * 更新图片时回显选择图片
+    *
+    * */
+    $("#file_input").change(function () {
+        var fileNumber = this.files.length;
+        for (var i = 0; i < fileNumber; i++) {
+            //获取用户上传的图片
+            var fileObj = this.files[i];
+            //把图片对象转换成url
+            var fileUrl = window.URL.createObjectURL(fileObj);
+
+            //动态创建标签
+            var infoImgs = document.getElementById("infoImgs");
+            var img = document.createElement("img");
+            var img_id = "img"+i;
+            img.id = img_id;
+            img.src = fileUrl;
+            img.style.cssText = "width:200px";
+            infoImgs.appendChild(img);
+        }
     })
 
+    /*
+    * 更新公司资料
+    *
+    * */
+    $("#updateImage").click(function () {
+        if ($("#updateImage").val() == "更新资料"){
+            //显示取消按钮
+            $("#updateOff").css("display","inline");
+            //将“更新资料”改为“确定更新”
+            $("#updateImage").val("确定更新");
+            //隐藏原有的资料图片
+            $(".infoImg").css("display","none");
+            //显示上传按钮
+            $("#updateBox").css("display","block");
+        } else {
+            var j = $("#file_input")[0].files.length;
+            //创建form表单数据
+            var formdata = new FormData();
+            for (var i = 0; i < j; i++) {
+                formdata.append("infoImgs",$("#file_input")[0].files[i]);
+            }
+            formdata.append("companyId",companyId);
+            $.ajax({
+                url: "updateCompanyInfo",
+                type: "POST",
+                cache: false,
+                processData: false,
+                contentType: false,
+                data: formdata,
+                dateType: "json",
+                success: function (responseText) {
+                    console.log(responseText);
+                    if (responseText == "true") {
+                        alert("更新成功");
+                    }else {
+                        alert("操作失败");
+                    };
+                    location.reload();
+                },
+                error: function () {
+                    console.log("服务器错误");
+                }
+            })
+        }
+    });
+
+    //更新取消
     $("#updateOff").click(function () {
         location.reload();
-    })
-
-    $("#file_input").change(function () {
-        //获取用户上传的图片
-        var fileObj = this.files[0];
-        //把图片对象转换成url
-        var fileUrl = window.URL.createObjectURL(fileObj);
-        $("#file_input").css("width","200px");
-        $("#file_input").attr("src", fileUrl);
     })
 </script>
 </body>

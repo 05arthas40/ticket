@@ -56,8 +56,8 @@
             <if test="uaddress!=null and uaddress!=''">
                 uaddress=#{uaddress},
             </if>
-            <if test="isDefault!=null and isDefault!=''">
-                isDefault=#{isDefault},
+            <if test="isDefault!=null">
+                isDefault=#{isDefault}
             </if>
         </set>
         where uaid=#{uaid} and userid=#{userid} and status=1

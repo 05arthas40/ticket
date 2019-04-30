@@ -1,178 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>快照页面</title>
 </head>
-<body>
-<!Doctype html>
-<html>
-<head>
-
-    <title>购票页面</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/sheetStyle1.css">
-    <link rel="stylesheet" href="css/sheetStyle2.css">
-
-    <script src="jquery/jquery-2.1.1.min.js"></script>
-
-    <script type="text/javascript">
-
-        $(function () {
-
-            //每种价位的价格
-            var everyMoney = -1;
-
-            var ssvid = window.location.href.split("svid=")[1].split("&")[0];
-            var scount = window.location.href.split("count=")[1].split("&")[0];
-
-            $.ajax({
-                type:"POST",
-                url:"getShowidBySvid?svid="+ssvid,
-                success:function (showid) {
-                    /*
-                    通过传入的showid用ajax获取对应演出的具体信息
-                    */
-                    $.ajax({
-                        type: "POST",
-                        url: "getOneShowDetails?showid=" + showid,
-                        success: function (data) {
-                            //以下为搬运工作
-                            $("#poster").attr("src", "img/" + data[0].ppicture);//海报
-                            $("#headtitle").html(data[0].showtitle);//大字标题
-                            $("#datetime").html("时间：" + data[0].showdate + " | " + data[0].begin);//演出时间
-                            $("#venue").html("场馆：" + data[0].saddress + " | " + data[0].vname);//演出场馆
-                            $("#gdmap").attr('href', "https://www.amap.com/search?query=" + data[0].vname);//高德地图链接
-                            var beginhour = data[0].begin.split(":")[0];//定义开始时间（小时）
-                            var beginminute = data[0].begin.split(":")[1];//定义开始时间（分钟）
-                            var endhour = data[0].end.split(":")[0];//定义结束时间（小时）
-                            var endminute = data[0].end.split(":")[1];//定义结束时间（分钟）
-                            var last = (endhour - beginhour) * 60 + (endminute - beginminute);//通过上面四个计算演出持续时间
-                            $("#lasttime").html(last + "分钟（以现场为准）");//持续时间
-                            $("#chooseshow").html(data[0].saddress + data[0].showdate);//选择演出
-                            $("#performer").html(data[0].pname);//演员是谁
-                            $("#cdecription").html(data[0].pdescription);//演出简介（富文本）
-
-
-                            var quehuo;//判断是否缺货
-                            var showprice;//记录价位
-                            /*
-                                遍历data
-                             */
-                            for (var i = 0; i < data.length; i++) {
-                                quehuo = data[i].seatCount > 0 ? "" : "缺货登记";
-                                showprice = data[i].showprice  + "元";
-                                //拼接价位框
-                                $("#chooseVenue").append("<div class=\"select_right_list_item sku_item select2 svid\" id='svid" + data[i].svid + "'>" +
-                                    "<span class=\"notticket\">" + quehuo + "</span>\n" +
-                                    "<div class=\"skuname\">" + showprice + "</div>\n" +
-                                    "</div>");
-
-                                /*
-                                    不缺货则添加点击事件：点击变红、单价变更、通过showThisStock（）使用ajax获取当前库存、数量置1
-                                 */
-                                if (data[i].svid==ssvid) {
-                                    $("#svid" + data[i].svid).addClass("active");
-                                    $("#everyStock").html("库存余量:"+data[i].seatCount);
-                                }
-
-
-                            }
-                            setTotalMoney(scount);
-                        },
-                        error: function () {
-                            alert("糟糕，传输好像出错了")
-                        }
-
-                    })
-                },
-                error:function () {
-                    alert("传值有误");
-                }
-            })
-
-            /*
-                选择数量框blur事件
-             */
-            $("#count_id").val(scount);
-
-
-        })
-
-        //点击购买时的事件，传入svid以及购买数量（若没选择价位则弹框提示）
-        function toBuy() {
-            var svid = "";
-            var buyNum;
-
-            $(".svid").each(function () {
-                if ($(this).hasClass("active")) {
-                    svid = $(this).attr('id');
-                }
-                buyNum = $("#count_id").val();
-            });
-
-            if (svid == "") {
-                alert("您还没选择演出或价位呢")
-            } else {
-                location.href = "#";
-            }
-        }
-
-
-        /**
-         * 通过传入数量框的值来计算总价
-         * @param count
-         */
-        function setTotalMoney(count) {
-            var totalm;
-            $(".svid").each(function () {
-                if ($(this).hasClass("active")) {
-                    totalm = parseInt($(this).children("div").html());
-                    totalm = totalm * count;
-                    $("#totalMoney").html(totalm);
-                }
-            })
-        }
-
-
-
-
-    </script>
-
-    <style type="text/css" rel="stylesheet">
-        .add, .min1 {
-            display: inline-block;
-            margin-bottom: 0;
-            padding: 0.5em 1em;
-            vertical-align: middle;
-            font-size: 1.6rem;
-            font-weight: normal;
-            line-height: 1.2;
-            text-align: center;
-            white-space: nowrap;
-            background-image: none;
-            border: 1px solid transparent;
-            border-radius: 0;
-            cursor: pointer;
-            outline: none;
-            -webkit-appearance: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-transition: background-color 300ms ease-out, border-color 300ms ease-out;
-            transition: background-color 300ms ease-out, border-color 300ms ease-out;
-        }
-    </style>
-
-
-</head>
 <body data-spm="project">
+<link rel="stylesheet" href="css/sheetStyle1.css"/>
+<link rel="stylesheet" href="css/sheetStyle2.css"/>
+
+<script src="jquery/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+</script>
+
+<style type="text/css" rel="stylesheet">
+    .add, .min1 {
+        display: inline-block;
+        margin-bottom: 0;
+        padding: 0.5em 1em;
+        vertical-align: middle;
+        font-size: 1.6rem;
+        font-weight: normal;
+        line-height: 1.2;
+        text-align: center;
+        white-space: nowrap;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 0;
+        cursor: pointer;
+        outline: none;
+        -webkit-appearance: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: background-color 300ms ease-out, border-color 300ms ease-out;
+        transition: background-color 300ms ease-out, border-color 300ms ease-out;
+    }
+</style>
 
 
 <div class="dm-header-wrap">
     <div class="dm-header-box" data-spm="top">
-        <a href="#"><img class="i-logo" src="img/pinle.jpg"></a>
+        <!--<a href="#"><img class="i-logo" src="img/pinle.jpg"/></a>-->
 
         <div class="recommend-header">
             <a href="#" class="type-recommend" data-spm="dhome" onclick="toKeyword()">首页</a>
@@ -198,8 +67,8 @@
 
         </div>
         <div class="search-header" data-spm="searchtxt">
-            <img class="i-search" src="//img.alicdn.com/tfs/TB1qv3jxGmWBuNjy1XaXXXCbXXa-34-36.png" alt="搜索">
-            <input class="input-search" placeholder="搜一搜，我这里有好康的" data-spm="dsearchbtn" id="keyword">
+            <img class="i-search" src="//img.alicdn.com/tfs/TB1qv3jxGmWBuNjy1XaXXXCbXXa-34-36.png" alt="搜索"/>
+            <input class="input-search" placeholder="搜一搜，我这里有好康的" data-spm="dsearchbtn" id="keyword"/>
             <div class="btn-search" data-spm="dsearchbtn2" onclick="toKeyword()">搜索</div>
             <div class="list-search-wrap">
                 <div class="list-search">
@@ -213,18 +82,20 @@
     <div class="w1200 box">
         <div class="hd">
             <div class="cont">
-                <div class="cover"><img src="#" id="poster"
-                                        data-src="//gw.alicdn.com/tfs/TB1e2I2DL1TBuNjy0FjXXajyXXa-270-364.png" alt=""
-                                        class="poster">
+                <div class="cover"><img th:src="'http://10.3.135.52:8080/ticket//img/'+${dto.ppicture}" id="poster"
+                                        class="poster"/>
                 </div>
                 <div class="order" data-spm-anchor-id="a2oeg.project.projectinfo.i0.711a553b8Sx99r">
-                    <div class="title" id="headtitle"></div>
+                    <div th:text="${dto.showtitle}" class="title" id="headtitle"></div>
                     <div data-spm="projectinfo" class="address">
-                        <div class="time" id="datetime"></div>
+                        <div th:text="'演出: '+${dto.pname}" class="time"></div>
+                        <div th:text="'时间: '+${dto.showdate}+'  |   '+${dto.begin}" class="time" id="datetime"></div>
                         <div class="place">
-                            <div class="addr" id="venue"></div>
+                            <div th:text="'场馆: '+${dto.cityname}+'  |   '+${dto.vname}" class="addr" id="venue"></div>
                             <!--点这里展示高德地图接口的结果-->
-                            <a data-spm="daddress" href="#" target="_blank" class="mapicon" id="gdmap"></a>
+                            <a data-spm="daddress" th:href="'https://www.amap.com/search?query='+${dto.vname}"
+                               target="_blank"
+                               class="mapicon" id="gdmap"></a>
                         </div>
                     </div>
 
@@ -235,9 +106,10 @@
                             <div class="select_right">
                                 <div class="select_right_list">
                                     <!--active指选中该框-->
-                                    <div class="select_right_list_item active select1"><span id="chooseshow"></span>
-                                    </div>
 
+                                    <div class="select_right_list_item active select1"><span
+                                            th:text="${dto.saddress}+${dto.showdate}" id="chooseshow"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -245,8 +117,19 @@
                             <div class="perform__order__select">
                                 <div class="select_left">选择票价</div>
                                 <div class="select_right">
-                                    <div class="select_right_list" id="chooseVenue">
-                                        <!----></div>
+                                    <div th:each="list:${lists}" class="select_right_list" id="chooseVenue">
+                                        <!---->
+                                        <div th:if="${list.svid ne svid}"
+                                             class="select_right_list_item sku_item select2 svid" id="svid1">
+                                            <span th:text="${list.seatCount ne 0?'':'缺货登记'}" class="notticket"></span>
+                                            <div th:text="${list.showprice}" class="skuname"></div>
+                                        </div>
+                                        <div th:if="${list.svid eq svid}"
+                                             class="select_right_list_item sku_item select2 svid active" id="svid2">
+                                            <span th:text="${list.seatCount ne 0?'':'缺货登记'}" class="notticket"></span>
+                                            <div th:text="${list.showprice}" class="skuname" id="activee"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="perform__order__price">
@@ -260,7 +143,7 @@
 
                                     <!--&lt;!&ndash;<input type="button" class="cafe-c-input-number-handler cafe-c-input-number-handler-up" value="+"></input>&ndash;&gt;-->
                                     <!--&lt;!&ndash;&lt;!&ndash;<input type="button" value="-">&ndash;&gt;&ndash;&gt;-->
-                                    <!--&lt;!&ndash;&lt;!&ndash;<input type="text" value="">&ndash;&gt;&ndash;&gt;-->
+                                    <!--<input type="text" />-->
                                     <!--&lt;!&ndash;&lt;!&ndash;<input type="button" value="+">&ndash;&gt;&ndash;&gt;-->
 
                                     <!--&lt;!&ndash;</div>&ndash;&gt;-->
@@ -268,13 +151,12 @@
                                     <div class="amount-wrapper ">
                                         <div class="item-amount ">
                                             <div class="sl">
-                                                <input class="min1" name="" type="button" value="-"
-                                                       onclick="min1()"/>
-                                                <input class="text_box" id="count_id" type="text" value=1
+                                                <input class="min1" name="" type="button" value="-" onclick="min1()"/>
+                                                <input th:value="${count}" class="text_box" id="count_id" type="text"
                                                        style="width: 60px;height: 40px;font-size: larger; text-align: center;"/>
-                                                <input class="add" type="button" value="+"
-                                                       onclick="add()"/>
-                                                <font size="smaller" id="everyStock">库存余量:0</font>
+                                                <input class="add" type="button" value="+" onclick="add()"/>
+                                                <font th:text="'库存余量:'+${seatcount}" size="smaller"
+                                                      id="everyStock"></font>
 
                                             </div>
                                         </div>
@@ -283,8 +165,7 @@
                             </div>
                             <div class="perform__order__price">
                                 <div class="number_left total_panel">合计</div>
-                                <div class="number_right"><span class="totol__price"><i>￥</i><span
-                                        id="totalMoney">0</span>
+                                <div class="number_right"><span class="totol__price"><i>￥</i><span id="totalMoney" th:text="${totalprice}">150000</span>
         </span> <span class="totle__offer go__login">登录后查看是否享受优惠</span></div>
                             </div>
                             <div>
@@ -313,7 +194,7 @@
                                     <div class="words">
                                         <div><p class="item_title">演出时长</p>
                                             <ul>
-                                                <li id="lasttime"></li>
+                                                <li id="lasttime">240分钟（以现场为准）</li>
                                             </ul>
                                         </div>
                                         <div><p class="item_title">限购政策</p>
@@ -365,7 +246,7 @@
                                         </div>
                                         <div><p class="item_title">主要演员（团体）</p>
                                             <ul>
-                                                <li id="performer"></li>
+                                                <li id="performer">蔡徐坤</li>
                                             </ul>
                                         </div>
                                         <div><!--<p class="item_title">黄牛网首次开售时全场可售门票总张数</p>-->
@@ -382,10 +263,9 @@
                                         <p>因演出票的唯一性、时效性，本项目在购买后不支持退换票，如无法正常观看，还请自行处理，给您带来不便敬请谅解！</p></div>
                                 </div>
                                 <div class="list">
-                                    <div class="title">演出介绍</div>
-                                    <div id="cdecription">
-                                        <p>123123
-                                        </p>
+                                    <div class="title" id="decription">演出介绍</div>
+                                    <div th:utext="  ${dto.cdecription}" id="cdecription">
+
                                         <!--<p style="text-align: center;"><img width="598" height="399" class="h2-lazyload"-->
                                         <!--data-src="//img.alicdn.com/imgextra/i1/2251059038/O1CN01iq3mr22GdS9bfGNos_!!2251059038.png_q60.jpg_.webp"-->
                                         <!--src="//img.alicdn.com/tfs/TB1PpVhDrvpK1RjSZFqXXcXUVXa-750-250.png">-->
@@ -423,58 +303,53 @@
                                         <!--</p>-->
                                         <!--<p>6月22日让我们期待林宥嘉idol世界巡回演唱会唱响济南！</p>-->
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="dm-footer">
-        <div class="w1200">
-            <ul class="footer__links">
+        <div class="dm-footer">
+            <div class="w1200">
+                <ul class="footer__links">
 
-                <li class="footer__links__list"><a href="">帮助中心</a></li>
-                <li class="footer__links__grep">|</li>
+                    <li class="footer__links__list"><a href="">帮助中心</a></li>
+                    <li class="footer__links__grep">|</li>
 
-                <li class="footer__links__list"><a href="" data-spm="flink1">公司介绍</a></li>
-                <li class="footer__links__grep">|</li>
+                    <li class="footer__links__list"><a href="" data-spm="flink1">公司介绍</a></li>
+                    <li class="footer__links__grep">|</li>
 
-                <li class="footer__links__list"><a href="" data-spm="flink2">品牌识别</a></li>
-                <li class="footer__links__grep">|</li>
+                    <li class="footer__links__list"><a href="" data-spm="flink2">品牌识别</a></li>
+                    <li class="footer__links__grep">|</li>
 
-                <li class="footer__links__list"><a href="" data-spm="flink3">公司大事记</a></li>
-                <li class="footer__links__grep">|</li>
+                    <li class="footer__links__list"><a href="" data-spm="flink3">公司大事记</a></li>
+                    <li class="footer__links__grep">|</li>
 
-                <li class="footer__links__list"><a href="" data-spm="flink4">协议及隐私权政策</a></li>
-                <li class="footer__links__grep">|</li>
+                    <li class="footer__links__list"><a href="" data-spm="flink4">协议及隐私权政策</a></li>
+                    <li class="footer__links__grep">|</li>
 
-                <li class="footer__links__list"><a href="" target="_blank" data-spm="flink5">廉正举报</a></li>
-                <li class="footer__links__grep">|</li>
+                    <li class="footer__links__list"><a href="" target="_blank" data-spm="flink5">廉正举报</a></li>
+                    <li class="footer__links__grep">|</li>
 
-                <li class="footer__links__list"><a href="">联系合作</a></li>
-                <li class="footer__links__grep">|</li>
+                    <li class="footer__links__list"><a href="">联系合作</a></li>
+                    <li class="footer__links__grep">|</li>
 
-                <li class="footer__links__list"><a href="" target="_blank" data-spm="flink7">招聘信息</a></li>
-                <li class="footer__links__grep">|</li>
+                    <li class="footer__links__list"><a href="" target="_blank" data-spm="flink7">招聘信息</a></li>
+                    <li class="footer__links__grep">|</li>
 
-                <li class="footer__links__list"><a href="" target="_blank" data-spm="flink8">防骗秘籍</a></li>
+                    <li class="footer__links__list"><a href="" target="_blank" data-spm="flink8">防骗秘籍</a></li>
 
 
-            </ul>
+                </ul>
+            </div>
         </div>
+
     </div>
-
-</div>
-
-
-</body>
-
-</html>
 </body>
 </html>

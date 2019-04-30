@@ -80,91 +80,56 @@
 
 <!--头部 start-->
 
-<div id="header">
-    <div class="header-layout">
-        <h1 class="logo" id="logo">
-            <a href="https://www.damai.cn/">大麦</a>
-            <span class="subtitle">  </span>
-        </h1>
-        <h2 class="logo-title"> 绑定邮箱 </h2>
-        <ul class="header-nav">
-            <li class="nav-first"> 您好</li>
-            <li><a href="https://passport.damai.cn/login"> 退出 </a></li>
-        </ul>
+<div class="dm-header-wrap">
+    <div class="dm-header-box" data-spm="top">
+        <!--左上角图标-->
+        <a href="head.html"><img class="i-logo" src="images/welogo.jpg" alt="大麦"/></a>
+        <!--城市定位-->
+        <!--<div class="location-header" style="display: block;">-->
+        <!--<img class="i-icon-location" src="//img.alicdn.com/tfs/TB1XHDuxNGYBuNjy0FnXXX5lpXa-28-32.png" alt="定位">-->
+        <!--<span class="city-location"><a-->
+        <!--href="http://10.3.135.45:8080/TicketProject/sort.html?keyword=&cityId=&pType=&date=">地区</a></span>-->
+        <!--<div class="city-header-wrap">-->
+        <!--<div class="city-header" data-spm="city">-->
+        <!--<div class="now-city">-->
+        <!--<span class="title-city">当前城市:</span>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="recommend-header">
+            <a href="head.html" class="type-recommend select" data-spm="dhome">首页</a>
+            <a href="shopsort.html?keyword=&cityId=&pType=&date="
+               class="type-recommend" data-spm="dcategory">分类</a>
 
-    </div>
-</div>
 
-<div id="content">
-    <div class="content-layout">
-        <div class="maincenter">
-            <ol class="ui-step ui-step-3">
-                <li class="ui-step-start ui-step-done">
-                    <div class="ui-step-line">-</div>
-                    <div class="ui-step-icon">
-                        <i class="iconfont">&#x0079;</i>
-                        <i class="ui-step-number">1</i>
-                        <span class="ui-step-text"> 验证身份 </span>
-                    </div>
-                </li>
-                <li class="ui-step-active">
-                    <div class="ui-step-line">-</div>
-                    <div class="ui-step-icon">
-                        <i class="iconfont">&#x0079;</i>
-                        <i class="ui-step-number">2</i>
-                        <span class="ui-step-text"> 填写邮箱 </span>
-                    </div>
-                </li>
-                <li class="ui-step-end">
-                    <div class="ui-step-line">-</div>
-                    <div class="ui-step-icon">
-                        <i class="iconfont">&#x0079;</i>
-                        <i class="iconfont ui-step-number">&#xF029;</i>
-                        <span class="ui-step-text"> 完成 </span>
-                    </div>
-                </li>
-            </ol>
-            <div class="maincenter-box">
-                <style>
-                    #newPwdStrengthWrap .ui-pwd-strength-word{
-                        display: none;
-                    }
-                </style>
-                <form method="post" class="ui-form" id="J_Form">
-                    <input name='_tb_token_' type='hidden' value='INxBDU9ms'>
-                    <input type="hidden" name="action" value="password_action"/>
-                    <input type="hidden" name="event_submit_do_modify_password" value="notNull"/>
-
-                    <div id="pass-form">
-                        <div class="ui-form-item    " >
-                            <label class="ui-label"> 验证的邮箱：</label>
-                            <input class="ui-input" type="text" id="Email">
-                                  <!-- data-explain='<div class="pwdStrengthWrap fn-clear">-->
-                     <!-- <span class="fn-left"> 安全程度 :</span>
-                       <div id="newPwdStrengthWrap" class="fn-left"></div>
-                       </div>
-                       <ul class="pwdStrength">
-                              <li class="pwdStrength-item-1">  6-20位字符 </li>
-                              <li class="pwdStrength-item-2"> 只能包含大小写字母、数字以及标点符号（除空格） </li>
-                               <li class="pwdStrength-item-3"> 大写字母、小写字母、数字和标点符号至少包含2种 </li>
-                       </ul>'>-->
-                        </div>
-                        <div class="ui-form-item">
-                            <input type="button" value="点击免费获取验证码 " class="ui-button ui-button-lorange" onclick="sendMail()" >
-                        </div>
-                        <div class="ui-form-item      ">
-                            <label class="ui-label">填写邮箱验证码 ：</label>
-                            <input name="_fm-pas-_0-c" class="ui-input" type="text" id="checkCode" >
-                        </div>
-                    </div>
-                    <div class="ui-form-item">
-                        <input type="button" value=" 确定 " class="ui-button ui-button-lorange" onclick="bindMail()">
-                    </div>
-                </form>
+        </div>
+        <!--右边头部-->
+        <div class="right-header" data-spm="nick">
+            <div class="box-header user-header">
+                <a href="javascript:void(0)" class="J_userinfo_img" data-spm="duserinfo">
+                    <img class="i-box-header i-user" id="portrait" src="//img.alicdn.com/tfs/TB14UKCGQyWBuNjy0FpXXassXXa-54-54.png" /></a>
+                <a href="//passport.damai.cn/accountinfo/myinfo" class="J_userinfo_name" data-spm="duserinfo">
+                    <div class="span-box-header name-user"></div>
+                </a>
+                <div class="login-user show" id="login">
+                    <span class="span-box-header span-user" onclick="toLogin()" data-spm="dlogin">登录</span>
+                </div>
 
             </div>
 
         </div>
+        <!--搜索框-->
+        <div class="search-header" data-spm="searchtxt">
+            <img class="i-search" src="//img.alicdn.com/tfs/TB1qv3jxGmWBuNjy1XaXXXCbXXa-34-36.png" alt="搜索"/>
+            <input class="input-search" placeholder="搜索明星、演出、体育赛事" id="search"/>
+            <div class="btn-search" onclick="toSearch()">搜索</div>
+            <div class="list-search-wrap">
+                <div class="list-search">
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <script type="text/javascript">

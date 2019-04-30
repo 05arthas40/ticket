@@ -10,4 +10,6 @@ public interface ShowManagerDao {
     List<ShowDetails> getShopCart(List<Integer> svids);
     int getOneStock(String svid);
     int getCityIdBysvid(String svid);
+    int getShowidBySvid(String svid);
+
 }

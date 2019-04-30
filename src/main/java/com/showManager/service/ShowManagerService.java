@@ -9,4 +9,6 @@ public interface ShowManagerService {
     List<ShowDetails> getShopCart(String[] svid);
     int getOneStock(String svid);
     int getCityIdBysvid(String svid);
+
+    int getShowidBySvid(String svid);
 }

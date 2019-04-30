@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="utf-8">
 <head>
-    <meta charset="GB18030">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -24,7 +24,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <div><a class="navbar-brand" style="font-size:32px;" href="backMain.html">»ÆÅ£Æ±Îñ</a></div>
+            <div><a class="navbar-brand" style="font-size:32px;" href="backMain.html">é»„ç‰›ç¥¨åŠ¡</a></div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -34,21 +34,21 @@
                             <i class="glyphicon glyphicon-user"></i> admin <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <!--                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> ¸öÈËÉèÖÃ</a></li>-->
-                            <li><a href="#"><i class="glyphicon glyphicon-comment"></i> ÏûÏ¢</a></li>
+                            <!--                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> ä¸ªäººè®¾ç½®</a></li>-->
+                            <li><a href="#"><i class="glyphicon glyphicon-comment"></i> æ¶ˆæ¯</a></li>
                             <li class="divider"></li>
-                            <li><a href="backLogin.html"><i class="glyphicon glyphicon-off"></i> ÍË³öÏµÍ³</a></li>
+                            <li><a href="backLogin.html"><i class="glyphicon glyphicon-off"></i> é€€å‡ºç³»ç»Ÿ</a></li>
                         </ul>
                     </div>
                 </li>
                 <li style="margin-left:10px;padding-top:8px;">
                     <button type="button" class="btn btn-default btn-danger">
-                        <span class="glyphicon glyphicon-question-sign"></span> °ïÖú
+                        <span class="glyphicon glyphicon-question-sign"></span> å¸®åŠ©
                     </button>
                 </li>
             </ul>
             <!--<form class="navbar-form navbar-right">-->
-            <!--<input type="text" class="form-control" placeholder="²éÑ¯">-->
+            <!--<input type="text" class="form-control" placeholder="æŸ¥è¯¢">-->
             <!--</form>-->
         </div>
     </div>
@@ -58,32 +58,32 @@
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="panel panel-default">
-                <div class="panel-heading">ÉóÅúÑİ³ö<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"></div></div>
+                <div class="panel-heading">å®¡æ‰¹æ¼”å‡º<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"></div></div>
                 <div class="panel-body">
                     <form role="form">
                         <div class="form-group">
-                            <label >Ñİ³ö±êÌâ</label>
+                            <label >æ¼”å‡ºæ ‡é¢˜</label>
                             <div id="showtitle"></div>
                         </div>
                         <div class="form-group">
-                            <label >Ñİ³öËùÊô¹«Ë¾</label>
+                            <label >æ¼”å‡ºæ‰€å±å…¬å¸</label>
                             <div id="cname"></div>
                         </div>
                         <div class="form-group">
-                            <label >Ñİ³öÈËÔ±</label>
+                            <label >æ¼”å‡ºäººå‘˜</label>
                             <div id="pname"></div>
                         </div>
                         <div class="form-group">
-                            <label >Ñİ³öÀàĞÍ</label>
+                            <label >æ¼”å‡ºç±»å‹</label>
                             <div id="ptype"></div>
                         </div>
                         <div class="form-group">
-                            <label>Ñİ³ö·âÃæ</label>
+                            <label>æ¼”å‡ºå°é¢</label>
                             <img id="ppicture"/>
                         </div>
                         <div class="form-group">
-                            <label>Ñİ³ö½éÉÜ</label>
-                            <p class="help-block label label-warning">ÇëÃèÊö¾ßÌåÑİ³ö£¬³¡¹İ£¬ÒÔ¼°·ÑÓÃĞÅÏ¢µÈ¡£²¢ÁôÏÂ½ô¼±µç»°¡£</p>
+                            <label>æ¼”å‡ºä»‹ç»</label>
+                            <p class="help-block label label-warning">è¯·æè¿°å…·ä½“æ¼”å‡ºï¼Œåœºé¦†ï¼Œä»¥åŠè´¹ç”¨ä¿¡æ¯ç­‰ã€‚å¹¶ç•™ä¸‹ç´§æ€¥ç”µè¯ã€‚</p>
                             <div id="pdecription"></div>
                         </div>
 
@@ -92,17 +92,17 @@
                             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Ñİ³ö³¡´Î</h3>
+                                        <h3 class="panel-title">æ¼”å‡ºåœºæ¬¡</h3>
                                     </div>
                                     <div class="panel-body">
                                         <form class="form-inline" role="form" style="float:left;">
                                             <!--<div class="form-group has-feedback">
                                                 <div class="input-group">
-                                                    <div class="input-group-addon">²éÑ¯Ìõ¼ş</div>
-                                                    <input class="form-control has-success" type="text" placeholder="ÇëÊäÈë²éÑ¯Ìõ¼ş">
+                                                    <div class="input-group-addon">æŸ¥è¯¢æ¡ä»¶</div>
+                                                    <input class="form-control has-success" type="text" placeholder="è¯·è¾“å…¥æŸ¥è¯¢æ¡ä»¶">
                                                 </div>
                                             </div>-->
-                                            <!--<button type="button" class="btn btn-warning">²éÑ¯</button>-->
+                                            <!--<button type="button" class="btn btn-warning">æŸ¥è¯¢</button>-->
                                         </form>
                                         <br>
                                         <hr style="clear:both;">
@@ -110,13 +110,13 @@
                                             <table class="table  table-bordered" id="dataTable" >
                                                 <thead>
                                                 <tr >
-                                                    <th>Ñİ³öÈÕÆÚ</th>
-                                                    <th>¿ªÊ¼Ê±¼ä</th>
-                                                    <th>½áÊøÊ±¼ä</th>
-                                                    <th>Ñİ³ö³¡µØ</th>
-                                                    <th>¾ßÌåµØÖ·</th>
-                                                    <th width="100">×´Ì¬</th>
-                                                    <th>²Ù×÷</th>
+                                                    <th>æ¼”å‡ºæ—¥æœŸ</th>
+                                                    <th>å¼€å§‹æ—¶é—´</th>
+                                                    <th>ç»“æŸæ—¶é—´</th>
+                                                    <th>æ¼”å‡ºåœºåœ°</th>
+                                                    <th>å…·ä½“åœ°å€</th>
+                                                    <th width="100">çŠ¶æ€</th>
+                                                    <th>æ“ä½œ</th>
                                                 </tr>
                                                 <tr>
                                                     <td></td>
@@ -126,30 +126,30 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <!--<button type="button" id="shenpishow" class="btn btn-success" onclick="shenpishows()">ÉóÅú</button>
-                                                        <button type="button" id="bohuishow" class="btn btn-danger" onclick="bohuishows()">²µ»Ø</button> -->
+                                                        <!--<button type="button" id="shenpishow" class="btn btn-success" onclick="shenpishows()">å®¡æ‰¹</button>
+                                                        <button type="button" id="bohuishow" class="btn btn-danger" onclick="bohuishows()">é©³å›</button> -->
                                                     </td>
                                                 </tr>
                                                 </thead>
                                             </table>
                                         </div>
                                         <div style="display: none" id="rejectInput">
-                                            <label>ÇëÊäÈë²µ»ØÀíÓÉ,ÀíÓÉ¿ÉÒÔÎª¿Õ£º</label>
+                                            <label>è¯·è¾“å…¥é©³å›ç†ç”±,ç†ç”±å¯ä»¥ä¸ºç©ºï¼š</label>
                                             <input type="text" id="reason" value=""/>
-                                            <button id="sumbitReason" onclick="reclick()" type="button">Ìá½»</button>
+                                            <button id="sumbitReason" onclick="reclick()" type="button">æäº¤</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="button" style="display: none" id="shenpi" class="btn btn-success" onclick="alterShowById(1)">ÉóÅú</button>
-                        <button type="button" style="display: none" id="bohui" class="btn btn-danger" onclick="alterShowById(2)">²µ»Ø</button>
-                        <button type="button" style="display: none" id="queren" class="btn btn-success" onclick="alterShowById(4)">È·ÈÏÑİ³ö½áÊø</button>
-                        <button type="button" style="display: none" id="quxiao" class="btn btn-danger" onclick="alterShowById(3)">È¡Ïû´ËÌõÑİ³ö</button>
+                        <button type="button" style="display: none" id="shenpi" class="btn btn-success" onclick="alterShowById(1)">å®¡æ‰¹</button>
+                        <button type="button" style="display: none" id="bohui" class="btn btn-danger" onclick="alterShowById(2)">é©³å›</button>
+                        <button type="button" style="display: none" id="queren" class="btn btn-success" onclick="alterShowById(4)">ç¡®è®¤æ¼”å‡ºç»“æŸ</button>
+                        <button type="button" style="display: none" id="quxiao" class="btn btn-danger" onclick="alterShowById(3)">å–æ¶ˆæ­¤æ¡æ¼”å‡º</button>
                         <div id="rejectInputOne" style="display: none">
-                            <label>ÇëÊäÈë²µ»ØÀíÓÉ,ÀíÓÉ¿ÉÒÔÎª¿Õ£º</label>
+                            <label>è¯·è¾“å…¥é©³å›ç†ç”±,ç†ç”±å¯ä»¥ä¸ºç©ºï¼š</label>
                             <input type="text" id="reasonOne"/>
-                            <button type="button" onclick="reclickOne(2)">Ìá½»</button>
+                            <button type="button" onclick="reclickOne(2)">æäº¤</button>
                         </div>
                     </form>
                 </div>
@@ -175,7 +175,7 @@
     var pfmid = window.location.search.split("=")[1];
 
 
-    //»ØÏÔ
+    //å›æ˜¾
     $.ajax({
         type:"POST",
         url:"getShowById?pfmid="+pfmid,
@@ -214,25 +214,25 @@
     })
 
 
-    //´ó°´Å¥
+    //å¤§æŒ‰é’®
     function alterShowById(number) {
-        //µ±µã»÷È·ÈÏÑİ³ö½áÊøÊ±£¬ĞèÒªÅĞ¶Ï×´Ì¬ÊÇ·ñ¶¼ÒÔ´¦ÀíÍê±Ï
+        //å½“ç‚¹å‡»ç¡®è®¤æ¼”å‡ºç»“æŸæ—¶ï¼Œéœ€è¦åˆ¤æ–­çŠ¶æ€æ˜¯å¦éƒ½ä»¥å¤„ç†å®Œæ¯•
         if (number == 4) {
-            //±éÀú±í¸ñ
+            //éå†è¡¨æ ¼
             var tb = document.getElementById('dataTable');
             var rows = tb.rows;
-            //È¥µôµÚÒ»ĞĞ
+            //å»æ‰ç¬¬ä¸€è¡Œ
             for (var i = 1; i < rows.length; i++) {
                 for (var j = 0; j < rows[i].cells.length; j++) {
                     var status = rows[i].cells[5].innerHTML;
-                    //ÎÒÖ»ĞèÒªÃ¿Ò»ĞĞµÄµÚÁù¸ötd
-                    if (status == 'Î´ÉóºË'||status == 'ÒÑÉóºË'||status == 'Î´Í¨¹ıÉóºË'){
+                    //æˆ‘åªéœ€è¦æ¯ä¸€è¡Œçš„ç¬¬å…­ä¸ªtd
+                    if (status == 'æœªå®¡æ ¸'||status == 'å·²å®¡æ ¸'||status == 'æœªé€šè¿‡å®¡æ ¸'){
                         console.log(status)
-                        alert("ÄúÓĞÎ´ÉóÅú»òÕßÎ´È·ÈÏÑİ³öÍê³ÉµÄ£¬ÇëÉóÅúÈ·ÈÏÍê³ÉºóÔÙ¸øÕâ³¡Ñİ³ö»­ÉÏ¾äºÅ¡£");
+                        alert("æ‚¨æœ‰æœªå®¡æ‰¹æˆ–è€…æœªç¡®è®¤æ¼”å‡ºå®Œæˆçš„ï¼Œè¯·å®¡æ‰¹ç¡®è®¤å®Œæˆåå†ç»™è¿™åœºæ¼”å‡ºç”»ä¸Šå¥å·ã€‚");
                         return false;
                     }
                     else {
-                        if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+                        if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
                             $.ajax({
                                 type:"POST",
                                 url:"passShowById",
@@ -243,10 +243,10 @@
                                 }),
                                 success:function (responseText) {
                                     if (responseText = 1){
-                                        alert("²Ù×÷³É¹¦");
+                                        alert("æ“ä½œæˆåŠŸ");
                                         window.location.href = "manageCompanyAndShow.html";
                                     } else {
-                                        alert("²Ù×÷Ê§°Ü");
+                                        alert("æ“ä½œå¤±è´¥");
                                     }
                                 },
                                 error:function (responseText) {
@@ -255,21 +255,21 @@
                                 dataType:"json"
                             })
                         }else {
-                            console.log("È¡ÏûÁË²Ù×÷")
+                            console.log("å–æ¶ˆäº†æ“ä½œ")
                         }
                         return false;
                     }
                 }
             }
-            //µ±Òª²µ»ØÊ±£¬ÊäÈë²µ»ØÀíÓÉ
+            //å½“è¦é©³å›æ—¶ï¼Œè¾“å…¥é©³å›ç†ç”±
         }else if (number == 2){
-            if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+            if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
                 $("#rejectInputOne").show();
             }else{
-                console.log("È¡ÏûÁË²Ù×÷");
+                console.log("å–æ¶ˆäº†æ“ä½œ");
             }
         } else {
-            if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+            if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
                 $.ajax({
                     type:"POST",
                     url:"passShowById",
@@ -280,10 +280,10 @@
                     }),
                     success:function (responseText) {
                         if (responseText = 1){
-                            alert("²Ù×÷³É¹¦");
+                            alert("æ“ä½œæˆåŠŸ");
                             window.location.href = "manageCompanyAndShow.html";
                         } else {
-                            alert("²Ù×÷Ê§°Ü");
+                            alert("æ“ä½œå¤±è´¥");
                         }
                     },
                     error:function (responseText) {
@@ -292,12 +292,12 @@
                     dataType:"json"
                 })
             }else {
-                console.log("È¡ÏûÁË²Ù×÷")
+                console.log("å–æ¶ˆäº†æ“ä½œ")
             }
         }
     }
 
-    //Ñİ³ö³¡´Î»ØÏÔ
+    //æ¼”å‡ºåœºæ¬¡å›æ˜¾
     function yanchuchangci() {
         $("#dataTable tr:not(:first)").empty();
         var text;
@@ -310,11 +310,11 @@
                 console.log(responseText)
                 $(responseText).each(function (index, item) {
                     switch (item.status) {
-                        case 0:text = "Î´ÉóºË";break;
-                        case 1:text = "ÒÑÉóºË";break;
-                        case 2:text = "Î´Í¨¹ıÉóºË";break;
-                        case 3:text = "ÒÑÈ¡Ïû";break;
-                        case 4:text = "Ñİ³öÍê±Ï";break
+                        case 0:text = "æœªå®¡æ ¸";break;
+                        case 1:text = "å·²å®¡æ ¸";break;
+                        case 2:text = "æœªé€šè¿‡å®¡æ ¸";break;
+                        case 3:text = "å·²å–æ¶ˆ";break;
+                        case 4:text = "æ¼”å‡ºå®Œæ¯•";break
                     }
                     $("<tr>"+
                         "<td>"+item.showdate+"</td>"+
@@ -324,13 +324,13 @@
                         "<td>"+item.saddress+"</td>"+
                         "<td>"+text+"</td>"+
                         "<td>"+
-                        "<button type=\"button\" style='display: none' class=\"btn btn-success btn-xs\" id='shenpishow"+index+"' onclick='shenpishows("+item.showid+")'>ÉóÅú</button>"+
-                        "<button type=\"button\" style='display: none' class=\"btn btn-danger btn-xs\" id='bohuishow"+index+"' onclick='bohuishows("+item.showid+")'>²µ»Ø</button>"+
-                        "<button type=\"button\" style='display: none' class=\"btn btn-success btn-xs\" id='querenshow"+index+"' onclick='querenshows("+item.showid+")'>È·ÈÏÑİ³ö½áÊø</button>"+
-                        "<button type=\"button\" style='display: none' class=\"btn btn-danger btn-xs\" id='quxiaoshow"+index+"' onclick='quxiaoshows("+item.showid+")'>ÁÙÊ±È¡Ïû</button>"+
+                        "<button type=\"button\" style='display: none' class=\"btn btn-success btn-xs\" id='shenpishow"+index+"' onclick='shenpishows("+item.showid+")'>å®¡æ‰¹</button>"+
+                        "<button type=\"button\" style='display: none' class=\"btn btn-danger btn-xs\" id='bohuishow"+index+"' onclick='bohuishows("+item.showid+")'>é©³å›</button>"+
+                        "<button type=\"button\" style='display: none' class=\"btn btn-success btn-xs\" id='querenshow"+index+"' onclick='querenshows("+item.showid+")'>ç¡®è®¤æ¼”å‡ºç»“æŸ</button>"+
+                        "<button type=\"button\" style='display: none' class=\"btn btn-danger btn-xs\" id='quxiaoshow"+index+"' onclick='quxiaoshows("+item.showid+")'>ä¸´æ—¶å–æ¶ˆ</button>"+
                         "</td>"+
                         "</tr>").insertAfter($("#dataTable tr:eq(-1)"));
-                    //¸ù¾İ×´Ì¬ÅĞ¶ÏÊÇ·ñ½«°´Å¥Òş²Ø
+                    //æ ¹æ®çŠ¶æ€åˆ¤æ–­æ˜¯å¦å°†æŒ‰é’®éšè—
                     switch (item.status) {
                         case 0:
                             $("#shenpishow"+index).show();
@@ -352,11 +352,11 @@
         })
     }
 
-    var success = "²Ù×÷³É¹¦";
-    var error = "²Ù×÷Ê§°Ü";
-    //Ğ¡ÉóÅú°´Å¥
+    var success = "æ“ä½œæˆåŠŸ";
+    var error = "æ“ä½œå¤±è´¥";
+    //å°å®¡æ‰¹æŒ‰é’®
     function shenpishows(showid) {
-        if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+        if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
         $.ajax({
             type:"POST",
             url:"passShowShowById?showid="+showid,
@@ -374,27 +374,27 @@
 
         })
         }else {
-            console.log("È¡ÏûÁË²Ù×÷")
+            console.log("å–æ¶ˆäº†æ“ä½œ")
         }
 
     }
 
     var reshowid = 0;
 
-    //Ğ¡²µ»Ø°´Å¥
+    //å°é©³å›æŒ‰é’®
     function bohuishows(showid) {
-        if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+        if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
             $("#rejectInput").show();
             reshowid =showid;
         }else {
-            console.log("È¡ÏûÁË²Ù×÷")
+            console.log("å–æ¶ˆäº†æ“ä½œ")
         }
 
     }
 
-    //Ğ¡È·ÈÏ°´Å¥
+    //å°ç¡®è®¤æŒ‰é’®
     function querenshows(showid) {
-        if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+        if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
             $.ajax({
                 type:"POST",
                 url:"querenShowShowById?showid="+showid,
@@ -411,13 +411,13 @@
                 }
             })
         }else {
-            console.log("È¡ÏûÁË²Ù×÷")
+            console.log("å–æ¶ˆäº†æ“ä½œ")
         }
     }
 
-    //Ğ¡È¡Ïû°´Å¥
+    //å°å–æ¶ˆæŒ‰é’®
     function quxiaoshows(showid) {
-        if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+        if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
             $.ajax({
                 type:"POST",
                 url:"quxiaoShowShowById?showid="+showid,
@@ -434,20 +434,20 @@
                 }
             })
         }else {
-            console.log("È¡ÏûÁË²Ù×÷")
+            console.log("å–æ¶ˆäº†æ“ä½œ")
         }
     }
 
-    //Ğ¡²µ»Ø°´Å¥ÖĞ×ª
+    //å°é©³å›æŒ‰é’®ä¸­è½¬
     function reclick() {
-        //ÄÃµ½²µ»ØÀíÓÉ
+        //æ‹¿åˆ°é©³å›ç†ç”±
         var reasons = $("#reason").val();
         console.log(reasons,reshowid);
         zhixing(reshowid,reasons);
     }
-    //Ìá½»²µ»ØÀíÓÉµÄajax
+    //æäº¤é©³å›ç†ç”±çš„ajax
     function zhixing(showid,reasontext){
-        if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+        if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
             $("#rejectInput").show();
             $.ajax({
                 type:"POST",
@@ -463,7 +463,7 @@
                         reshowid = 0;
                         $("#rejectInput").hide();
                     }else {
-                        alert("ÇëÎğÖØ¸´Ìá½»");
+                        alert("è¯·å‹¿é‡å¤æäº¤");
                     }
                 },
                 error:function (responseText) {
@@ -472,13 +472,13 @@
                 dataType:'json'
             })
         }else {
-            console.log("È¡ÏûÁË²Ù×÷");
+            console.log("å–æ¶ˆäº†æ“ä½œ");
         }
     }
 
-    //´ó²µ»Ø°´Å¥
+    //å¤§é©³å›æŒ‰é’®
     function reclickOne(number) {
-        if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+        if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
             var reasons = $("#reasonOne").val();
             $.ajax({
                 type:"POST",
@@ -494,7 +494,7 @@
                         alert(success);
                         window.location.href = "manageCompanyAndShow.html";
                     }else {
-                        alert("ÇëÎğÖØ¸´Ìá½»");
+                        alert("è¯·å‹¿é‡å¤æäº¤");
                     }
                 },
                 error:function (responseText) {
@@ -503,7 +503,7 @@
                 dataType:'json'
             })
         }else {
-            console.log("È¡ÏûÁË²Ù×÷");
+            console.log("å–æ¶ˆäº†æ“ä½œ");
         }
 
     }

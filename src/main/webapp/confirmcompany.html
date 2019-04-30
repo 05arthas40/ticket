@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="utf-8">
 <head>
-    <meta charset="GB18030">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -24,7 +24,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <div><a class="navbar-brand" style="font-size:32px;" href="backMain.html">»ÆÅ£Æ±Îñ</a></div>
+            <div><a class="navbar-brand" style="font-size:32px;" href="backMain.html">é»„ç‰›ç¥¨åŠ¡</a></div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -34,21 +34,21 @@
                             <i class="glyphicon glyphicon-user"></i> admin <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <!--                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> ¸öÈËÉèÖÃ</a></li>-->
-                            <li><a href="#"><i class="glyphicon glyphicon-comment"></i> ÏûÏ¢</a></li>
+                            <!--                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> ä¸ªäººè®¾ç½®</a></li>-->
+                            <li><a href="#"><i class="glyphicon glyphicon-comment"></i> æ¶ˆæ¯</a></li>
                             <li class="divider"></li>
-                            <li><a href="backLogin.html"><i class="glyphicon glyphicon-off"></i> ÍË³öÏµÍ³</a></li>
+                            <li><a href="backLogin.html"><i class="glyphicon glyphicon-off"></i> é€€å‡ºç³»ç»Ÿ</a></li>
                         </ul>
                     </div>
                 </li>
                 <li style="margin-left:10px;padding-top:8px;">
                     <button type="button" class="btn btn-default btn-danger">
-                        <span class="glyphicon glyphicon-question-sign"></span> °ïÖú
+                        <span class="glyphicon glyphicon-question-sign"></span> å¸®åŠ©
                     </button>
                 </li>
             </ul>
             <!--<form class="navbar-form navbar-right">-->
-            <!--<input type="text" class="form-control" placeholder="²éÑ¯">-->
+            <!--<input type="text" class="form-control" placeholder="æŸ¥è¯¢">-->
             <!--</form>-->
         </div>
     </div>
@@ -58,33 +58,33 @@
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="panel panel-default">
-                <div class="panel-heading">ÉóºË¹«Ë¾<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"></div></div>
+                <div class="panel-heading">å®¡æ ¸å…¬å¸<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"></div></div>
                 <div class="panel-body">
                     <form role="form">
                         <div class="form-group">
-                            <label >¹«Ë¾Ãû³Æ</label>
+                            <label >å…¬å¸åç§°</label>
                             <div id="cname"></div>
                         </div>
                         <div class="form-group">
-                            <label >¹«Ë¾µØÖ·</label>
+                            <label >å…¬å¸åœ°å€</label>
                             <div id="caddress"></div>
                         </div>
                         <div class="form-group">
-                            <label >¹«Ë¾µç»°</label>
+                            <label >å…¬å¸ç”µè¯</label>
                             <div id="cphone"></div>
                         </div>
                         <div class="form-group">
-                            <label>ÓĞ¹Ø×ÊÁÏ</label>
-                            <p class="help-block label label-warning">ÓªÒµÖ´ÕÕµÈ×ÊÁÏ</p>
+                            <label>æœ‰å…³èµ„æ–™</label>
+                            <p class="help-block label label-warning">è¥ä¸šæ‰§ç…§ç­‰èµ„æ–™</p>
                             <div id="cdetails"></div>
                         </div>
-                        <button style="display: none" id="shenpi" type="button" class="btn btn-success" onclick="alterCompanyById(1)">ÉóÅú</button>
-                        <button style="display: none" id="bohui" type="button" class="btn btn-danger" onclick="alterCompanyById(2)">²µ»Ø</button>
-                        <button style="display: none" id="quxiao" type="button" class="btn btn-danger" onclick="alterCompanyById(3)">È¡ÏûÓë´Ë¹«Ë¾µÄºÏ×÷</button>
+                        <button style="display: none" id="shenpi" type="button" class="btn btn-success" onclick="alterCompanyById(1)">å®¡æ‰¹</button>
+                        <button style="display: none" id="bohui" type="button" class="btn btn-danger" onclick="alterCompanyById(2)">é©³å›</button>
+                        <button style="display: none" id="quxiao" type="button" class="btn btn-danger" onclick="alterCompanyById(3)">å–æ¶ˆä¸æ­¤å…¬å¸çš„åˆä½œ</button>
                         <div style="display: none" id="rejectCompany">
-                            <label>ÇëÊäÈë²µ»ØÀíÓÉ,ÀíÓÉ¿ÉÒÔÎª¿Õ£º</label>
+                            <label>è¯·è¾“å…¥é©³å›ç†ç”±,ç†ç”±å¯ä»¥ä¸ºç©ºï¼š</label>
                             <input type="text"id="Reason"/>
-                            <button type="button" onclick="submitReason()">Ìá½»</button>
+                            <button type="button" onclick="submitReason()">æäº¤</button>
                         </div>
                     </form>
                 </div>
@@ -109,7 +109,7 @@
 
         var cid = window.location.search.split("=")[1];
 
-        //»ØÏÔ
+        //å›æ˜¾
         $.ajax({
             type:"POST",
             url:"getCompanyById?pfmid="+cid,
@@ -136,9 +136,9 @@
             dataType:"json"
         })
 
-        //´ó°´Å¥
+        //å¤§æŒ‰é’®
         function alterCompanyById(number) {
-            if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+            if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
                 if (number == 2) {
                     $("#rejectCompany").show();
                 }else {
@@ -153,10 +153,10 @@
                         success:function (responseText) {
 
                             if (responseText == 1){
-                                alert("²Ù×÷³É¹¦");
+                                alert("æ“ä½œæˆåŠŸ");
                                 window.location.href = "manageCompanyAndShow.html";
                             } else {
-                                alert("²Ù×÷Ê§°Ü");
+                                alert("æ“ä½œå¤±è´¥");
                             }
                         },
                         error:function (responseText) {
@@ -165,13 +165,13 @@
                     })
                 }
             }else {
-                console.log("È¡ÏûÁË²Ù×÷");
+                console.log("å–æ¶ˆäº†æ“ä½œ");
             }
         }
 
-        //Ìá½»²µ»Ø°´Å¥
+        //æäº¤é©³å›æŒ‰é’®
     function submitReason() {
-        if (confirm("ÄúÈ·¶¨ÒªÖ´ĞĞÕâ¸ö²Ù×÷Âğ£¿")){
+        if (confirm("æ‚¨ç¡®å®šè¦æ‰§è¡Œè¿™ä¸ªæ“ä½œå—ï¼Ÿ")){
             var Reason = $("#Reason").val();
             $.ajax({
                 type:"POST",
@@ -183,10 +183,10 @@
                 }),
                 success:function (responseText) {
                     if (responseText == 1) {
-                        alert("²Ù×÷³É¹¦");
+                        alert("æ“ä½œæˆåŠŸ");
                         window.location.href = "manageCompanyAndShow.html";
                     }else {
-                        alert("²Ù×÷Ê§°Ü");
+                        alert("æ“ä½œå¤±è´¥");
                     }
                 },
                 error:function (responseText) {
@@ -195,7 +195,7 @@
                 dataType:'json'
             })
         }else {
-            console.log("È¡ÏûÁË²Ù×÷");
+            console.log("å–æ¶ˆäº†æ“ä½œ");
         }
     }
 

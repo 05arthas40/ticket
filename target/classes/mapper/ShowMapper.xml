@@ -30,4 +30,7 @@
     <select id="getCityIdBysvid" resultType="int">
         SELECT c.cityid FROM city c,show_city sc,showdetails s,show_venue sv WHERE sv.showid=s.showid and s.showid=sc.showid and sc.cityid=c.cityid and svid=#{svid}
     </select>
+    <select id="getShowidBySvid" resultType="int">
+        SELECT s.showid FROM showdetails s,show_venue sv WHERE sv.showid=s.showid and svid=#{svid}
+    </select>
 </mapper>

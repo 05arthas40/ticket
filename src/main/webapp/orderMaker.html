@@ -1,4 +1,4 @@
-<html class="ks-webkit537 ks-webkit ks-chrome58 ks-chrome">
+
 <head>
     <meta name="data-spm" content="a2oeg" charset="utf-8">
     <link rel="shortcut icon" href="//gw.alicdn.com/tfs/TB1fGH0fgMPMeJjy1XcXXXpppXa-16-16.ico" type="image/x-icon">
@@ -153,7 +153,7 @@
         function initOrder(svid, ocount, imgurl) {
             $.ajax({
                 type: "get",
-                url: "http://10.3.135.52:8080/ticket/getShopCart?svid=" + svid,
+                url: "getShopCart?svid=" + svid,
                 dataType: "jsonp",
                 success: function (response) {
                     console.log(response[0]);
@@ -224,13 +224,13 @@
             var ocount = string.split("count=")[1].split("&")[0];
             // userid = document.cookie.split("userid=")[1].split(";")[0];
             userid=2;
-            var imgurl = "http://10.3.135.52:8080/ticket/img/";
+            var imgurl = "images/";
             initPage();
             initOrder(svid, ocount, imgurl);
             $("#submitOrder").click(function () {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8080/ticket/submitOrder",
+                    url: "submitOrder",
                     dataType: "json",
                     contentType: "application/json;charset=utf-8",
                     data: JSON.stringify({
@@ -249,8 +249,8 @@
                     }),
                     success: function (orderid) {
                         if (orderid > 0)
-                            // location.href = "orderpay?orderid="+orderid;
-                            alert(orderid);
+                            location.href = "orderpay?orderid="+orderid;
+                            // alert(orderid);
                         else
                             alert("数据异常，订单提交失败，请稍后再试")
 
@@ -277,8 +277,7 @@
 
 <div class="dm-header-wrap">
     <div class="dm-header-box" data-spm="top">
-        <a href="//www.damai.cn"><img class="i-logo" src="//gw.alicdn.com/tfs/TB1D1QUxjDpK1RjSZFrXXa78VXa-230-104.png"
-                                      alt="大麦"></a>
+        <a href="head.html"><img class="i-logo" src="images/welogo.jpg" alt="大麦"/></a>
         <div class="location-header">
             <img class="i-icon-location" src="//img.alicdn.com/tfs/TB1XHDuxNGYBuNjy0FnXXX5lpXa-28-32.png" alt="定位">
             <span class="city-location">全国</span>

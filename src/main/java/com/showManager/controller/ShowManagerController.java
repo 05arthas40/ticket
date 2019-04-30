@@ -31,7 +31,7 @@ public class ShowManagerController {
      */
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "getShopCart",method = RequestMethod.GET)
-    public Object getShopCart(@RequestParam String[] svid,String callback) {
+    public Object getShopCart(@RequestParam String[] svid, String callback) {
         System.out.println(callback);
         List<ShowDetails> shopCart = service.getShopCart(svid);
         return new JSONPObject(callback,shopCart);
@@ -53,4 +53,10 @@ public class ShowManagerController {
         return service.getCityIdBysvid(svid);
     }
 
+    @RequestMapping(value = "getShowDetailBySvid")
+    public List<ShowDetails> getShowDetailBySvid(@RequestParam String svid) {
+        int showidBySvid = service.getShowidBySvid(svid);
+        System.out.println(showidBySvid);
+        return service.getOneShowDetails(String.valueOf(showidBySvid));
+    }
 }

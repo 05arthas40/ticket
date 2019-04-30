@@ -6,193 +6,169 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5a7264-ef02-4704-883b-beb7ff6111e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/configrations/AlipayConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/configrations/AlipayProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/controller/PayController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/FlowsDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/OrderDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/pay/AlipayConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/service/AlipayService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/service/impl/AlipayServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/FlowsVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/ordersubmit.html" afterDir="false" />
+    <list default="true" id="1d5a7264-ef02-4704-883b-beb7ff6111e8" name="Default Changelist" comment="初步整合完成，测试1.2版本">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alipay_sdk_alipay_sdk_java_3_4_27_ALL.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_jsr250_api_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ognl_ognl_3_0_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_16_1_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_2_1_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring4_2_1_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/controller/ThymeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/ShowDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/showManager/vo/svidVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/addstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/appstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/backstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/bilstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/blogstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/blstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/bostyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/buyConfirm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/cartstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/checkOut.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/cmstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/colstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/cpstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/dlstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/doc.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/drag.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/footstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/hmstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/infstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/jigsaw.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/jquery.pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/jsstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/loginstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/lostyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/member.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/newstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/optstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/orstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/personal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/public.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/refstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/search-form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/seastyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/sheetStyle1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/sheetStyle2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/skin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/sortstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/stepstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/sustyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/systyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/theme.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/ticket_test_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ticket_test_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_0_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/controller/LoginAndRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/controller/LoginAndRegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/ManageShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/ManageShowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/companyManager/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyManager/controller/CompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyManager/controller/PerformanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyManager/controller/PerformanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/dao/OrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/OrderAllDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/OrderAllDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/UserAdressDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/UserAdressDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/OrderDetailVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/OrderDetailVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyManager/dao/CompanyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyManager/dao/CompanyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyManager/service/ICompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyManager/service/ICompanyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyManager/service/impl/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyManager/service/impl/CompanyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/configrations/AlipayConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/configrations/AlipayProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/controller/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/controller/PayController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dao/OrderDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/FlowsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/OrderAllDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/OrderDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/UserAdressDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/pay/AlipayConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/AlipayService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/impl/AlipayServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/impl/OrderServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/FlowsVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/OrderAllVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/OrderDetailVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/OrderVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/SeeOrders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/ShortCutVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/dao/ShowManagerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/dao/ShowManagerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/dto/Userdto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/service/ShowManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/service/ShowManagerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/service/impl/ShowManagerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/service/impl/ShowManagerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/userManager/controller/userInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/userManager/controller/userInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/userManager/util/MailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/userManager/util/MailUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/performanceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/performanceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ShowMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ShowMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/companyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/companyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/accountsetting.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/accountsetting.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addressEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addressEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/editAddress.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/editAddress1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/backLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/backLogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/backMain.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/backMain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/backUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/backUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/companyBaseInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/companyBaseInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/confirmcompany.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/confirmcompany.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/confirmshow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/confirmshow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/editAddress1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/editAddress1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/email_modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/email_modify.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/manageCompanyAndShow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/manageCompanyAndShow.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/myAddress.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/myAddress.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/myinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/myinfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/orderList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderList.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/orderMaker.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderMaker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/performanceApplicationList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/performanceApplicationList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/performanceInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/performanceInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ordersubmit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ordersubmit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/password_modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/password_modify.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/setHeadPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/setHeadPhoto.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/showApplication.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/showApplication.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/showApplicationList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/showApplicationList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/CharEncodingFilter/EncodeFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/Interceptor/LoginInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/XssFilter/JsoupUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/XssFilter/XssHttpFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper$WrappedServletInputStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/controller/LoginAndRegisterController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/dao/Logindao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/dao/Registerdao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/dto/Marchantinfodto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/dto/Userdto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/entity/UserCheckTokenInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/entity/Userinfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/loginMap/HttpListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/loginMap/UserloginMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/note/CodeUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/note/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/note/HttpUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/note/IndustrySMS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/service/LoginService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/service/RegisgerService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/service/impl/LoginServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/service/impl/RegisterServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/utils/HttpClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/utils/MD5Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/LoginInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/LoginMarchant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/RegisterInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/RegisterMarchant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/updatepwd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/controller/ManageCompanyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/controller/ManageShowController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/controller/backGroundController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/dao/ManageCompanyDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/dao/ManageShowDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/dao/backGroundDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/CompanyDetailsDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/CompanyInfoDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/ShowDetailsDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/ShowInfoDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/ShowShowDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/pojo/Show.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/pojo/user.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/ManageCompanyService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/ManageShowService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/backGroundService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/impl/ManageCompanyServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/impl/ManageShowServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/impl/backGroundServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/CompanyidAndReasonVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/CompanyidAndStatusVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/ShowidAndReasonVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/StatusAndPfmidAndReasonVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/StatusAndPfmidVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/userVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/controller/CompanyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/controller/PerformanceController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/dao/CompanyDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/dao/PerformanceDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/dto/CompanyDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/dto/PerformanceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/dto/PerformanceDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/dto/ShowAndVenue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/dto/ShowApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/dto/VenueDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/pojo/Company.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/pojo/Performance.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/pojo/ShowVenue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/service/ICompanyService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/service/IPerformanceService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/service/impl/CompanyServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/companyManager/service/impl/PerformanceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/controller/OrderController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/dao/OrderDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/dto/OrderAllDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/dto/UserAdressDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/service/OrderService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/service/impl/OrderServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/vo/OrderAllVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/vo/OrderDetailVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/vo/OrderVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/vo/SeeOrders.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/orderManager/vo/ShortCutVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/controller/ShowManagerController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/controller/ShowSortController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/dao/ShowManagerDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/dao/ShowSortMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/dto/ShowDetails.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/dto/ShowSortDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/service/ShowManagerService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/service/ShowSortService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/service/impl/ShowManagerServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/service/impl/ShowSortServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/showManager/vo/ShowSortVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/controller/userInfoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/dao/UserMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/dto/UserAddressDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/dto/UserInfoDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/pojo/UserAddress.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/pojo/UserInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/service/UserInfoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/service/impl/UserInfoServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/util/CodeUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/util/MailUtil$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/util/MailUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/vo/UserAddressVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/vo/UserEmailVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/userManager/vo/UserInfoVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/OrderMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/shopdetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/shopdetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/shopsort.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/shopsort.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/snapshot.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/snapshot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/updateUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ShowMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ShowMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/companyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/companyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/userMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/userMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper$WrappedServletInputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper$WrappedServletInputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/controller/LoginAndRegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/controller/LoginAndRegisterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/backGroundManager/controller/ManageShowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/backGroundManager/controller/ManageShowController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/controller/CompanyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/controller/CompanyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/controller/PerformanceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/controller/PerformanceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/controller/OrderController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/dao/OrderDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/dto/OrderAllDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/dto/UserAdressDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/service/OrderService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/service/impl/OrderServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/OrderAllVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/OrderDetailVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/OrderVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/SeeOrders.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/ShortCutVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/dao/CompanyDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/dao/CompanyDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/service/ICompanyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/service/ICompanyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/service/impl/CompanyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/service/impl/CompanyServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/controller/ShowManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/controller/ShowManagerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/dao/ShowManagerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/dao/ShowManagerDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/ShowManagerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/ShowManagerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/impl/ShowManagerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/impl/ShowManagerServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/userManager/controller/userInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/userManager/controller/userInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/userManager/util/MailUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/userManager/util/MailUtil$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/userManager/util/MailUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/userManager/util/MailUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/OrderMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/ShowMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/ShowMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/companyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/companyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/userMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/userMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/addressEdit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/editAddress.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/spring-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/spring-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/accountsetting.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/accountsetting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/companyBaseInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/companyBaseInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/email_modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/email_modify.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/myAddress.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/myAddress.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/myinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/myinfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/orderList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/orderList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/orderMaker.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/performanceApplicationList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/performanceApplicationList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/performanceInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/performanceInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/password_modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/password_modify.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/setHeadPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/setHeadPhoto.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/showApplication.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/showApplication.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/showApplicationList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/showApplicationList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/shopdetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/shopdetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/shopsort.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/shopsort.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket_project.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ticket_project.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ticket_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ticket_test.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -209,6 +185,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>最少</find>
@@ -221,6 +204,23 @@
       <find>lesheet&quot; href=&quot;</find>
       <find>text/javascript</find>
       <find>Company</find>
+      <find>we</find>
+      <find>ORDERDTO</find>
+      <find>annotat</find>
+      <find>10.3</find>
+      <find>img</find>
+      <find>aler</find>
+      <find>svid</find>
+      <find>welogo</find>
+      <find>cookie</find>
+      <find>getU</find>
+      <find>gets</find>
+      <find>ajax</find>
+      <find>get</find>
+      <find>getsh</find>
+      <find>count</find>
+      <find>ser</find>
+      <find>getshowd</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -229,57 +229,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/companyManager/pojo/ShowVenue.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/backLogin.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/font-awesome.min.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/backMain.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/confirmcompany.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/updateUser.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/backGroundManager/pojo/user.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/confirmshow.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/backUser.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/backGroundManager/service/backGroundService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/backGroundManager/service/impl/backGroundServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/backGroundManager/dao/backGroundDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/backGroundMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/Register_merchant.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/wangEditor.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/MarchantLogin.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/companyBaseInfo.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/service/LoginService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/dao/Logindao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/dto/Marchantinfodto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/Interceptor/LoginInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/backGroundController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/homePage.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/shopsort.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/dto/Userdto.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/shopdetails.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/manageCompanyAndShow.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/showManager/dto/Userdto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/service/impl/LoginServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/login.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/email_modify.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/orderList.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/setHeadPhoto.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/myinfo.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowHomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/controller/LoginAndRegisterController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/userManager/util/MailUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/userManager/controller/userInfoController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/myAddress.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/head.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/performanceApplicationList.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/companyManager/controller/PerformanceController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/companyManager/controller/CompanyController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/performanceMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/performanceInfo.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/showApplicationList.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/showApplication.html" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/orderManager/configrations/AlipayConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-service.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/orderManager/dto/ShowDetails.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.java" />
+        <option value="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/7141f0d8-05e1-4dee-afda-b7a8d7212810.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/showManager/vo/svidVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowHomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/head.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/shopsort.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/showManager/dao/ShowManagerDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/showManager/service/impl/ShowManagerServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/showManager/service/ShowManagerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowManagerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/orderManager/dao/OrderDao.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/companyBaseInfo.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/companyMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/companyManager/service/ICompanyService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/companyManager/service/impl/CompanyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/companyManager/dao/CompanyDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/orderManager/service/OrderService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/companyManager/controller/CompanyController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/myAddress.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/setHeadPhoto.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/mysql.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/ordersubmit.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/orderMaker.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/addressEdit.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/editAddress1.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/email_modify.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/shopdetails.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ManageShowMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ShowMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/backGroundController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/ManageCompanyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/ManageShowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/controller/LoginAndRegisterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/orderManager/service/impl/OrderServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/snapshot.html" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/orderManager/controller/ThymeController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/accountsetting.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/backLogin.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/backMain.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/backUser.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/confirmcompany.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/confirmshow.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/manageCompanyAndShow.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/updateUser.html" />
       </list>
     </option>
   </component>
@@ -306,24 +306,15 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="ticket_test" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="ticket_test" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-      </expand>
+      <expand />
       <select />
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="537" />
-    <option name="width" value="1390" />
-    <option name="height" value="1047" />
+    <option name="x" value="41" />
+    <option name="y" value="11" />
+    <option name="width" value="1277" />
+    <option name="height" value="709" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -332,8 +323,51 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -341,28 +375,29 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556217392450" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/orderManager" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openbilibili-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\ticket\src\main\java\com\orderManager" />
-      <recent name="D:\ticket\src\main\resources\mapper" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ticket_test\src\main\webapp" />
       <recent name="D:\ticket\src\main\webapp" />
-      <recent name="D:\ticket\src\main\webapp\js" />
-      <recent name="D:\ticket\src\main\webapp\images" />
+      <recent name="D:\ticket\src\main\webapp\js\userManager" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.showManager.dto" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\ticket\src\main\webapp" />
-      <recent name="D:\ticket\src\main\webapp\js\userManager" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ticket_test\src\main\java\com\showManager\controller" />
+      <recent name="D:\ticket_test\src\main\resources\mapper" />
+      <recent name="D:\ticket_test\src\main\java\com\showManager\service" />
+      <recent name="D:\ticket_test\src\main\java\com\showManager\service\impl" />
+      <recent name="D:\ticket_test\src\main\java\com\showManager\dao" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -472,6 +507,13 @@
       <workItem from="1556254453157" duration="37000" />
       <workItem from="1556254552346" duration="11333000" />
       <workItem from="1556266878809" duration="204000" />
+      <workItem from="1556269089922" duration="1326000" />
+      <workItem from="1556270698885" duration="1538000" />
+      <workItem from="1556272429334" duration="9802000" />
+      <workItem from="1556284646040" duration="3424000" />
+      <workItem from="1556413425298" duration="16406000" />
+      <workItem from="1556499788311" duration="580000" />
+      <workItem from="1556595462468" duration="215000" />
     </task>
     <task id="LOCAL-00001" summary="third combine for website">
       <created>1556211560441</created>
@@ -491,9 +533,9 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40579000" />
+    <option name="totallyTimeSpent" value="73655000" />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -515,8 +557,44 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.3747954" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.63011456" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5777414" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Application Servers" order="8" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3289689" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" weight="0.19639935" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3732639" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" />
+      <window_info anchor="bottom" id="Database Changes" order="14" />
+      <window_info anchor="bottom" id="Version Control" order="15" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.20574887" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21331316" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.3633388" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5777414" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
@@ -525,21 +603,21 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" weight="0.19639935" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3732639" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
       <window_info anchor="bottom" id="Version Control" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.32980332" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.09682299" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -552,223 +630,278 @@
     <option name="LAST_COMMIT_MESSAGE" value="初步整合完成，测试1.1版本" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LoginAndRegister/CharEncodingFilter/EncodeFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/controller/PerformanceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LoginAndRegister/vo/LoginInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-71">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LoginAndRegister/Interceptor/LoginInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-322">
-          <caret line="38" column="45" lean-forward="true" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LoginAndRegister/dao/Logindao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/Logincheck.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LoginAndRegister/dto/Userdto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding>
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#681#682#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-            <element signature="e#740#741#0" expanded="true" />
-            <element signature="e#784#785#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LoginAndRegister/service/impl/LoginServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="36" column="42" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="173" column="33" selection-start-line="173" selection-start-column="33" selection-end-line="173" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#button#0;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#2973#2979#0" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#button#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#3175#3181#0" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#3476#3482#0" expanded="true" />
-            <element signature="e#3486#3492#0" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/editAddress1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="33" />
+        <state relative-caret-position="-115">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/orderList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="593" column="29" selection-start-line="593" selection-start-column="14" selection-end-line="593" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/setHeadPhoto.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/email_modify.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" column="37" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="37" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowHomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="782">
+          <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/shopsort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3436">
+          <caret line="287" column="29" lean-forward="true" selection-start-line="287" selection-start-column="29" selection-end-line="287" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#773#779#0" expanded="true" />
+            <element signature="e#779#785#0" expanded="true" />
+            <element signature="e#937#943#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/myinfo.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/companyMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/userManager/util/MailUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/userManager/controller/userInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="165" column="27" selection-start-line="165" selection-start-column="27" selection-end-line="165" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/myAddress.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1077">
-          <caret line="18" column="71" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
-          <folding>
-            <element signature="n#style#0;n#dd#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LoginAndRegister/controller/LoginAndRegisterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="107" column="16" selection-start-line="107" selection-start-column="16" selection-end-line="107" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1435#1436#0" expanded="true" />
-            <element signature="e#1465#1466#0" expanded="true" />
-            <element signature="e#1512#1513#0" expanded="true" />
-            <element signature="e#1550#1551#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LoginAndRegister/dto/Marchantinfodto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/pojo/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/dto/PerformanceApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/head.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+        <state relative-caret-position="437">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/dao/CompanyDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="253">
+          <caret line="11" column="42" lean-forward="true" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/dao/PerformanceDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/orderManager/service/OrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/orderManager/service/AlipayService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/companyBaseInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="238" column="39" lean-forward="true" selection-start-line="238" selection-start-column="22" selection-end-line="238" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#2;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mysql.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/myAddress.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1288">
+          <caret line="18" column="68" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/setHeadPhoto.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-801">
+          <caret line="208" column="71" selection-start-line="208" selection-start-column="65" selection-end-line="208" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/upload/023b9e0e-681f-4257-b7cb-5de15dff6a0f.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/upload/e1391392-41b3-4a3c-accc-c50d548a8caa.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/orderMaker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="279" column="86" selection-start-line="279" selection-start-column="86" selection-end-line="279" selection-end-column="86" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/ordersubmit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="59" column="38" lean-forward="true" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/accountsetting.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="86" column="6" lean-forward="true" selection-start-line="86" selection-start-column="6" selection-end-line="86" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/addressEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="176" column="6" selection-start-line="176" selection-start-column="6" selection-end-line="176" selection-end-column="6" />
+          <folding>
+            <element signature="e#192#198#0" expanded="true" />
+            <element signature="e#193#199#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/email_modify.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="133" column="6" selection-start-line="133" selection-start-column="6" selection-end-line="133" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/myinfo.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/editAddress1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="88" column="6" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/orderManager/controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1348">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/orderManager/dao/OrderDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="48" column="26" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="100" column="13" lean-forward="true" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/shopdetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="199" column="25" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/showManager/service/ShowManagerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/showManager/service/impl/ShowManagerServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#1416#1417#0" expanded="true" />
+            <element signature="e#1475#1476#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ManageShowMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/head.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1913">
+          <caret line="273" column="7" selection-start-line="273" selection-start-column="7" selection-end-line="273" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/showManager/dao/ShowManagerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/service/ICompanyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/service/impl/CompanyServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/controller/CompanyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2001">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/backGroundController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/ManageShowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/backGroundManager/service/impl/backGroundServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -781,165 +914,98 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/backGroundManager/service/impl/ManageShowServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
+        <state relative-caret-position="138">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/backGroundManager/service/impl/backGroundServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/ManageCompanyController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="161">
+          <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/service/IPerformanceService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/LoginAndRegister/controller/LoginAndRegisterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="851">
+          <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/showManager/dto/ShowDetails.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/snapshot.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="-1007">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/service/impl/PerformanceImpl.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.6.RELEASE/spring-context-4.3.6.RELEASE.jar!/org/springframework/ui/Model.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="207">
+          <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/orderManager/controller/ThymeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="53" column="39" lean-forward="true" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="112" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/orderManager/service/impl/OrderServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="45" column="66" lean-forward="true" selection-start-line="45" selection-start-column="66" selection-end-line="45" selection-end-column="66" />
+        <state relative-caret-position="63">
+          <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/controller/PerformanceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="37" column="88" lean-forward="true" selection-start-line="37" selection-start-column="88" selection-end-line="37" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/companyMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/wangEditor.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/performanceMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyManager/controller/CompanyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/wangEditor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1587" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/companyBaseInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1242" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/companyPrivateInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1311" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+        <state relative-caret-position="34">
+          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/performanceApplicationList.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ShowMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1150">
-          <caret line="3" column="69" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/showApplicationList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/showApplication.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="78" column="40" lean-forward="true" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/orderMaker.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#div#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/addressEdit.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/performanceInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="66" column="20" lean-forward="true" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/orderManager/configrations/AlipayConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="410">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="213" column="25" selection-start-line="213" selection-start-column="25" selection-end-line="213" selection-end-column="25" />
+        <state relative-caret-position="387">
+          <caret line="244" selection-start-line="244" selection-end-line="244" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowManagerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-635">
+          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/userManager/controller/userInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3519">
+          <caret line="175" column="5" selection-start-line="175" selection-start-column="5" selection-end-line="175" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
         </state>
       </provider>
     </entry>

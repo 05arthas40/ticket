@@ -122,6 +122,27 @@
                 }
 
             })
+            var cookie = document.cookie;
+            var string = cookie.split("userid=")[1];
+
+            if (string != null){
+                // string = string.split(";")[0];
+                // $("#login").empty();
+                // $("#login").append("<span  class='span-box-header span-user' data-spm='dlogin'><a href='myinfo.html'>"+string+"</a></span>");
+                $.ajax({
+                    type:"POST",
+                    url:"getNickname",
+                    contentType:"application/json; charset=utf-8",
+                    success:function (response) {
+                        $("#login").empty();
+                        $("#login").append("<span class='span-box-header span-user' data-spm='dlogin'><a href='myinfo.html'>"+response.nickname+"</a>&nbsp&nbsp<span onclick='toLogout()'>注销</span></span>");
+                        $("#portrait").attr("src","images/"+response.icon);
+                    },
+                    error:function (response) {
+                        console.log(response);
+                    }
+                })
+            }
 
 
         })
@@ -134,6 +155,7 @@
             $(".svid").each(function () {
                 if ($(this).hasClass("active")) {
                     svid = $(this).attr('id');
+                    svid = svid.split("svid")[1];
                 }
                 buyNum = $("#count_id").val();
             });
@@ -141,7 +163,7 @@
             if (svid == "") {
                 alert("您还没选择演出或价位呢")
             } else {
-                location.href = "#";
+                location.href = "orderMaker.html?count="+buyNum+"&svid="+svid;
             }
         }
 
@@ -207,6 +229,24 @@
                 }
             });
         })
+        function toLogin(){
+            window.location.href="login.html"
+        }
+
+        function toLogout() {
+            $.ajax({
+                type: "POST",
+                url: "ToLogout",
+                contentType:"application/json;cahrset=utf-8",
+                success: function (data) {
+                    alert("注销成功");
+                    window.location.reload();
+                },
+                error: function () {
+                    alert("数据传输有误");
+                },
+            })
+        }
         function toKeyword() {
             var ksvid;
             $(".svid").each(function () {
@@ -272,21 +312,19 @@
 
         </div>
 
+        <!--右边头部-->
         <div class="right-header" data-spm="nick">
             <div class="box-header user-header">
+                <a href="javascript:void(0)" class="J_userinfo_img" data-spm="duserinfo">
+                    <img class="i-box-header i-user" id="portrait" src="//img.alicdn.com/tfs/TB14UKCGQyWBuNjy0FpXXassXXa-54-54.png" /></a>
+                <a href="//passport.damai.cn/accountinfo/myinfo" class="J_userinfo_name" data-spm="duserinfo">
+                    <div class="span-box-header name-user"></div>
+                </a>
+                <div class="login-user show" id="login">
+                    <span class="span-box-header span-user" onclick="toLogin()" data-spm="dlogin">登录</span>
+                </div>
 
-                <div class="login-user show">
-                    <span class="span-box-header span-user">登录</span>
-                </div>
-                <div class="list-wrap">
-                    <div class="list-login">
-                        <a href="#">修改个人信息</a>
-                        <a href="#">修改密码</a>
-                        <a href="#">注销</a>
-                    </div>
-                </div>
             </div>
-
 
         </div>
         <div class="search-header" data-spm="searchtxt">

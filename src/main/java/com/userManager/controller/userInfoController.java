@@ -1,11 +1,11 @@
 package com.userManager.controller;
 
+
 import com.userManager.dto.UserAddressDto;
 import com.userManager.dto.UserInfoDto;
 import com.userManager.pojo.UserInfo;
 import com.userManager.service.UserInfoService;
 import com.userManager.util.CodeUtil;
-//import com.userManager.util.MailUtil;
 import com.userManager.util.MailUtil;
 import com.userManager.vo.UserAddressVo;
 import com.userManager.vo.UserEmailVo;
@@ -13,9 +13,11 @@ import com.userManager.vo.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -90,13 +92,15 @@ public class userInfoController {
         boolean flag= userInfoService.updatePassword(userInfo);
         return flag;
     }
+
     @ResponseBody
     @RequestMapping(value = "updateHeadImg",method = RequestMethod.POST)
-    public Object ImgUpload(@RequestParam("fileImg") CommonsMultipartFile multipartFile, HttpServletRequest request){
+    public Object updateHeadImg(@RequestParam(value = "multipartfile",required = false) MultipartFile multipartfile,HttpServletRequest request){
         System.out.println("进入文件上传接口");
+        System.out.println(multipartfile.getOriginalFilename());
         Map<String, Object> result = new HashMap<String, Object>();
         // 获取上传的原始文件名
-        String fileName = multipartFile.getOriginalFilename();
+        String fileName = multipartfile.getOriginalFilename();
         // 设置文件上传路径
         String filePath = request.getSession().getServletContext().getRealPath("/upload");
         System.out.println(filePath);
@@ -120,15 +124,17 @@ public class userInfoController {
         }
         try {
             // 写入文件
-            multipartFile.transferTo(file);
+            multipartfile.transferTo(file);
         } catch (IOException e) {
             e.printStackTrace();
         }
         // 返回 JSON 数据，这里只带入了文件名
         result.put("fileName", file.getName());
         System.out.println(result);
+
         return result;
     }
+
     @ResponseBody
     @RequestMapping(value = "bindMail",method = RequestMethod.POST)
     //绑定邮箱

@@ -58,7 +58,9 @@ public class LoginAndRegisterController {
     public String loginCheck(@RequestBody @Valid LoginInfo loginInfo, BindingResult bindingResult, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         //格式校验
         List s = geterrorInfo(bindingResult);
-        if(s!=null){return s.toString();}
+        if(s!=null){
+            return s.toString();
+        }
         //用来设置自动登录，因为如果验证过后就会自动加密了
         String pwd=loginInfo.getLogin_password();
         //校验信息，如果成功则获取到令牌
@@ -132,7 +134,7 @@ public class LoginAndRegisterController {
                 session.setAttribute("userinfo",loginInfo);
                 UserloginMap.add(loginInfo.getLogin_number(),session.getId());
                 return "success";
-            }
+        }
         }
         return "error";
     }

@@ -13,4 +13,9 @@
         update company set cname = #{name},caddress = #{address},cdetails = #{details}
         where cid = #{id}
     </update>
+
+    <!--修改公司资料-->
+    <update id="toModiyCompanyPrivateInfo" parameterType="java.util.Map">
+        update company set cdetails = #{details} where cid = #{companyId}
+    </update>
 </mapper>

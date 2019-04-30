@@ -5,6 +5,8 @@ import com.showManager.dto.ShowDetails;
 import com.showManager.service.ShowManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,4 +42,10 @@ public class ShowManagerServiceImpl implements ShowManagerService {
     public int getCityIdBysvid(String svid) {
         return showManagerDao.getCityIdBysvid(svid);
     }
+
+    public int getShowidBySvid(String svid) {
+        return showManagerDao.getShowidBySvid(svid);
+    }
+
+
 }

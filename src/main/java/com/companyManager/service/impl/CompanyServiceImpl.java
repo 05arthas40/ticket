@@ -6,6 +6,8 @@ import com.companyManager.service.ICompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class CompanyServiceImpl implements ICompanyService {
 
@@ -21,5 +23,14 @@ public class CompanyServiceImpl implements ICompanyService {
             return true;
         }
         return false;
+    }
+
+
+    public boolean toModiyCompanyPrivateInfo(Map<String, Object> map) {
+        if ( companyDao.toModiyCompanyPrivateInfo(map) > 0) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }

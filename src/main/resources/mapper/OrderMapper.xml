@@ -40,7 +40,7 @@
 
 
     <insert id="addOrderDetail" parameterType="com.orderManager.vo.OrderDetailVo">
-         insert into orderdetail(svid,orderid,ticketcount) value(#{svid},#{orderid},#{ticketcount})
+         insert into orderdetail(svid,orderid,ticketcount,shoturl) value(#{svid},#{orderid},#{ticketcount},#{shoturl})
     </insert>
 
     <select id="seeOrders" resultType="com.orderManager.dto.OrderAllDto" parameterType="com.orderManager.vo.SeeOrders">
@@ -87,5 +87,16 @@
 
     <update id="setSuccess" parameterType="int">
        update ticketorder set status=1  where orderid=#{orderid}
+    </update>
+
+    <!--    购票时，座位数增减-->
+    <update id="addCount">
+        update show_venue set seatCount = seatCount + #{arg0} WHERE svid = #{arg1}
+    </update>
+    <update id="reduceCount">
+        update show_venue set seatCount = seatCount - #{arg0}  WHERE svid = #{arg1}
+    </update>
+    <update id="timeOutCancelOrder" parameterType="int">
+        update ticketorder set status = 2 WHERE status = 0
     </update>
 </mapper>
