@@ -6,169 +6,277 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5a7264-ef02-4704-883b-beb7ff6111e8" name="Default Changelist" comment="初步整合完成，测试1.2版本">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alipay_sdk_alipay_sdk_java_3_4_27_ALL.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_jsr250_api_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ognl_ognl_3_0_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_16_1_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_2_1_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring4_2_1_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/controller/ThymeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/ShowDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/showManager/vo/svidVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/addstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/appstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/backstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/bilstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/blogstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/blstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/bostyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/buyConfirm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/carousel.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/cartstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/checkOut.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/cmstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/colstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/cpstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/default.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/dlstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/doc.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/drag.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/footstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/hmstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/infstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/jigsaw.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/jquery.pagination.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/jsstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/loginstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/lostyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/member.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/newstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/optstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/orstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/personal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/public.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/refstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/search-form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/seastyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/sheetStyle1.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/sheetStyle2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/skin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/sortstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/stepstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/sustyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/systyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/snapshots/css/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ticket_test_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ticket_test_war_exploded.xml" afterDir="false" />
+    <list default="true" id="1d5a7264-ef02-4704-883b-beb7ff6111e8" name="Default Changelist" comment="1.0版本(支付待完成)">
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/CharEncodingFilter/EncodeFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/Interceptor/LoginInterceptor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/XssFilter/JsoupUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/XssFilter/XssHttpFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper$WrappedServletInputStream.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/controller/LoginAndRegisterController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/dao/Logindao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/dao/Registerdao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/dto/Marchantinfodto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/dto/Userdto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/entity/UserCheckTokenInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/entity/Userinfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/loginMap/HttpListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/loginMap/UserloginMap.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/note/CodeUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/note/Config.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/note/HttpUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/note/IndustrySMS.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/service/LoginService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/service/RegisgerService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/service/impl/LoginServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/service/impl/RegisterServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/utils/HttpClient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/utils/MD5Utils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/LoginInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/LoginMarchant.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/RegisterInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/RegisterMarchant.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoginAndRegister/vo/updatepwd.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/controller/ManageCompanyController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/controller/ManageShowController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/controller/backGroundController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/dao/ManageCompanyDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/dao/ManageShowDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/dao/backGroundDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/CnameDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/CompanyDetailsDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/CompanyInfoDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/ShowDetailsDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/ShowInfoDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/dto/ShowShowDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/pojo/Show.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/pojo/user.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/ManageCompanyService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/ManageShowService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/backGroundService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/impl/ManageCompanyServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/impl/ManageShowServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/service/impl/backGroundServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/test.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/CompanyidAndReasonVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/CompanyidAndStatusVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/ShowidAndReasonVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/StatusAndPfmidAndReasonVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/StatusAndPfmidVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/backGroundManager/vo/userVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/controller/CompanyController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/controller/PerformanceController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/dao/CompanyDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/dao/PerformanceDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/dto/CompanyDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/dto/PerformanceApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/dto/PerformanceDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/dto/ShowAndVenue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/dto/ShowApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/dto/VenueDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/pojo/Company.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/pojo/Performance.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/pojo/ShowVenue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/service/ICompanyService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/service/IPerformanceService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/service/impl/CompanyServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/companyManager/service/impl/PerformanceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/configrations/AlipayConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/configrations/AlipayProperties.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/controller/OrderController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/controller/PayController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/controller/ThymeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/dao/OrderDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/dto/FlowsDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/dto/OrderAllDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/dto/OrderDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/dto/ShowDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/dto/UserAdressDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/pay/AlipayConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/service/AlipayService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/service/OrderService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/service/impl/AlipayServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/service/impl/OrderServiceImpl$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/service/impl/OrderServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/vo/FlowsVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/vo/OrderAllVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/vo/OrderDetailVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/vo/OrderVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/vo/SeeOrders.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/orderManager/vo/ShortCutVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/controller/ShowHomeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/controller/ShowManagerController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/controller/ShowSortController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/dao/ShowHomeMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/dao/ShowManagerDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/dao/ShowSortMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/dto/ShowDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/dto/ShowHomeDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/dto/ShowSortDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/pojo/ShowDate.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/pojo/UserInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/service/ShowHomeService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/service/ShowManagerService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/service/ShowSortService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/service/impl/ShowHomeServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/service/impl/ShowManagerServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/service/impl/ShowSortServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/vo/ShowSortVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/showManager/vo/svidVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/controller/userInfoController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/dao/UserMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/dto/UserAddressDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/dto/UserInfoDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/pojo/UserAddress.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/pojo/UserInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/service/UserInfoService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/service/impl/UserInfoServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/util/CodeUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/util/MailUtil$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/util/MailUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/vo/UserAddressVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/vo/UserEmailVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/userManager/vo/UserInfoVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/OrderMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/homePage.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/performanceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/spring-entity.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/backGroundManager/dto/CnameDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/configrations/AlipayConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/configrations/AlipayProperties.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/controller/OrderController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/controller/PayController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/controller/ThymeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/dao/OrderDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/dto/FlowsDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/dto/OrderAllDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/dto/OrderDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/dto/ShowDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/dto/UserAdressDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/pay/AlipayConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/service/AlipayService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/service/OrderService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/service/impl/AlipayServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/service/impl/OrderServiceImpl$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/service/impl/OrderServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/FlowsVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/OrderAllVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/OrderDetailVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/OrderVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/SeeOrders.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/orderManager/vo/ShortCutVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/controller/ShowHomeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/dao/ShowHomeMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/dto/ShowHomeDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/pojo/ShowDate.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/pojo/UserInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/ShowHomeService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/impl/ShowHomeServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/vo/svidVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/OrderMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/homePage.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/performanceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/spring-entity.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/lib/alipay-sdk-java-3.4.27.ALL.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/lib/javassist-3.16.1-GA.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/lib/jsr250-api-1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/lib/ognl-3.0.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/lib/thymeleaf-2.1.2.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/lib/thymeleaf-spring4-2.1.2.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/addressEdit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/css/carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/css/companyAndShow/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/css/doc.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/css/theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/editAddress1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/01.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/02.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/03.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/04.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/center.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/center0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/header01.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/header_bei.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/left01_bei.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/left01_left.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/left01_right.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/left02_bei.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/left02_left.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/left02_right.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/companyAndShow/li.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/images/welogo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/js/userManager/accountSetting.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/js/userManager/base.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/js/userManager/base.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/js/userManager/crop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/js/userManager/jquery.cookie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/js/wangeditor/min/wangEditor.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/js/wangeditor/min/wangEditor.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/orderMaker.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/ordersubmit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshot.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/addstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/appstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/backstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/bilstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/blogstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/blstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/bostyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/buyConfirm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/cartstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/checkOut.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/cmstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/colstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/cpstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/dlstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/doc.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/drag.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/footstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/hmstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/infstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/jigsaw.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/jquery.pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/jsstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/loginstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/lostyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/member.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/newstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/optstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/orstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/personal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/public.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/refstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/search-form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/seastyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/sheetStyle1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/sheetStyle2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/skin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/sortstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/stepstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/sustyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/systyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/snapshots/css/theme.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/controller/LoginAndRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LoginAndRegister/controller/LoginAndRegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/ManageShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backGroundManager/controller/ManageShowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyManager/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyManager/controller/CompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyManager/dao/CompanyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyManager/dao/CompanyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyManager/service/ICompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyManager/service/ICompanyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyManager/service/impl/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyManager/service/impl/CompanyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/configrations/AlipayConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/configrations/AlipayProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/controller/OrderController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/controller/PayController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dao/OrderDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/FlowsDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/OrderAllDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/OrderDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/dto/UserAdressDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/pay/AlipayConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/AlipayService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/OrderService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/impl/AlipayServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/service/impl/OrderServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/FlowsVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/OrderAllVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/OrderDetailVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/OrderVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/SeeOrders.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orderManager/vo/ShortCutVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/controller/ShowManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/dao/ShowManagerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/dao/ShowManagerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/dto/Userdto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/service/ShowManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/service/ShowManagerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/showManager/service/impl/ShowManagerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/showManager/service/impl/ShowManagerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/userManager/controller/userInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/userManager/controller/userInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ShowMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ShowMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/companyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/companyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-service.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/accountsetting.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/accountsetting.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addressEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addressEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/backLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/backLogin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/backMain.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/backMain.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/backUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/backUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/companyBaseInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/companyBaseInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/confirmcompany.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/confirmcompany.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/confirmshow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/confirmshow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/editAddress1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/editAddress1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/email_modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/email_modify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/manageCompanyAndShow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/manageCompanyAndShow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/myAddress.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/myAddress.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/myinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/myinfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderMaker.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderMaker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ordersubmit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ordersubmit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/password_modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/password_modify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/setHeadPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/setHeadPhoto.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/shopdetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/shopdetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/shopsort.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/shopsort.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/snapshot.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/snapshot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/updateUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ShowMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ShowMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/companyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/companyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/userMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/userMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-service.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper$WrappedServletInputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper$WrappedServletInputStream.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/XssFilter/XssHttpServletRequestWrapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/controller/LoginAndRegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/LoginAndRegister/controller/LoginAndRegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/backGroundManager/controller/ManageShowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/backGroundManager/controller/ManageShowController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/controller/CompanyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/controller/CompanyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/dao/CompanyDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/dao/CompanyDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/service/ICompanyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/service/ICompanyService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/service/impl/CompanyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/companyManager/service/impl/CompanyServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/controller/ShowManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/controller/ShowManagerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/dao/ShowManagerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/dao/ShowManagerDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/ShowManagerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/ShowManagerService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/impl/ShowManagerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/showManager/service/impl/ShowManagerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/userManager/controller/userInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/com/userManager/controller/userInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/ShowMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/ShowMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/companyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/companyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/userMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/mapper/userMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/spring-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/WEB-INF/classes/spring-service.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/accountsetting.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/accountsetting.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/companyBaseInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/companyBaseInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/email_modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/email_modify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/myAddress.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/myAddress.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/myinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/myinfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/orderList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/orderList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/password_modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/password_modify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/setHeadPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/setHeadPhoto.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/shopdetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/shopdetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/shopsort.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/shopsort.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticket_project.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ticket_project.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/backLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/backLogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/backMain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/backMain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/backUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/backUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/confirmcompany.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/confirmcompany.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/confirmshow.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/confirmshow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/manageCompanyAndShow.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/manageCompanyAndShow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/updateUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/updateUser.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ticket_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ticket_test.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -183,7 +291,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -323,51 +431,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ticket_test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ticket_test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -514,6 +579,7 @@
       <workItem from="1556413425298" duration="16406000" />
       <workItem from="1556499788311" duration="580000" />
       <workItem from="1556595462468" duration="215000" />
+      <workItem from="1557022164519" duration="873000" />
     </task>
     <task id="LOCAL-00001" summary="third combine for website">
       <created>1556211560441</created>
@@ -533,7 +599,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73655000" />
+    <option name="totallyTimeSpent" value="74528000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -547,7 +613,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21633889" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2193646" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -557,7 +623,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.63011456" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.57119477" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5777414" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -726,12 +792,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/upload/023b9e0e-681f-4257-b7cb-5de15dff6a0f.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/upload/e1391392-41b3-4a3c-accc-c50d548a8caa.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/upload/023b9e0e-681f-4257-b7cb-5de15dff6a0f.bmp" />
+    <entry file="file://$PROJECT_DIR$/target/ticket_test-1.0-SNAPSHOT/upload/e1391392-41b3-4a3c-accc-c50d548a8caa.jpg" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/orderMaker.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">

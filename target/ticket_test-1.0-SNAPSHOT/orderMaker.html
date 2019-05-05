@@ -1,0 +1,733 @@
+
+<head>
+    <meta name="data-spm" content="a2oeg" charset="utf-8">
+    <link rel="shortcut icon" href="//gw.alicdn.com/tfs/TB1fGH0fgMPMeJjy1XcXXXpppXa-16-16.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//g.alicdn.com/damai/migratory-birds-pc/0.3.3/pages/buy/index.css">
+    <link rel="stylesheet"
+          href="//g.alicdn.com/??damai/pc/1.0.4/p/head/index.css,damai/pc/1.0.4/p/footer/index.css,damai/pc/1.0.4/p/menu/index.css">
+    <title>确认订单</title>
+    <script type="text/javascript" src="jquery/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        var Min = 1;
+        var Max = 5;
+        var price;
+        var prices;
+        var total;
+        var count;
+        var expenses;
+        var num;
+        var pricetoken;
+        var T_Max;
+        var userid;
+        var cid;
+        var uaname;
+        var uaphone;
+        var uaddress;
+        var singleprice;
+
+        function plus() {
+            num = count.val();
+            if (num < Max) {
+                count.val(++num);
+                total.text(total.html() - (-price));
+                prices.text(prices.html() - (-price));
+            }
+        }
+
+        var firstFlag;
+
+        function minus() {
+            num = count.val();
+            if (num > Min) {
+                count.val(--num);
+                total.text(total.html() - price);
+                prices.text(prices.html() - price);
+            }
+        }
+
+        function changePrice() {
+            num = count.val();
+            if (num > Max) {
+                num = Max;
+                count.val(num);
+            }
+            else if (num >= Min && num <= Max) {
+
+            } else {
+                num = Min;
+                count.val(num);
+            }
+            pricetoken = num * price;
+            prices.text(pricetoken);
+            total.text(pricetoken - (-expenses));
+        }
+
+        function editAddress(action, uaid) {
+            var loc = "addressEdit.html?action=" + action;
+            loc = action == "add" ? loc += '' : loc + "&uaid=" + uaid;
+            if (firstFlag)
+                loc += "&flag=1";
+            location.href = loc;
+            // console.log(loc);
+        }
+
+        function delAddress(uaid) {
+            $.ajax({
+                type: "get",
+                url: "delAddresses?uaid=" + uaid,
+                dataType: "json",
+                success: function (response) {
+                    if (response)
+                        initPage();
+                },
+                error: function (error) {
+                    console.error(error)
+                }
+            });
+        }
+
+        function initPage() {
+            $.ajax({
+                type: "get",
+                url: "getAddresses?userid=" + userid,
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                    if (response.length == 0)
+                        firstFlag = true;
+                    var addresses = $(".express-address");
+                    $(".express-address-item").remove();
+                    var sign = $("#sign");
+                    $(response).each(function (index, address) {
+                        if (address.isDefault == 1) {
+                            $("<div title=\"" + address.uaddress + "\" class=\"express-address-item selected\">\n" +
+                                "<div class=\"express-address-name\">" + address.uaname + "</div>\n" +
+                                "<div class=\"express-address-content\" title=\"" + address.uaddress + "  " + address.uaphone + "\">" +
+                                address.uaddress + "  " + address.uaphone + "</div>" +
+                                "<div class=\"express-address-modify\"><botton  onclick='editAddress(\"edit\"," + address.uaid + ")'>修改</botton></div>\n" +
+                                "<div class=\"express-address-modify\"><botton  onclick='delAddress(address.uaid)'>删除</botton></div>\n" +
+                                "<div class=\"express-address-default\">默认地址</div>\n" +
+                                "<div class=\"express-address-selected\"></div></div>").insertBefore(sign);
+                            uaddress = address.uaddress;
+                            uaname = address.uaname;
+                            uaphone = address.uaphone;
+                        } else {
+                            $("<div title=\"" + address.uaddress + "\" class=\"express-address-item \">\n" +
+                                "<div class=\"express-address-name\">" + address.uaname + "</div>\n" +
+                                "<div class=\"express-address-content\" title=\"" + address.uaddress + "  " + address.uaphone + "\">" +
+                                address.uaddress + "  " + address.uaphone + "</div>" +
+                                "<div class=\"express-address-modify\"><botton  onclick='editAddress(\"edit\"," + address.uaid + ")'>修改</botton></div>\n" +
+                                "<div class=\"express-address-modify\"><botton  onclick='delAddress(" + address.uaid + ")'>删除</botton></div>\n" +
+                                "<div class=\"express-address-default\" hidden>默认地址</div>\n" +
+                                "<div class=\"express-address-selected\" hidden></div></div>").insertBefore(sign);
+
+                        }
+                    });
+                    var parents = $(".express-address-item");
+                    var old_selected = $(".express-address-item.selected");
+                    var Adress = $("#editAdress");
+                    var Receiver = $("#editReceiver");
+                    Adress.html(old_selected.children(".express-address-content").html());
+                    Receiver.html(old_selected.children(".express-address-name").html());
+                    $(parents).each(function (index) {
+                        $(this).click(function () {
+                            old_selected.removeClass("selected");
+                            old_selected.children(".express-address-selected").toggle();
+                            $(this).addClass("selected");
+                            $(this).children(".express-address-selected").toggle()
+                            Adress.html($(this).children(".express-address-content").html());
+                            Receiver.html($(this).children(".express-address-name").html());
+                            old_selected = $(this);
+                            uaname = Receiver.html();
+                            uaddress = Adress.html().split("  ")[0];
+                            uaphone = Adress.html().split("  ")[1];
+                        });
+                    })
+                },
+                error: function (msg) {
+                    console.error(msg);
+                }
+            });
+        }
+
+        function initOrder(svid, ocount, imgurl) {
+            $.ajax({
+                type: "get",
+                url: "getShopCart?svid=" + svid,
+                dataType: "jsonp",
+                success: function (response) {
+                    console.log(response[0]);
+                    response = response[0];
+                    pricese = response.showprice * ocount;
+                    cid = response.cid;
+                    singleprice = response.showprice;
+                    $("#tbody").empty();
+                    $("#tbody").append("<tr class=\"next-table-row last first\">\n" +
+                        "                                    <td class=\"single next-table-cell first\" colspan=\"1\" rowspan=\"1\">\n" +
+                        "                                        <div class=\"next-table-cell-wrapper\">\n" +
+                        "                                            <div class=\"next-row project-name-wrapper\" data-spm=\"list\">\n" +
+                        "                                                <div class=\"next-col project-name-img\"><img\n" +
+                        "                                                        src=\"" + imgurl + response.ppicture + "\"\n" +
+                        "                                                        data-spm=\"ditempic\">\n" +
+                        "                                                </div>\n" +
+                        "                                                <div class=\"next-col project-name-right\">\n" +
+                        "                                                    <div class=\"next-row project-name\" data-spm=\"dtitle\">\n" + response.showtitle +
+                        "                                                    </div>\n" +
+                        "                                                    <div class=\"next-row project-name-perform\"><span>" + response.showdate + "  " + response.begin + "-" + response.end + "</span>\n" +
+                        "                                                    </div>\n" +
+                        "                                                    <div class=\"next-row project-name-venue\">" + response.cityname + "  " + response.vname + "</div>\n" +
+                        "                                                    <div class=\"next-row project-name-tips\">按付款顺序配票，优先连座配票</div>\n" +
+                        "                                                </div>\n" +
+                        "                                            </div>\n" +
+                        "                                        </div>\n" +
+                        "                                    </td>\n" +
+                        "                                    <td class=\"seatInfo next-table-cell\">\n" +
+                        "                                        <div class=\"next-table-cell-wrapper\"><span class=\"no-seat\">暂无座位信息</span></div>\n" +
+                        "                                    </td>\n" +
+                        "                                    <td class=\"next-table-cell\">\n" +
+                        "                                        <div class=\"next-table-cell-wrapper\" id=\"price\">" + response.showprice + "</div>\n" +
+                        "                                    </td>\n" +
+                        "                                    <td class=\"next-table-cell\">\n" +
+                        "                                        <div class=\"next-table-cell-wrapper\">\n" +
+                        "                                            <input type=\"button\" value=\" + \" style=\"height: 20px\" onclick=\"plus()\"/>\n" +
+                        "                                            <input id=\"count\" type=\"text\"\n" +
+                        "                                                   value=\"" + ocount + "\" onchange=\"changePrice()\"\n" +
+                        "                                                   style=\"width: 30px; text-align: center;background: whitesmoke\"/>\n" +
+                        "                                            <input type=\"button\" value=\" -- \" style=\"height: 20px\" onclick=\"minus()\"/>\n" +
+                        "                                        </div>\n" +
+                        "                                    </td>\n" +
+                        "                                    <td class=\"next-table-cell\">\n" +
+                        "                                        <div class=\"next-table-cell-wrapper\"><span class=\"no-discount\">-</span></div>\n" +
+                        "                                    </td>\n" +
+                        "                                    <td class=\"next-table-cell last\">\n" +
+                        "                                        <div class=\"next-table-cell-wrapper\"><span\n" +
+                        "                                                id=\"prices\">" + pricese + "</span></div>\n" +
+                        "                                    </td>\n" +
+                        "                                </tr>");
+                    price = $("#price").html();
+                    total = $("#tprice");
+                    prices = $("#prices");
+                    count = $("#count");
+                    expenses = $(".dm-pay-detail-price").html();
+                    total.text(pricese - (-expenses));
+                },
+                error: function (msg) {
+                    console.error(msg);
+                }
+            });
+        }
+
+        var pricese;
+        $(function () {
+            var string = location.search;
+            var svid = string.split("svid=")[1].split("&")[0];
+            var ocount = string.split("count=")[1].split("&")[0];
+            // userid = document.cookie.split("userid=")[1].split(";")[0];
+            userid=2;
+            var imgurl = "images/";
+            initPage();
+            initOrder(svid, ocount, imgurl);
+            $("#submitOrder").click(function () {
+                $.ajax({
+                    type: "post",
+                    url: "submitOrder",
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify({
+                        "svid": svid,
+                        "userid": userid,
+                        "cid": cid,
+                        "ordertime": new Date().toLocaleString(),
+                        "ticketcount": count.val(),
+                        "expfee": expenses.split("+")[1],
+                        "singleprice": singleprice,
+                        "price": prices.html(),
+                        "totalprice": total.html(),
+                        "uaname": uaname,
+                        "uaphone": uaphone,
+                        "uaddress": uaddress,
+                    }),
+                    success: function (orderid) {
+                        if (orderid > 0)
+                            location.href = "orderpay?orderid="+orderid;
+                            // alert(orderid);
+                        else
+                            alert("数据异常，订单提交失败，请稍后再试")
+
+                    },
+                    error: function (msg) {
+                        console.error(msg);
+                    }
+                });
+            });
+
+        })
+    </script>
+</head>
+
+<body data-spm="orderconfirm">
+
+
+<!--[if gte IE 8]>
+<div style="height: 40px;line-height: 40px;background-color: #ffedf4; color: #FF1268; text-align: center; ">
+    由于您的浏览器版本过低，为了您更好的体验，请使用chrome浏览器或升级至IE10以上版本
+</div>
+<![endif]-->
+
+
+<div class="dm-header-wrap">
+    <div class="dm-header-box" data-spm="top">
+        <a href="head.html"><img class="i-logo" src="images/welogo.jpg" alt="大麦"/></a>
+        <div class="location-header">
+            <img class="i-icon-location" src="//img.alicdn.com/tfs/TB1XHDuxNGYBuNjy0FnXXX5lpXa-28-32.png" alt="定位">
+            <span class="city-location">全国</span>
+            <img class="i-arrow-location" src="https://img.alicdn.com/tfs/TB1vnUBxStYBeNjSspaXXaOOFXa-20-12.png"
+                 alt="箭头">
+            <div class="city-header-wrap">
+                <div class="city-header" data-spm="city">
+                    <div class="now-city">
+                        <span class="title-city">当前城市:</span>
+                        <span class="name-city select-city">全国</span>
+                    </div>
+                    <div class="hot-city">
+                        <span class="title-city">热门城市:</span>
+                        <div class="list-other"></div>
+                    </div>
+                    <div class="other-city">
+                        <span class="title-city">其他城市:</span>
+                        <div class="list-other"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recommend-header">
+            <a href="//www.damai.cn" class="type-recommend" data-spm="dhome">首页</a>
+            <a href="//search.damai.cn/search.htm?order=1" class="type-recommend" data-spm="dcategory">分类</a>
+
+
+        </div>
+        <div class="right-header" data-spm="nick">
+            <div class="box-header user-header">
+                <a href="//passport.damai.cn/accountinfo/myinfo" class="J_userinfo_img" data-spm="duserinfo"><img
+                        class="i-box-header i-user"
+                        src="//perico.damai.cn/userheadphotos/13845/2769091.jpg?r=0.14195803133918572"></a>
+                <a href="//passport.damai.cn/accountinfo/myinfo" class="J_userinfo_name" data-spm="duserinfo">
+                    <div class="span-box-header name-user show">俊_kopite</div>
+                </a>
+                <div class="login-user">
+                    <span class="span-box-header span-user" data-spm="dlogin">登录</span>
+                </div>
+                <div class="list-wrap">
+                    <div class="list-login">
+                        <a href="//passport.damai.cn/accountinfo/myinfo" class="li-login select" data-spm="duserinfo">个人信息</a>
+                        <a href="//my.damai.cn/account/accountSafe" class="li-login" data-spm="daccountsetting">账号设置</a>
+                        <a href="//orders.damai.cn/orderList" class="li-login" data-spm="dordermanage">订单管理</a>
+                        <a href="//www.damai.cn/redirect.aspx?type=logout" data-spm="dexit"
+                           class="li-login out-login show">退出登录</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-header download-header">
+                <img class="i-box-header i-download" src="//img.alicdn.com/tfs/TB1A9eIGKuSBuNjy1XcXXcYjFXa-54-54.png"
+                     alt="下载">
+                <span class="span-box-header">下载</span>
+                <div class="ewm-download">
+                    <img class="i-ewm" src="//img.alicdn.com/tfs/TB1r0uFxHSYBuNjSspiXXXNzpXa-280-280.png">
+                </div>
+            </div>
+            <div class="box-header">
+                <a href="//en.damai.cn/" data-spm="denglish">
+                    <img class="i-box-header" src="//img.alicdn.com/tfs/TB13UKCGQyWBuNjy0FpXXassXXa-54-54.png"
+                         alt="英文站">
+                    <span class="span-box-header">English</span>
+                </a>
+            </div>
+        </div>
+        <div class="search-header" data-spm="searchtxt">
+            <img class="i-search" src="//img.alicdn.com/tfs/TB1qv3jxGmWBuNjy1XaXXXCbXXa-34-36.png" alt="搜索">
+            <input class="input-search" placeholder="搜索明星、演出、体育赛事" data-spm="dsearchbtn">
+            <div class="btn-search" data-spm="dsearchbtn2">搜索</div>
+            <div class="list-search-wrap">
+                <div class="list-search">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="w1200">
+
+    <div id="header">
+        <div class="buy-header"></div>
+    </div>
+    <div id="container">
+        <div id="confirmOrder_1">
+            <div class="dm-delivery-way">
+                <div class="next-row next-row-no-padding delivery-title">配送方式</div>
+                <div class="next-row next-row-no-padding way-list">
+                    <div class="next-col way-item selected express">
+                        <div class="way-image" data-spm-anchor-id="a2oeg.orderconfirm.0.i1.75786bdbQ9N7Lo"></div>
+                        <div class="way-title">快递</div>
+                    </div>
+                    <div class="way-list-triangle first"></div>
+                    <div class="way-list-rectangle first"></div>
+                </div>
+                <div class="express-address">
+                    <div class="express-address-wrapper">
+                        <div title="广东省 广州市 海珠区 江南中街道 紫来大街" class="express-address-item selected">
+                            <div class="express-address-name">李kpc</div>
+                            <div class="express-address-content" title="广东省 广州市 海珠区 江南中街道 紫来大街 15113810740">广东省 广州市 海珠区
+                                江南中街道 紫来大街 15113810740
+                            </div>
+                            <div class="express-address-modify">修改</div>
+                            <div class="express-address-default">默认地址</div>
+                            <div class="express-address-selected"></div>
+                        </div>
+
+                        <div title="广东省 广州市 海珠区 江南中街道 紫来大街" class="express-address-item">
+                            <div class="express-address-name">李k</div>
+                            <div class="express-address-content" title="广东省 广州市 海珠区 江南中街道 紫来大街 15113810740">广东省 广州市 海珠区
+                                江南中街道 紫来大街 15113810740
+                            </div>
+                            <div class="express-address-modify">修改</div>
+                            <div class="express-address-default" hidden>默认地址</div>
+                            <div class="express-address-selected" hidden></div>
+                        </div>
+                        <div class="clear" id="sign"></div>
+                    </div>
+                    <div class="express-address-handle">
+                        <button type="button" class="next-btn next-btn-normal next-btn-medium"
+                                onclick="editAddress('add')">使用新地址
+                        </button>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="dm-pay-type-wrapper" data-spm-anchor-id="a2oeg.orderconfirm.0.i0.75786bdbQ9N7Lo">
+                <div class="pay-type-title">支付方式</div>
+                <div class="dm-pay-type-list-wrapper">
+                    <div class="dm-pay-type-item-wrapper selected">
+                        <div class="img-wrapper"><img
+                                src="https://img.alicdn.com/tfs/TB1SljyHf1TBuNjy0FjXXajyXXa-66-24.png"></div>
+                        <div class="next-row">
+                            <div class="next-col"></div>
+                            <div class="next-col"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="dm-item">
+                <div class="dm-item-title">确认订单信息</div>
+                <div class="next-table order-info-list">
+                    <div class="next-table-inner">
+                        <div class="next-table-header">
+                            <div class="next-table-header-inner">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 40%;">
+                                        <col style="width: 17%;">
+                                        <col style="width: 9%;">
+                                        <col style="width: 9%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 15%;">
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <th rowspan="1" class="next-table-header-node first single">
+                                            <div class="next-table-cell-wrapper">项目信息</div>
+                                        </th>
+                                        <th rowspan="1" class="next-table-header-node seatInfo">
+                                            <div class="next-table-cell-wrapper">座位信息</div>
+                                        </th>
+                                        <th rowspan="1" class="next-table-header-node">
+                                            <div class="next-table-cell-wrapper">单价</div>
+                                        </th>
+                                        <th rowspan="1" class="next-table-header-node">
+                                            <div class="next-table-cell-wrapper">数量</div>
+                                        </th>
+                                        <th rowspan="1" class="next-table-header-node">
+                                            <div class="next-table-cell-wrapper">优惠</div>
+                                        </th>
+                                        <th rowspan="1" class="next-table-header-node last">
+                                            <div class="next-table-cell-wrapper">小计</div>
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="next-table-body"><!--next-table-body-->
+                            <table>
+                                <colgroup>
+                                    <col style="width: 40%;">
+                                    <col style="width: 17%;">
+                                    <col style="width: 9%;">
+                                    <col style="width: 9%;">
+                                    <col style="width: 10%;">
+                                    <col style="width: 15%;">
+                                </colgroup>
+                                <tbody id="tbody">
+                                <tr class="next-table-row last first">
+                                    <td class="single next-table-cell first" colspan="1" rowspan="1">
+                                        <div class="next-table-cell-wrapper">
+                                            <div class="next-row project-name-wrapper" data-spm="list">
+                                                <div class="next-col project-name-img"><img
+                                                        src="http://img.alicdn.com/imgextra/i3/2251059038/O1CN01cbB5UM2GdS9niSlB1_!!0-item_pic.jpg"
+                                                        data-spm="ditempic">
+                                                </div>
+                                                <div class="next-col project-name-right">
+                                                    <div class="next-row project-name" data-spm="dtitle">
+                                                        林子祥Lamusical2019演唱会 - 广州站
+                                                    </div>
+                                                    <div class="next-row project-name-perform"><span>2019.06.22 19:30-21:30</span>
+                                                    </div>
+                                                    <div class="next-row project-name-venue">宝能国际体育演艺中心</div>
+                                                    <div class="next-row project-name-tips">按付款顺序配票，优先连座配票</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="seatInfo next-table-cell">
+                                        <div class="next-table-cell-wrapper"><span class="no-seat">暂无座位信息</span></div>
+                                    </td>
+                                    <td class="next-table-cell">
+                                        <div class="next-table-cell-wrapper" id="price">480.00</div>
+                                    </td>
+                                    <td class="next-table-cell">
+                                        <div class="next-table-cell-wrapper">
+                                            <input type="button" value=" + " style="height: 20px" onclick="plus()"/>
+                                            <input id="count" type="text"
+                                                   value="1" onchange="changePrice()"
+                                                   style="width: 30px; text-align: center;background: whitesmoke"/>
+                                            <input type="button" value=" -- " style="height: 20px" onclick="minus()"/>
+                                        </div>
+                                    </td>
+                                    <td class="next-table-cell">
+                                        <div class="next-table-cell-wrapper"><span class="no-discount">-</span></div>
+                                    </td>
+                                    <td class="next-table-cell last">
+                                        <div class="next-table-cell-wrapper"><span
+                                                id="prices">480.00</span></div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-wrapper">
+                    <div class="dm-invoice">
+                        <div class="dm-invoice-title">开具发票：</div>
+                        <div class="dm-invoice-content" title="请在支付完成后，前往大麦APP开具发票">请在支付完成后，前往大麦APP开具发票</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="detail-right">
+                        <div class="dm-pay-detail">
+                            <div class="dm-pay-detail-title">配送方式：</div>
+                            <div class="dm-pay-detail-content">快递</div>
+                            <div class="dm-pay-detail-price">+10</div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="dm-invoice">
+                <div class="dm-invoice-title">开具发票：</div>
+                <div class="dm-invoice-content" title="请在支付完成后，前往大麦APP开具发票">请在支付完成后，前往大麦APP开具发票</div>
+                <div class="clear"></div>
+            </div>
+            <div></div>
+            <div class="term-wrapper">
+                <div class="term-wrapper-top"><label class="next-checkbox  checked"><span class="next-checkbox-inner"><i
+                        class="next-icon next-icon-select next-icon-xs"></i></span><input type="checkbox"
+                                                                                          aria-checked="true"
+                                                                                          checked=""></label><span>我已经阅读并同意</span><em><a
+                        href="https://x.damai.cn/markets/app/agreements" target="_blank">《大麦网订票服务条款》</a></em></div>
+                <div class="term-wrapper-bottom">同意"票品为不记名凭证，请您妥善保管，遗失不补"</div>
+            </div>
+            <div class="order-pay-wrapper">
+                <div class="order-pay-top">实付款：<span>￥<em id="tprice">490.00</em></span></div>
+                <div class="delivery-wrapper">
+                    <div><span>寄送至：</span><span id="editAdress"></span></div>
+                    <div><span>收货人：</span><span id="editReceiver"></span></div>
+                </div>
+            </div>
+            <div class="submit-wrapper">
+                <button type="button" class="next-btn next-btn-normal next-btn-medium" id="submitOrder">同意以上协议并提交订单
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="dm-footer">
+    <div class="w1200">
+        <ul class="footer__links">
+
+            <li class="footer__links__list"><a href="//help.damai.cn" target="_blank" data-spm="flink0">帮助中心</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=69&amp;categoryId=30"
+                                               target="_blank" data-spm="flink1">公司介绍</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=70&amp;categoryId=30"
+                                               target="_blank" data-spm="flink2">品牌识别</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=72&amp;categoryId=30"
+                                               target="_blank" data-spm="flink3">公司大事记</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=40&amp;categoryId=14"
+                                               target="_blank" data-spm="flink4">协议及隐私权政策</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a
+                    href="//jubao.alibaba.com/internet/readme.htm?spm=a2o6e.search.0.0.72f44d15Votov6&amp;site=damai"
+                    target="_blank" data-spm="flink5">廉正举报</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=58&amp;categoryId=5"
+                                               target="_blank" data-spm="flink6">联系合作</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a
+                    href="//job.alibaba.com/zhaopin/positionList.htm?keyWord=JXU1OTI3JXU5RUE2&amp;_input_charset=UTF-8"
+                    target="_blank" data-spm="flink7">招聘信息</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a
+                    href="//x.damai.cn/markets/special/fangzhapian?spm=a2o6e.home.0.0.75df48d3hqGWGD&amp;wh_ttid=pc"
+                    target="_blank" data-spm="flink8">防骗秘籍</a></li>
+
+
+        </ul>
+        <div class="footer__ft">
+            <div class="footer__ft_fl">
+                <a href="//www.damai.cn/?spm=a2o6e.home.0.0.591b48d3QzpG8B" target="_blank" class="footer__ft__logo">
+                    <img src="https://img.alicdn.com/tfs/TB1NTQWxlLoK1RjSZFuXXXn0XXa-167-60.png" alt="">
+                </a>
+                <div class="footer__ft__code__box">
+                    <img class="footer__ft__code" src="//img.alicdn.com/tfs/TB1r0uFxHSYBuNjSspiXXXNzpXa-280-280.png"
+                         alt="">
+                    <span>APP下载</span>
+                </div>
+            </div>
+            <div class="footer__ft_fr">
+                <div class="footer__fr__contact">
+
+                    <a style="margin-left:0;" href="//online.damai.cn/alime/index?from=damai_pc_item&amp;v=3"
+                       class="footer__fr__contact__btn alime">在线客服</a>
+                </div>
+                <ul class="footer__ft__words">
+                    <li class="footer__ft__certificate"><a
+                            href="http://www.miitbeian.gov.cn?spm=a2o6e.home.0.0.5b4d48d3mVzb2Z" target="_blank">京ICP证031057号</a>
+                    </li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a href="http://www.miitbeian.gov.cn" target="_blank">京ICP备11043884号</a>
+                    </li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a
+                            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037341"
+                            target="_blank">京公网安备11010502037341号</a>
+                    </li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a
+                            href="//img.alicdn.com/tfs/TB1K9r6xN9YBuNjy0FfXXXIsVXa-1152-799.jpg" target="_blank">广播电视节目制作经营许可证
+                        (京)字第02253号</a></li>
+                </ul>
+                <ul class="footer__ft__words">
+                    <li class="footer__ft__certificate"><a
+                            href="//img.alicdn.com/tfs/TB1AsH4xH9YBuNjy0FgXXcxcXXa-1420-1032.jpg" target="_blank">网络文化经营许可证
+                        京网文[2016]3438-413号</a></li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a
+                            href="//img.alicdn.com/tfs/TB1DfD6CxGYBuNjy0FnXXX5lpXa-1079-1527.jpg" target="_blank">营业性演出许可证
+                        京市演587号</a></li>
+                </ul>
+                <ul class="footer__ft__words">
+                    <li class="footer__ft__certificate">北京红马传媒文化发展有限公司 版权所有</li>
+                    <li class="footer__ft__certificate"><a
+                            href="//www.damai.cn/?spm=a2o6e.home.0.0.591b48d3QzpG8B">大麦网</a></li>
+                    <li>Copyright 2003-2018 All Rights Reserved</li>
+                </ul>
+                <ul class="footer__ft__words">
+                    <li>举报投诉邮箱：damai_tousu@member.alibaba.com</li>
+                </ul>
+                <div class="footer__ft__img">
+                    <span id="siteseal">
+
+                    <img style="cursor:pointer;cursor:hand" class="footer__ft__img1"
+                         src="//img.alicdn.com/tfs/TB1gw_ZxNWYBuNjy1zkXXXGGpXa-131-32.gif" onclick="verifySeal();"
+                         alt="SSL site seal - click to verify" data-spm-anchor-id="a2o6e.home.0.i1.5b4d48d3mVzb2Z">
+                    </span>
+                    <a rel="nofollow" title="电子营业执照" target="_blank"
+                       href="//img.alicdn.com/tfs/TB1CChlpwDqK1RjSZSyXXaxEVXa-1200-1672.jpg">
+                        <img class="footer__ft__img2" alt=""
+                             src="//img.alicdn.com/tfs/TB1ZO80pyOYBuNjSsD4XXbSkFXa-141-41.png">
+                    </a>
+
+                    <a rel="nofollow" target="_blank" href="https://www.pcisecuritystandards.org/">
+                        <img src="//img.alicdn.com/tfs/TB1Y580pyOYBuNjSsD4XXbSkFXa-83-50.png" class="footer__ft__img3">
+                    </a>
+                    <a rel="nofollow" target="_blank"
+                       href="http://www.itrust.org.cn/home/index/itrust_certifi/wm/1756737221">
+                        <img src="//img.alicdn.com/tfs/TB1pM_ZxNWYBuNjy1zkXXXGGpXa-114-40.png"
+                             class="footer__ft__img4w">
+                    </a>
+                    <a target="_blank" href="https://search.szfw.org/cert/l/CX20130327002367002885"
+                       id="___szfw_logo___">
+                        <img class="footer__ft__img4" src="//img.alicdn.com/tfs/TB1C4nNxTlYBeNjSszcXXbwhFXa-114-42.png">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .sidebar {
+        top: 72.5%;
+    }
+
+    .sidebar .item .icon {
+        background-image: url(https://img.alicdn.com/tfs/TB1u1U9xmzqK1RjSZFHXXb3CpXa-64-180.png);
+    }
+
+    img {
+        border: 0;
+    }
+</style>
+
+
+<div class="sidebar" data-spm="slidelayer">
+    <div class="item">
+        <a class="alime" href="//online.damai.cn/alime/index?from=damai_pc_item&amp;v=3" target="_blank"
+           data-spm="dcustomerservice">
+            <div class="icon service"></div>
+            <p>在线客服</p>
+        </a>
+    </div>
+    <div class="item" style="border-bottom-width: 0px;">
+        <a href="javascript:void(0)" target="_blank">
+            <div class="icon damai"></div>
+            <p>APP下载</p>
+            <div class="qrcode">
+                <img src="//img.alicdn.com/tfs/TB1r0uFxHSYBuNjSspiXXXNzpXa-280-280.png" width="72" height="72">
+            </div>
+        </a>
+    </div>
+    <div class="item J_GoTop" style="display: none;">
+        <div class="icon gotop"></div>
+        <p>回到顶部</p>
+    </div>
+</div>
+<iframe src="//g.alicdn.com/alilog/oneplus/blk.html#coid=IMECFXIOEiMCAXWIIGh9nK%2F7&amp;noid=" id="_oid_ifr_"
+        style="width: 0px; height: 0px; display: none;"></iframe>
+</body>
+</html>

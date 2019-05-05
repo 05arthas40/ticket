@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <title>地址管理</title>
+    <link href="css/personal.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="//gw.alicdn.com/tfs/TB1fGH0fgMPMeJjy1XcXXXpppXa-16-16.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//g.alicdn.com/damai/migratory-birds-pc/0.3.3/pages/buy/index.css">
+    <link rel="stylesheet"
+          href="//g.alicdn.com/??damai/pc/1.0.4/p/head/index.css,damai/pc/1.0.4/p/footer/index.css,damai/pc/1.0.4/p/menu/index.css">
+    <style type="text/css">
+        .backcolor {
+            background: white;
+            position: relative;
+            margin-left: 12px;
+        }
+
+        .main-wrap {
+            background: gainsboro;
+        }
+
+        .am-form-group {
+
+            margin-left: 300px;
+
+        }
+
+    </style>
+    <script type="text/javascript" src="jquery/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        var loc = location.search.split("action=")[1];
+        var action = loc.split("&")[0];
+        var uaid;
+        var firstFlag;
+        if (action == "add")
+            firstFlag = loc.split("flag=")[1];
+        else
+            uaid = loc.split("uaid=")[1];
+        $(function () {
+            var uaname = $("#uaname");
+            var uaphone = $("#uaphone");
+            var uaddress = $("#uaddress");
+            var isDefault = $("#isDefault");
+            userid=document.cookie.split("userid=")[1].split(";")[0];
+            if (firstFlag != null) {
+                uaid = firstFlag[0];
+                $("#firstFlag").toggle();
+                $("#firstFlag").prop("selected", false);
+            }
+            $(".am-padding").remove();
+            var brother = $(".add-dress:first");
+            var son;
+            var form = $(".am-form-horizontal");
+            var url;
+            if (action == "add") {
+                son = $("<div class=\"am-cf am-padding\">\n" +
+                    "                            <div class=\"am-fl am-cf\"><strong class=\"am-text-danger am-text-lg\">新增地址</strong> /\n" +
+                    "                                <small>Add&nbsp;address</small>\n" +
+                    "                            </div>\n" +
+                    "                        </div>");
+                url = "addAddress";
+            }
+            else if (action == "edit") {
+                $.ajax({
+                    type: "post",
+                    url: "getAddressByUaid?uaid=" + uaid,
+                    dataType: "json",
+                    success: function (response) {
+                        console.log(response);
+                        $("#uaname").val(response.uaname);
+                        $("#uaphone").val(response.uaphone);
+                        $("#uaddress").val(response.uaddress);
+                        $("#isDefault").val(response.isDefault);
+                    },
+                    error: function (msg) {
+                        console.error(msg);
+                    }
+                });
+                son = $("<div class=\"am-cf am-padding\">\n" +
+                    "                            <div class=\"am-fl am-cf\"><strong class=\"am-text-danger am-text-lg\">修改地址</strong> /\n" +
+                    "                                <small>Edit&nbsp;address</small>\n" +
+                    "                            </div>\n" +
+                    "                        </div>");
+                url = "editAddress";
+            }
+            son.insertBefore(brother);
+            form.submit(function () {
+                if (uaname.val() != '') {
+                    if (uaphone.val() != '') {
+                        if (uaddress.val() != '')
+                            $.ajax({
+                                type: "post",
+                                url: url,
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                data: JSON.stringify({
+                                    "uaname": $("#uaname").val(),
+                                    "uaphone": $("#uaphone").val(),
+                                    "uaddress": $("#uaddress").val(),
+                                    "isDefault": $("#isDefault").val(),
+                                    "uaid":uaid,
+                                    "userid":userid
+                                }),
+                                success: function (response) {
+                                    if (response)
+                                        location.href = "orderMaker.html";
+                                }
+                                ,
+                                error: function (msg) {
+                                    console.error(msg);
+                                }
+                            })
+                    }
+                }
+                return false;
+            });
+
+        })
+    </script>
+</head>
+
+<body>
+
+<div class="dm-header-wrap">
+    <div class="dm-header-box" data-spm="top">
+        <!--左上角图标-->
+        <a href="head.html"><img class="i-logo" src="images/welogo.jpg" alt="大麦"/></a>
+        <!--城市定位-->
+        <!--<div class="location-header" style="display: block;">-->
+        <!--<img class="i-icon-location" src="//img.alicdn.com/tfs/TB1XHDuxNGYBuNjy0FnXXX5lpXa-28-32.png" alt="定位">-->
+        <!--<span class="city-location"><a-->
+        <!--href="http://10.3.135.45:8080/TicketProject/sort.html?keyword=&cityId=&pType=&date=">地区</a></span>-->
+        <!--<div class="city-header-wrap">-->
+        <!--<div class="city-header" data-spm="city">-->
+        <!--<div class="now-city">-->
+        <!--<span class="title-city">当前城市:</span>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="recommend-header">
+            <a href="head.html" class="type-recommend select" data-spm="dhome">首页</a>
+            <a href="shopsort.html?keyword=&cityId=&pType=&date="
+               class="type-recommend" data-spm="dcategory">分类</a>
+
+
+        </div>
+        <!--右边头部-->
+        <div class="right-header" data-spm="nick">
+            <div class="box-header user-header">
+                <a href="javascript:void(0)" class="J_userinfo_img" data-spm="duserinfo">
+                    <img class="i-box-header i-user" id="portrait" src="//img.alicdn.com/tfs/TB14UKCGQyWBuNjy0FpXXassXXa-54-54.png" /></a>
+                <a href="//passport.damai.cn/accountinfo/myinfo" class="J_userinfo_name" data-spm="duserinfo">
+                    <div class="span-box-header name-user"></div>
+                </a>
+                <div class="login-user show" id="login">
+                    <span class="span-box-header span-user" onclick="toLogin()" data-spm="dlogin">登录</span>
+                </div>
+
+            </div>
+
+        </div>
+        <!--搜索框-->
+        <div class="search-header" data-spm="searchtxt">
+            <img class="i-search" src="//img.alicdn.com/tfs/TB1qv3jxGmWBuNjy1XaXXXCbXXa-34-36.png" alt="搜索"/>
+            <input class="input-search" placeholder="搜索明星、演出、体育赛事" id="search"/>
+            <div class="btn-search" onclick="toSearch()">搜索</div>
+            <div class="list-search-wrap">
+                <div class="list-search">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="center">
+    <div class="col-main">
+        <div class="main-wrap">
+
+            <div class="user-address">
+                <!--标题 -->
+
+
+                <ul class="am-avg-sm-1 am-avg-md-3 am-thumbnails">
+
+
+                </ul>
+                <div class="clear"></div>
+                <!--例子-->
+                <div class="am-modal am-modal-no-btn" id="doc-modal-1">
+
+                    <div class="add-dress">
+
+                        <!--标题 -->
+                        <div class="am-cf am-padding">
+                            <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">新增地址</strong> /
+                                <small>Add&nbsp;address</small>
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <div class="am-u-md-12 am-u-lg-8" style="margin-top: 50px;">
+                            <form class="am-form am-form-horizontal" action="ShopServlet?action=addAddress"
+                                  method="post">
+
+                                <div class="am-form-group">
+                                    <label for="uaname" class="">收货人</label>
+                                    &nbsp;&nbsp;&nbsp;<input type="text" class="backcolor" name="uaname" id="uaname"
+                                                             placeholder="收货人">
+
+                                </div>
+                                <br/>
+
+                                <div class="am-form-group">
+                                    <label for="uaphone" class="">手机号码</label>
+
+                                    <input name="uaphone" id="uaphone" class="backcolor" placeholder="手机号必填"
+                                           type="text">
+
+                                </div>
+                                <br/>
+
+                                <div class="am-form-group">
+                                    <label for="uaddress" class="">详细地址</label>
+
+                                    <textarea id="uaddress" class="backcolor" rows="3" name="uaddress"
+                                              placeholder="输入详细地址"></textarea>
+                                    <small>100字以内写出你的详细地址...</small>
+
+                                </div>
+                                <br/>
+
+                                <div class="am-form-group">
+                                    <label for="isDefault" class="">是否选为默认地址</label>
+
+                                    <select name="isDefault" id="isDefault" class="backcolor">
+                                        <option value="1">是</option>
+                                        <option value="0" selected="selected" id="firstFlag">否</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="am-form-group"><br/>
+                                    <div class="am-u-sm-9 am-u-sm-push-3" style="margin-left: 100px;">
+                                        <input class="am-btn am-btn-danger backcolor" type="submit" value="保存">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="clear"></div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="dm-footer">
+    <div class="w1200">
+        <ul class="footer__links">
+
+            <li class="footer__links__list"><a href="//help.damai.cn" target="_blank" data-spm="flink0">帮助中心</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=69&amp;categoryId=30"
+                                               target="_blank" data-spm="flink1">公司介绍</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=70&amp;categoryId=30"
+                                               target="_blank" data-spm="flink2">品牌识别</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=72&amp;categoryId=30"
+                                               target="_blank" data-spm="flink3">公司大事记</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=40&amp;categoryId=14"
+                                               target="_blank" data-spm="flink4">协议及隐私权政策</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a
+                    href="//jubao.alibaba.com/internet/readme.htm?spm=a2o6e.search.0.0.72f44d15Votov6&amp;site=damai"
+                    target="_blank" data-spm="flink5">廉正举报</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a href="//help.damai.cn/helpPage.htm?pageId=58&amp;categoryId=5"
+                                               target="_blank" data-spm="flink6">联系合作</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a
+                    href="//job.alibaba.com/zhaopin/positionList.htm?keyWord=JXU1OTI3JXU5RUE2&amp;_input_charset=UTF-8"
+                    target="_blank" data-spm="flink7">招聘信息</a></li>
+            <li class="footer__links__grep">|</li>
+
+            <li class="footer__links__list"><a
+                    href="//x.damai.cn/markets/special/fangzhapian?spm=a2o6e.home.0.0.75df48d3hqGWGD&amp;wh_ttid=pc"
+                    target="_blank" data-spm="flink8">防骗秘籍</a></li>
+
+
+        </ul>
+        <div class="footer__ft">
+            <div class="footer__ft_fl">
+                <a href="//www.damai.cn/?spm=a2o6e.home.0.0.591b48d3QzpG8B" target="_blank" class="footer__ft__logo">
+                    <img src="https://img.alicdn.com/tfs/TB1NTQWxlLoK1RjSZFuXXXn0XXa-167-60.png" alt="">
+                </a>
+                <div class="footer__ft__code__box">
+                    <img class="footer__ft__code" src="//img.alicdn.com/tfs/TB1r0uFxHSYBuNjSspiXXXNzpXa-280-280.png"
+                         alt="">
+                    <span>APP下载</span>
+                </div>
+            </div>
+            <div class="footer__ft_fr">
+                <div class="footer__fr__contact">
+
+                    <a style="margin-left:0;" href="//online.damai.cn/alime/index?from=damai_pc_item&amp;v=3"
+                       class="footer__fr__contact__btn alime">在线客服</a>
+                </div>
+                <ul class="footer__ft__words">
+                    <li class="footer__ft__certificate"><a
+                            href="http://www.miitbeian.gov.cn?spm=a2o6e.home.0.0.5b4d48d3mVzb2Z" target="_blank">京ICP证031057号</a>
+                    </li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a href="http://www.miitbeian.gov.cn" target="_blank">京ICP备11043884号</a>
+                    </li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a
+                            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037341"
+                            target="_blank">京公网安备11010502037341号</a>
+                    </li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a
+                            href="//img.alicdn.com/tfs/TB1K9r6xN9YBuNjy0FfXXXIsVXa-1152-799.jpg" target="_blank">广播电视节目制作经营许可证
+                        (京)字第02253号</a></li>
+                </ul>
+                <ul class="footer__ft__words">
+                    <li class="footer__ft__certificate"><a
+                            href="//img.alicdn.com/tfs/TB1AsH4xH9YBuNjy0FgXXcxcXXa-1420-1032.jpg" target="_blank">网络文化经营许可证
+                        京网文[2016]3438-413号</a></li>
+                    <li class="footer__ft__grep">|</li>
+                    <li class="footer__ft__certificate"><a
+                            href="//img.alicdn.com/tfs/TB1DfD6CxGYBuNjy0FnXXX5lpXa-1079-1527.jpg" target="_blank">营业性演出许可证
+                        京市演587号</a></li>
+                </ul>
+                <ul class="footer__ft__words">
+                    <li class="footer__ft__certificate">北京红马传媒文化发展有限公司 版权所有</li>
+                    <li class="footer__ft__certificate"><a
+                            href="//www.damai.cn/?spm=a2o6e.home.0.0.591b48d3QzpG8B">大麦网</a></li>
+                    <li>Copyright 2003-2018 All Rights Reserved</li>
+                </ul>
+                <ul class="footer__ft__words">
+                    <li>举报投诉邮箱：damai_tousu@member.alibaba.com</li>
+                </ul>
+                <div class="footer__ft__img">
+                    <span id="siteseal">
+
+                    <img style="cursor:pointer;cursor:hand" class="footer__ft__img1"
+                         src="//img.alicdn.com/tfs/TB1gw_ZxNWYBuNjy1zkXXXGGpXa-131-32.gif" onclick="verifySeal();"
+                         alt="SSL site seal - click to verify" data-spm-anchor-id="a2o6e.home.0.i1.5b4d48d3mVzb2Z">
+                    </span>
+                    <a rel="nofollow" title="电子营业执照" target="_blank"
+                       href="//img.alicdn.com/tfs/TB1CChlpwDqK1RjSZSyXXaxEVXa-1200-1672.jpg">
+                        <img class="footer__ft__img2" alt=""
+                             src="//img.alicdn.com/tfs/TB1ZO80pyOYBuNjSsD4XXbSkFXa-141-41.png">
+                    </a>
+
+                    <a rel="nofollow" target="_blank" href="https://www.pcisecuritystandards.org/">
+                        <img src="//img.alicdn.com/tfs/TB1Y580pyOYBuNjSsD4XXbSkFXa-83-50.png" class="footer__ft__img3">
+                    </a>
+                    <a rel="nofollow" target="_blank"
+                       href="http://www.itrust.org.cn/home/index/itrust_certifi/wm/1756737221">
+                        <img src="//img.alicdn.com/tfs/TB1pM_ZxNWYBuNjy1zkXXXGGpXa-114-40.png"
+                             class="footer__ft__img4w">
+                    </a>
+                    <a target="_blank" href="https://search.szfw.org/cert/l/CX20130327002367002885"
+                       id="___szfw_logo___">
+                        <img class="footer__ft__img4" src="//img.alicdn.com/tfs/TB1C4nNxTlYBeNjSszcXXbwhFXa-114-42.png">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

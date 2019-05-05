@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.showManager.dao.ShowHomeMapper">
+    <select id="getTypeListByDate" parameterType="com.showManager.pojo.ShowDate" resultType="com.showManager.dto.ShowHomeDto">
+        SELECT sc.showid,sc.showdate,sc.begin,sc.vname,sv.showprice,p.showtitle,p.ppicture,p.ptype
+        FROM
+        (SELECT s.*,c.* FROM showdetails s,show_city sc,city c where s.`status` = 1
+        and sc.showid=s.showid and sc.cityid=c.cityid ) sc
+        LEFT JOIN show_venue sv ON sc.showid = sv.showid and sv.seatType = 1
+        LEFT JOIN performances p on sc.pfmid = p.pfmid
+        <where>
+            p.`status` = 1 and p.ptype='演唱会'
+            and DATE_FORMAT(sc.showdate,'%Y%m%d') between #{showdate1} and #{showdate2}
+            ORDER BY sc.showdate  limit 7
+        </where>
+    </select>
+</mapper>

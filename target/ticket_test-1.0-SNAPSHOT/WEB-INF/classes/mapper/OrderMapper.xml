@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orderManager.dao.OrderDao">
+    <select id="getAddresses" parameterType="int" resultType="com.orderManager.dto.UserAdressDto">
+        select * from user_address where status=1 and userid=#{userid}
+    </select>
+
+    <select id="getAddressByUaid" parameterType="int" resultType="com.orderManager.dto.UserAdressDto">
+        select * from user_address where status=1 and uaid=#{uaid}
+    </select>
+
+    <update id="setUnDefault" parameterType="int">
+       update user_address set isdefault=0 where userid=#{userid}
+    </update>
+
+    <update id="editAddress" parameterType="com.orderManager.dto.UserAdressDto">
+       update user_address set isdefault=#{isDefault},uaname=#{uaname},
+        uaphone=#{uaphone},uaddress=#{uaddress}where uaid=#{uaid}
+    </update>
+
+    <insert id="addAddress" parameterType="com.orderManager.dto.UserAdressDto">
+       insert into user_address(uaname,uaphone,uaddress,isdefault,userid) value(#{uaname},
+       #{uaphone},#{uaddress},#{isDefault},#{userid})
+    </insert>
+
+    <update id="delAddresses" parameterType="int">
+       update user_address set status=0 where uaid=#{uaid}
+    </update>
+
+    <insert id="addOrder" parameterType="com.orderManager.vo.OrderVo">
+       insert into ticketorder(userid,cid,ordertime,expfee,discount,totalprice,uaname,uaphone,uaddress) value(#{userid},
+       #{cid},#{ordertime},#{expfee},#{discount},#{totalprice},#{uaname},#{uaphone},#{uaddress})
+    </insert>
+
+    <select id="getOrderid" resultType="int">
+       select orderid from ticketorder where ordertime=#{arg0} and uaphone=#{arg1}
+    </select>
+
+
+    <insert id="addOrderDetail" parameterType="com.orderManager.vo.OrderDetailVo">
+         insert into orderdetail(svid,orderid,ticketcount,shoturl) value(#{svid},#{orderid},#{ticketcount},#{shoturl})
+    </insert>
+
+    <select id="seeOrders" resultType="com.orderManager.dto.OrderAllDto" parameterType="com.orderManager.vo.SeeOrders">
+        select t.*,o.svid,o.ticketcount from ticketorder t LEFT JOIN orderdetail o on
+        t.orderid=o.orderid
+        <where>
+            <trim suffixOverrides="and">
+                <if test="cid !=null and cid !=''">
+                    and cid=#{cid}
+                </if>
+                <if test="userid!=null and userid!=''">
+                    and userid=#{userid}
+                </if>
+                and status=#{status}
+            </trim>
+        </where>
+    </select>
+
+    <select id="getOrderByOrderId" resultType="com.orderManager.dto.OrderDto" parameterType="int">
+       select * from ticketorder where orderid=#{orderid}
+    </select>
+
+    <select id="getFlowByTrade_no" resultType="int" parameterType="String">
+       select count(*) from flows where trade_no=#{trade_nos}
+    </select>
+
+    <select id="getFlowByOrderid" resultType="int" parameterType="int">
+       select orderid from flows where orderid=#{orderid}
+    </select>
+
+    <insert id="addFlow" parameterType="com.orderManager.vo.FlowsVo">
+         insert into flows(orderid,creattime,paytime,paytitle,tradestatus,trade_no)
+          value(#{orderid},#{creattime},#{paytime},#{paytitle},#{tradestatus},#{trade_no})
+    </insert>
+
+    <update id="updateFlow" parameterType="com.orderManager.vo.FlowsVo">
+       update flows set createtime=#{createtime},paytime=#{paytime},paytitle=#{paytitle},
+       tradestatus=#{tradestatus},trade_no=#{trade_no} where orderid=#{orderid}
+    </update>
+
+    <select id="getFlows" resultType="com.orderManager.dto.FlowsDto">
+       select * from  flows
+    </select>
+
+    <update id="setSuccess" parameterType="int">
+       update ticketorder set status=1  where orderid=#{orderid}
+    </update>
+
+    <!--    购票时，座位数增减-->
+    <update id="addCount">
+        update show_venue set seatCount = seatCount + #{arg0} WHERE svid = #{arg1}
+    </update>
+    <update id="reduceCount">
+        update show_venue set seatCount = seatCount - #{arg0}  WHERE svid = #{arg1}
+    </update>
+    <update id="timeOutCancelOrder" parameterType="int">
+        update ticketorder set status = 2 WHERE status = 0
+    </update>
+</mapper>
